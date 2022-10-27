@@ -15,4 +15,4 @@ python is life
 hi there this is nic poopoo
 
 i love nyp nyp is my favourite school in the whole wide world!!!
-i love coding also because coding is fun!!!
+i love coding also because coding is "fun"!!!
