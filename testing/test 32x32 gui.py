@@ -67,12 +67,6 @@ def ramseq():
 			elif j == 2: 
 				button[i][j].config(bg='grey1')
 				value[i][j] = 90   
-      elif j == 10: 
-				button[i][j].config(bg='grey33')
-				value[i][j] = 60
-			elif j == 11: 
-				button[i][j].config(bg='grey1')
-				value[i][j] = 90   
 
 
 
