@@ -34,21 +34,6 @@ for j in range (32):
 Output <br>
 ![](images/whitebtns.png)
 
-## To change the colour of buttons 
-```
-def whitebtn(i, j):
-  global colour, value
-  if colour == 0:
-    button[i][j].config(bg='grey99')
-    value[i][j] = 0
-  elif colour == 1: 
-    button[i][j].config(bg='grey88')
-    value[i][j] = 20
-  else colour == 2:
-    button[i][j].config(bg='grey77')
-    value[i][j] = 30
-```
-
 # Create Shades Buttons
 Sample codes to create shades buttons. Change the text and backgroud colour accordingly to get different shades buttons. 
 ```
@@ -84,12 +69,8 @@ white.grid(row=0, column=0)
 Output <br>
 ![](images/features%20btn.png)
 
-
-# Send Button
-Output <br>
-![](images/send%20btn.png)
-
 # Frame Function
+
 
 # The Final Output of GUI 
 ![](images/32gui.png)
