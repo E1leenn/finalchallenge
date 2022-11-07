@@ -34,23 +34,62 @@ for j in range (32):
 Output <br>
 ![](images/whitebtns.png)
 
-# Create Shades Buttons
-Sample codes to create shades buttons. 
+## To change the colour of buttons 
 ```
-white = Button(frame2, text="White", font=("Calibri, 10"), width=13, height=2)
+def whitebtn(i, j):
+  global colour, value
+  if colour == 0:
+    button[i][j].config(bg='grey99')
+    value[i][j] = 0
+  elif colour == 1: 
+    button[i][j].config(bg='grey88')
+    value[i][j] = 20
+  else colour == 2:
+    button[i][j].config(bg='grey77')
+    value[i][j] = 30
+```
+
+# Create Shades Buttons
+Sample codes to create shades buttons. Change the text and backgroud colour accordingly to get different shades buttons. 
+```
+white = Button(frame2, text="White", font=("Calibri, 10"), bg='grey99', width=13, height=2)
 white.grid(row=0, column=0)
+
+grey1 = Button(frame2, text="Grey1", font=("Calibri, 10"), bg='grey88', width=13, height=2)
+grey1.grid(row=1, column=0)
 ```
 
 Output <br>
 ![](images/colour%20btns.png)
 
-# Features Button 
+## Assign function to the shades Buttons
+Create a variable to store colour value 
+```
+colour = 0
+```
+Use Lambda Function to ...
+```
+def change_colour(m): 
+  global colour
+  colour=m 
+```
+Add the command to the shades buttons. 
+```
+white = Button(frame2, text="White", font=("Calibri, 10"), width=13, height=2, command=lambda m=0:change_colour(m))
+white.grid(row=0, column=0)
+```
+
+# Features Buttons 
 
 Output <br>
 ![](images/features%20btn.png)
 
-# Frame Function
 
+# Send Button
+Output <br>
+![](images/send%20btn.png)
+
+# Frame Function
 
 # The Final Output of GUI 
 ![](images/32gui.png)
