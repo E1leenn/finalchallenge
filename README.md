@@ -34,6 +34,16 @@ for j in range (32):
 Output <br>
 ![](images/whitebtns.png)
 
+# Frame Function
+The frame function is to group and organise the widget so that it is user friendly.
+
+```
+frame1 = Frame(main) #32x32 grid
+frame1.grid(row=0, column=0)
+```
+Frame1 is to indicate the first frame which is for the 32x32 grid.
+
+
 # Create Shades Buttons
 Sample codes to create shades buttons. 
 ```
@@ -48,8 +58,6 @@ Output <br>
 
 Output <br>
 ![](images/features%20btn.png)
-
-# Frame Function
 
 
 # The Final Output of GUI 
