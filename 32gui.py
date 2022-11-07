@@ -94,6 +94,7 @@ def ramseq():
         value[i][j] = 90
 
 main = Tk()
+main.title("Group C")
 
 #this variable to store the colour choice 
 colour = 0
