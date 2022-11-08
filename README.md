@@ -192,8 +192,6 @@ def allwht():
     for i in range (32):
       button[i][j].config(bg='white')
 ```
-Output <br>
-![](images/allwhite.png)
 
 Below are the function codes for All Black
 ```
@@ -202,8 +200,6 @@ def allblk():
     for i in range (32):
       button[i][j].config(bg='black')
 ```
-Output <br>
-![](images/allblack.png)
 
 Below are the function codes for X Pattern. 
 ```
@@ -215,8 +211,6 @@ def pattern():
       elif i + j == 31: 
         button[i][j].config(bg='grey')
 ```
-Output <br>
-![](images/xpattern.png)
 
 Below are the function codes for Sequence. 
 ```
@@ -234,7 +228,32 @@ def ramseq():
       elif j >= 24 and j <= 32:
         button[i][j].config(bg='grey55')
 ```
-Output <br>
+
+Add the commands to the features buttons. 
+```
+allwhite = Button(frame3, text="All White",font=("Calibri, 12"), bg='white', width=13, height=2, command=allwht)
+allwhite.grid(row=0, column=0)
+
+allblack = Button(frame3, text="All Black",font=("Calibri, 12"), bg='black', fg='white', width=13, height=2, command=allblk)
+allblack.grid(row=0, column=1)
+
+xpattern = Button(frame3, text="X Pattern",font=("Calibri, 12"), bg='gold', width=13, height=2, command=pattern)
+xpattern.grid(row=0, column=2)
+
+seq = Button(frame3, text="Sequence",font=("Calibri, 12"), bg='#ff007f', width=13, height=2, command=ramseq)
+seq.grid(row=0, column=3)
+```
+
+Output for All White feature button <br>
+![](images/allwhite.png)
+
+Output for All Black feature button <br>
+![](images/allblack.png)
+
+Output for x pattern feature button<br>
+![](images/xpattern.png)
+
+Output for sequence feature button <br>
 ![](images/sequence.png)
 
 # Send Button 
@@ -334,6 +353,12 @@ Function code for send button.
 ```
 def sendbtn():
   print(value)
+```
+
+Add in the command for send button 
+```
+send = Button(frame4, text="Send Image!", font=("Calibri, 12"), width=13, height=2, command=lambda :sendbtn())
+send.grid(row=0, column=0)
 ```
 
 Output <br>
