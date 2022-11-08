@@ -22,7 +22,7 @@ Output <br>
 ![](images/window.png)
 
 # Create 32 x 32 Buttons
-To create the 32x32 buttons, list of list is required. 
+We are using a list of list to create a 32 x 32 buttons. 
 ```
 button = [[j for j in range(32)] for i in range(32)]
 
@@ -52,7 +52,7 @@ Create a variable to store colour value
 ```
 colour = 0
 ```
-Use Lambda Function to ...
+Use Lambda Function to ...?
 ```
 def change_colour(m): 
   global colour
@@ -65,6 +65,8 @@ white.grid(row=0, column=0)
 ```
 
 # Features Buttons 
+To create the features buttons, the code is similar to the shades button. Change the text and background colour accordingly. 
+
 
 Output <br>
 ![](images/features%20btn.png)
