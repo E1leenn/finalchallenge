@@ -53,7 +53,7 @@ Output <br>
 ![](images/frameEXAMPLE.png)
 
 # Create 32 x 32 Buttons
-We are using a list of list to create a 32 x 32 buttons. 
+We are using a list of list and nested for loop to create a 32 x 32 buttons. 
 ```
 button = [[j for j in range(32)] for i in range(32)]
 
