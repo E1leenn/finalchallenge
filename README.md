@@ -202,20 +202,16 @@ Below are the function codes for Sequence.
 def ramseq():
   for j in range (32):
     for i in range (32):
-      if i == 0: 
+      if j < 6:
         button[i][j].config(bg='grey99')
-      elif i == 2:
+      elif j >= 6 and j <= 12:
         button[i][j].config(bg='grey88')
-      elif colour == 3: 
+      elif j >= 12 and j <= 18:
+        button[i][j].config(bg='grey77')
+      elif j >= 18 and j <= 24:
         button[i][j].config(bg='grey66')
-      elif colour == 4:
-        button[i][j].config(bg='grey44')  
-      elif colour == 5: 
-        button[i][j].config(bg='grey33')
-      elif colour == 6:
-        button[i][j].config(bg='grey11')
-      else: 
-        button[i][j].config(bg='grey1')
+      elif j >= 24 and j <= 32:
+        button[i][j].config(bg='grey55')
 ```
 Output <br>
 ![](images/features%20btn.png)
@@ -236,7 +232,7 @@ Next, add value to the 32 x 32 button's function, shades button's function and f
 Below are the code for 32x32 buttons after adding the value. 
 ```
 def whitebtn(i, j):
-  global colour
+  global colour, value
 
   if colour == 0:
     button[i][j].config(bg='grey99')
@@ -294,27 +290,21 @@ Below are the code for sequence after adding the value.
 def ramseq():
   for j in range (32):
     for i in range (32):
-      if i == 0: 
+      if j < 6:
         button[i][j].config(bg='grey99')
         value[i][j] = 0
-      elif i == 2:
+      elif j >= 6 and j <= 12:
         button[i][j].config(bg='grey88')
         value[i][j] = 20
-      elif colour == 3: 
+      elif j >= 12 and j <= 18:
+        button[i][j].config(bg='grey77')
+        value[i][j] = 30
+      elif j >= 18 and j <= 24:
         button[i][j].config(bg='grey66')
         value[i][j] = 40
-      elif colour == 4:
-        button[i][j].config(bg='grey44')  
+      elif j >= 24 and j <= 32:
+        button[i][j].config(bg='grey55')
         value[i][j] = 50
-      elif colour == 5: 
-        button[i][j].config(bg='grey33')
-        value[i][j] = 60
-      elif colour == 6:
-        button[i][j].config(bg='grey11')
-        value[i][j] = 70
-      else: 
-        button[i][j].config(bg='grey1')
-        value[i][j] = 90
 ```
 Function code for send button. 
 ```

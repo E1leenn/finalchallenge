@@ -1,6 +1,4 @@
-<<<<<<< Updated upstream
 from tkinter import *
-
 
 def whitebtn(i, j):
   global colour, value
@@ -162,8 +160,6 @@ send.grid(row=0, column=0)
 
 #print("Button is {}".format(button))
 
-
-=======
 from tkinter import *
 
 
@@ -237,27 +233,21 @@ def pattern():
 def ramseq():
   for j in range (32):
     for i in range (32):
-      if i == 0: 
+      if j < 6:
         button[i][j].config(bg='grey99')
         value[i][j] = 0
-      elif i == 2:
+      elif j >= 6 and j <= 12:
         button[i][j].config(bg='grey88')
         value[i][j] = 20
-      elif colour == 3: 
+      elif j >= 12 and j <= 18:
+        button[i][j].config(bg='grey77')
+        value[i][j] = 30
+      elif j >= 18 and j <= 24:
         button[i][j].config(bg='grey66')
         value[i][j] = 40
-      elif colour == 4:
-        button[i][j].config(bg='grey44')  
+      elif j >= 24 and j <= 32:
+        button[i][j].config(bg='grey55')
         value[i][j] = 50
-      elif colour == 5: 
-        button[i][j].config(bg='grey33')
-        value[i][j] = 60
-      elif colour == 6:
-        button[i][j].config(bg='grey11')
-        value[i][j] = 70
-      else: 
-        button[i][j].config(bg='grey1')
-        value[i][j] = 90
 
 main = Tk()
 main.title("Group C")
@@ -328,6 +318,4 @@ send.grid(row=0, column=0)
 
 #print("Button is {}".format(button))
 
-
->>>>>>> Stashed changes
 main.mainloop()
