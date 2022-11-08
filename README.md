@@ -44,6 +44,8 @@ Frame4 is to indicate the fourth frame for the send button.
 frame4 = Frame(main)
 frame4.grid(row=2, columnspan=2)
 ```
+Output <br>
+![](images/frameEXAMPLE.png)
 
 # Create 32 x 32 Buttons
 We are using a list of list to create a 32 x 32 buttons. 
