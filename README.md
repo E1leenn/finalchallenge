@@ -2,12 +2,12 @@
 This documentation is an introduction about the 32 x 32 GUI and its features. 
 
 # Setting Up The GUI
-To create a tkinter GUI, we need to import the tkinter library 
+To create a tkinter GUI, we need to import the tkinter library. 
 ```
 from tkinter import *
 ```
 
-To create a window with our group title  
+To create a window with our group title. 
 ```
 main = Tk()
 main.title("Group C")
@@ -57,51 +57,6 @@ for j in range (32):
     button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1)
     button[i][j].grid(row=i, column=j)
 ```
-
-## Assign function to the buttons. 
-Create a variable to store colour value ???
-```
-colour = 0
-```
-Use if else statement to create fucntion for the white buttons. 
-```
-def whitebtn(i, j):
-  global colour
-
-  if colour == 0:
-    button[i][j].config(bg='grey99')
-    value[i][j] = 0
-  elif colour == 1: 
-    button[i][j].config(bg='grey88')
-    value[i][j] = 20
-  elif colour == 2:
-    button[i][j].config(bg='grey77')
-    value[i][j] = 30
-  elif colour == 3: 
-    button[i][j].config(bg='grey66')
-    value[i][j] = 40
-  elif colour == 4:
-    button[i][j].config(bg='grey44')  
-    value[i][j] = 50
-  elif colour == 5: 
-    button[i][j].config(bg='grey33')
-    value[i][j] = 60
-  elif colour == 6:
-    button[i][j].config(bg='grey11')
-    value[i][j] = 70
-  else: 
-    button[i][j].config(bg='grey1')
-    value[i][j] = 90
-```
-Add command to the button codes. 
-```
-button = [[j for j in range(32)] for i in range(32)]
-
-for j in range (32):
-  for i in range (32):
-    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, command=lambda r=i, c=j:whitebtn(r, c))
-    button[i][j].grid(row=i, column=j)
-```
 Output <br>
 ![](images/whitebtns.png)
 
@@ -132,8 +87,11 @@ grey6.grid(row=6, column=0)
 black = Button(frame2, text="Black", font=("Calibri, 10"), bg='black', fg='white', width=13, height=2)
 black.grid(row=7, column=0)
 ```
-## Assign function to the shades Buttons
-Create a variable to store colour value ???
+Output <br>
+![](images/colour%20btns.png)
+
+## Assign function to the 32x32 buttons and shades Buttons
+Create a variable to store colour value. 
 ```
 colour = 0
 ```
@@ -169,8 +127,37 @@ grey6.grid(row=6, column=0)
 black = Button(frame2, text="Black", font=("Calibri, 10"), bg='black', fg='white', width=13, height=2, command=lambda m=7:change_colour(m))
 black.grid(row=7, column=0)
 ```
-Output <br>
-![](images/colour%20btns.png)
+Use if else statement to create fucntion for the white buttons. 
+```
+def whitebtn(i, j):
+  global colour
+
+  if colour == 0:
+    button[i][j].config(bg='grey99')
+  elif colour == 1: 
+    button[i][j].config(bg='grey88')
+  elif colour == 2:
+    button[i][j].config(bg='grey77')
+  elif colour == 3: 
+    button[i][j].config(bg='grey66')
+  elif colour == 4:
+    button[i][j].config(bg='grey44')  
+  elif colour == 5: 
+    button[i][j].config(bg='grey33')
+  elif colour == 6:
+    button[i][j].config(bg='grey11')
+  else: 
+    button[i][j].config(bg='grey1')
+```
+Add command to the button codes. 
+```
+button = [[j for j in range(32)] for i in range(32)]
+
+for j in range (32):
+  for i in range (32):
+    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, command=lambda r=i, c=j:whitebtn(r, c))
+    button[i][j].grid(row=i, column=j)
+```
 
 # Features Buttons 
 To create the features buttons, the code is similar to the shades button. Change the text and background colour accordingly. 
@@ -194,13 +181,11 @@ def allwht():
   for j in range (32):
     for i in range (32):
       button[i][j].config(bg='white')
-      value[i][j] = 0
 
 def allblk():
   for j in range (32):
     for i in range (32):
       button[i][j].config(bg='black')
-      value[i][j] = 90
 ```
 Below are the function codes for X Pattern. 
 ```
@@ -209,10 +194,8 @@ def pattern():
     for i in range (32):
       if i == j: 
         button[i][j].config(bg='grey')
-        value[i][j] = 10
       elif i + j == 31: 
         button[i][j].config(bg='grey')
-        value[i][j] = 10
 ```
 Below are the function codes for Sequence. 
 ```
@@ -221,25 +204,18 @@ def ramseq():
     for i in range (32):
       if i == 0: 
         button[i][j].config(bg='grey99')
-        value[i][j] = 0
       elif i == 2:
         button[i][j].config(bg='grey88')
-        value[i][j] = 20
       elif colour == 3: 
         button[i][j].config(bg='grey66')
-        value[i][j] = 40
       elif colour == 4:
         button[i][j].config(bg='grey44')  
-        value[i][j] = 50
       elif colour == 5: 
         button[i][j].config(bg='grey33')
-        value[i][j] = 60
       elif colour == 6:
         button[i][j].config(bg='grey11')
-        value[i][j] = 70
       else: 
         button[i][j].config(bg='grey1')
-        value[i][j] = 90
 ```
 Output <br>
 ![](images/features%20btn.png)
@@ -248,7 +224,7 @@ Output <br>
 When the send button is pressed, it will output the value of the different shades. 
 Below is the codes to create send button. 
 ```
-send = Button(frame4, text="Send Imaged!", font=("Calibri, 12"), width=13, height=2)
+send = Button(frame4, text="Send Image!", font=("Calibri, 12"), width=13, height=2)
 send.grid(row=0, column=0)
 ```
 ## Assign function to the send button. 
@@ -256,7 +232,8 @@ First, create a variable to store the value.
 ```
 value = [[0 for i in range(32)] for j in range(32)]
 ```
-Next, add value to the 32 x 32 buttons, shades buttons and features buttons. 
+Next, add value to the 32 x 32 button's function, shades button's function and features button's function. 
+Below are the code for 32x32 buttons after adding the value. 
 ```
 def whitebtn(i, j):
   global colour
@@ -286,10 +263,66 @@ def whitebtn(i, j):
     button[i][j].config(bg='grey1')
     value[i][j] = 90
 ```
+Below are the code for All White and All Black button after adding the value. 
+```
+def allwht():
+  for j in range (32):
+    for i in range (32):
+      button[i][j].config(bg='white')
+      value[i][j] = 0
+
+def allblk():
+  for j in range (32):
+    for i in range (32):
+      button[i][j].config(bg='black')
+      value[i][j] = 90
+```
+Below are the code for X Pattern button after adding the value. 
+```
+def pattern():
+  for j in range (32):
+    for i in range (32):
+      if i == j: 
+        button[i][j].config(bg='grey')
+        value[i][j] = 10
+      elif i + j == 31: 
+        button[i][j].config(bg='grey')
+        value[i][j] = 10
+```
+Below are the code for sequence after adding the value. 
+```
+def ramseq():
+  for j in range (32):
+    for i in range (32):
+      if i == 0: 
+        button[i][j].config(bg='grey99')
+        value[i][j] = 0
+      elif i == 2:
+        button[i][j].config(bg='grey88')
+        value[i][j] = 20
+      elif colour == 3: 
+        button[i][j].config(bg='grey66')
+        value[i][j] = 40
+      elif colour == 4:
+        button[i][j].config(bg='grey44')  
+        value[i][j] = 50
+      elif colour == 5: 
+        button[i][j].config(bg='grey33')
+        value[i][j] = 60
+      elif colour == 6:
+        button[i][j].config(bg='grey11')
+        value[i][j] = 70
+      else: 
+        button[i][j].config(bg='grey1')
+        value[i][j] = 90
+```
 Function code for send button. 
 ```
 def sendbtn():
   print(value)
 ```
+Output <br>
+![](images/send%20btn.png)
+
 # The Final Output of GUI 
 ![](images/32gui.png)
