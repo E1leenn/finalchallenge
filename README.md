@@ -3,6 +3,9 @@ This documentation is an introduction about the 32 x 32 GUI and its features. Us
 preset patterns to play with the GUI. Sending an image will print the
 colour values of the 1024 buttons. 
 
+## Final Look of the GUI 
+![](images/32gui.png)
+
 # Setting Up The GUI
 To create a tkinter GUI, we need to import the tkinter library. 
 ```
@@ -160,6 +163,8 @@ for j in range (32):
     button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, command=lambda r=i, c=j:whitebtn(r, c))
     button[i][j].grid(row=i, column=j)
 ```
+Output <br>
+![](images/ezgif.com-gif-maker.gif)
 
 # Features Buttons 
 To create the features buttons, the code is similar to the shades button. Change the text and background colour accordingly. 
@@ -176,19 +181,30 @@ xpattern.grid(row=0, column=2)
 seq = Button(frame3, text="Sequence",font=("Calibri, 12"), bg='#ff007f', width=13, height=2)
 seq.grid(row=0, column=3)
 ```
-Add commands to each of the features function. <br>
-Below are the function codes for All White and All Black. 
+Output <br>
+![](images/features%20btn.png)
+
+## Assign function to the features buttons
+Below are the function codes for All White. 
 ```
 def allwht():
   for j in range (32):
     for i in range (32):
       button[i][j].config(bg='white')
+```
+Output <br>
+![](images/allwhite.png)
 
+Below are the function codes for All Black
+```
 def allblk():
   for j in range (32):
     for i in range (32):
       button[i][j].config(bg='black')
 ```
+Output <br>
+![](images/allblack.png)
+
 Below are the function codes for X Pattern. 
 ```
 def pattern():
@@ -199,6 +215,9 @@ def pattern():
       elif i + j == 31: 
         button[i][j].config(bg='grey')
 ```
+Output <br>
+![](images/xpattern.png)
+
 Below are the function codes for Sequence. 
 ```
 def ramseq():
@@ -216,7 +235,7 @@ def ramseq():
         button[i][j].config(bg='grey55')
 ```
 Output <br>
-![](images/features%20btn.png)
+![](images/sequence.png)
 
 # Send Button 
 When the send button is pressed, it will output the value of the different shades. 
@@ -225,6 +244,9 @@ Below is the codes to create send button.
 send = Button(frame4, text="Send Image!", font=("Calibri, 12"), width=13, height=2)
 send.grid(row=0, column=0)
 ```
+Output <br>
+![](images/send%20btn.png)
+
 ## Assign function to the send button. 
 First, create a variable to store the value. 
 ```
@@ -313,8 +335,6 @@ Function code for send button.
 def sendbtn():
   print(value)
 ```
-Output <br>
-![](images/send%20btn.png)
 
-# The Final Output of GUI 
-![](images/32gui.png)
+Output <br>
+![](images/value.png)
