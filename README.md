@@ -6,12 +6,28 @@ colour values of the 1024 buttons.
 ## Final Look of the GUI 
 ![](images/32gui.png)
 
+# Installation
+### Update Raspberry pi
+```
+sudo apt update
+sudo apt upgrade
+```
+
+# Configuring Raspberry pi
+### Enable SSH <br>
+SSH is a is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network. To enable SSH type the following,
+```
+sudo raspi-config
+```
+Select ```3 Interface Options```<br>
+Select ```P2 SSH```<br>
+**Enable SSH**
+
 # Setting Up The GUI
 To create a tkinter GUI, we need to import the tkinter library. 
 ```
 from tkinter import *
 ```
-
 To create a window with our group title. 
 ```
 main = Tk()
