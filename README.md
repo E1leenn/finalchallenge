@@ -21,7 +21,17 @@ sudo raspi-config
 ```
 Select ```3 Interface Options```<br>
 Select ```P2 SSH```<br>
-**Enable SSH**
+Select **Enable SSH**
+
+
+### Enable Virtual Network Computing (VNC) <br>
+VNC is a cross-platform screen sharing system that was created to remotely control another computer. To enable VNC type the following,
+```
+sudo raspi-config
+```
+Select ```3 Interface Options```<br>
+Select ```P3 VNC```<br>
+Select **Enable VNC**
 
 # Setting Up The GUI
 To create a tkinter GUI, we need to import the tkinter library. 
