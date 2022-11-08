@@ -1,5 +1,7 @@
 # 32 x 32 GUI Documentation 
-This documentation is an introduction about the 32 x 32 GUI and its features. 
+This documentation is an introduction about the 32 x 32 GUI and its features. Users can choose from an array of different shades of grey as well as
+preset patterns to play with the GUI. Sending an image will print the
+colour values of the 1024 buttons. 
 
 # Setting Up The GUI
 To create a tkinter GUI, we need to import the tkinter library. 
