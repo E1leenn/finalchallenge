@@ -7,13 +7,14 @@ colour values of the 1024 buttons.
 ![](images/32gui.png)
 
 # Installation
-### Update Raspberry pi
+Note: Only do the following on first initial boot
+### 1. Update Raspberry pi
 ```
 sudo apt update
 sudo apt upgrade
 ```
 
-# Configuring Raspberry pi
+### 2. Configuring Raspberry pi
 ### Enable SSH <br>
 SSH is a is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network. To enable SSH type the following,
 ```
