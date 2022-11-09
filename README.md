@@ -46,15 +46,28 @@ Select ```3 Interface Options```<br>
 Select ```P2 SSH```<br>
 Select **Enable SSH**
 
+## Advanced Port Scanner
+Use Advanced Port Scanner to scan your nestwork ip address in order to connect to VNC Viewer. Click "Start" to scart scanning. 
+![](images/advance%20PortScanner.png)
+
 ## VCN Viewer
 ### Enable Virtual Network Computing (VNC) <br>
-VNC is a cross-platform screen sharing system that was created to remotely control another computer. To enable VNC type the following,
+VNC is a cross-platform screen sharing system that was created to remotely control another computer. To enable VNC, open terminal on your Raspberry Pi and try the following. 
 ```
 sudo raspi-config
 ```
 Select ```3 Interface Options```<br>
 Select ```P3 VNC```<br>
 Select **Enable VNC**
+
+Next, open VNC Viewer. Enter your Raspberry Pi ip address to to remotely access the desktop of your Raspberry Pi over the internet. 
+![](images/vncStartpage.png)
+
+Enter the username and password for the raspberry pi login and press "OK". 
+![](images/vncpilogin.png)
+
+The VNC session should start, and you should see your Raspberry Pi desktop.
+![](images/vnc_viewer_local_4.png)
 
 # Setting Up The GUI
 To create a tkinter GUI, we need to import the tkinter library. 
