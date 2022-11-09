@@ -444,8 +444,9 @@ Output of the value of All X Pattern.<br>
 Output of the value of Sequence.<br>
 ![](images/valueseq.png)
 
-# How to run the program on terminal 
-1. Open VNC to connect to your raspberryPi. 
-2. open terminal on raspberryPi. 
-3. In the terminal, type the following commands. 
-  - 
+# How to run the program on terminal **(provide figure can explain better)**
+1. Open the terminal on raspberryPi.  
+2. In the terminal, type the following commands:
+Assuming you saved the file under the 'EGL314' folder on the desktop,
+  - ``` cd /home/pi/Desktop/EGL314/ ```
+  - ``` python3 filename ```
