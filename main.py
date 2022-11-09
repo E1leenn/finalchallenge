@@ -113,7 +113,7 @@ frame4.grid(row=2, columnspan=2) #send btn
 button = [[j for j in range(32)] for i in range(32)]
 
 value = [[0 for i in range(32)] for j in range(32)]
-print("Value is {}".format(value))
+# print("Value is {}".format(value))
 
 
 for j in range (32):

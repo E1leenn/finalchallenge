@@ -220,7 +220,7 @@ def allwht():
       button[i][j].config(bg='grey99')
 ```
 
-Below are the function codes for All Black
+Below are the function codes for All Black.
 ```
 def allblk():
   for j in range (32):
@@ -301,7 +301,7 @@ First, create a variable to store the value.
 ```
 value = [[0 for i in range(32)] for j in range(32)]
 ```
-Next, add value to the 32 x 32 button's function, shades button's function and features button's function. 
+Next, add value to the 32 x 32 button's function, shades button's function and features button's function. <br>
 Below are the code for 32x32 buttons after adding the value. 
 ```
 def whitebtn(i, j):
@@ -393,5 +393,14 @@ send = Button(frame4, text="Send Image!", font=("Calibri, 12"), width=13, height
 send.grid(row=0, column=0)
 ```
 
-Output of the value of sequence.<br>
-![](images/value.png)
+Output of the value of All White.<br>
+![](images/valuewhite.png)
+
+Output of the value of All Black.<br>
+![](images/valueblack.png)
+
+Output of the value of All X Pattern.<br>
+![](images/valueX.png)
+
+Output of the value of Sequence.<br>
+![](images/valueseq.png)
