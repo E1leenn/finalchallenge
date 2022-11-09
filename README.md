@@ -51,7 +51,7 @@ Select **Enable SSH**
 Use Advanced Port Scanner to scan your nestwork ip address in order to connect to VNC Viewer. Click "Start" to scart scanning. 
 ![](images/advance%20PortScanner.png)
 
-## VCN Viewer
+## VNC Viewer
 ### Enable Virtual Network Computing (VNC) <br>
 VNC is a cross-platform screen sharing system that was created to remotely control another computer. To enable VNC, open terminal on your Raspberry Pi and try the following. 
 ```
