@@ -73,7 +73,9 @@ Enter the username and password for the raspberry pi login and press "OK".
 The VNC session should start, and you should see your Raspberry Pi desktop.
 ![](images/vnc_viewer_local_4.png)
 
+
 To start coding, click on the raspberry pi logo and under Programming, look for Thonny Python IDE and click on it.
+
 ![](images/thonny_ide_start.png)
 
 
