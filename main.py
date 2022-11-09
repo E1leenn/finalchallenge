@@ -118,7 +118,7 @@ print("Value is {}".format(value))
 
 for j in range (32):
   for i in range (32):
-    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, command=lambda r=i, c=j:whitebtn(r, c))
+    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
     button[i][j].grid(row=i, column=j)
 
     #print(button)
