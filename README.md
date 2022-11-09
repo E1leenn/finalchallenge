@@ -2,9 +2,11 @@
 This documentation is an introduction about the 32 x 32 GUI and it's features. The purpose of this GUI is to control the polarised motor to display a pixelated image. Users can choose from an array of different shades of grey as well as preset patterns to play with the GUI. 
 
 Example of the pixelated image. <br>
+
 ![](images/pixiliseArt.png)
 
 ## Final Look of the GUI 
+
 ![](images/32gui.png)
 
 # Installation of Software and Hardware
