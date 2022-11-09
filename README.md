@@ -1,20 +1,39 @@
 # 32 x 32 GUI Documentation 
-This documentation is an introduction about the 32 x 32 GUI and its features. Users can choose from an array of different shades of grey as well as
-preset patterns to play with the GUI. Sending an image will print the
-colour values of the 1024 buttons. 
+This documentation is an introduction about the 32 x 32 GUI and it's features. The purpose of this GUI is to control the polarised motor to display a pixelated image. Users can choose from an array of different shades of grey as well as preset patterns to play with the GUI. 
+
+Example of the pixelated image. <br>
+![](images/pixiliseArt.png)
 
 ## Final Look of the GUI 
 ![](images/32gui.png)
 
-# Installation
+# Installation of Software and Hardware
+## Hardware - RaspberryPi 4 Model B
+![](images/raspberryPi.png)
+
+## Software 
+1. PuTTy
+2. Advanced Port Scanner
+3. VNC Viewer
+
+# ...
+
 Note: Only do the following on first initial boot
 ### 1. Update Raspberry pi
 ```
 sudo apt update
 sudo apt upgrade
 ```
-
 ### 2. Configuring Raspberry pi
+## PuTTy 
+PuTTy will allow for running SSH. After installing PuTTy, enter the hostname "raspberrypi"
+![](images/putty.webp)
+
+After you entering the hostname, click "open" and a new window appears. Enter your username and password here. The Raspbian default login is user “pi” with password “raspberry“.
+![](images/RaspberryPi_boot.png)
+
+You may change you password with the following command ```sudo passwd```
+
 ### Enable SSH <br>
 SSH is a is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network. To enable SSH type the following,
 ```
@@ -24,7 +43,7 @@ Select ```3 Interface Options```<br>
 Select ```P2 SSH```<br>
 Select **Enable SSH**
 
-
+## VCN Viewer
 ### Enable Virtual Network Computing (VNC) <br>
 VNC is a cross-platform screen sharing system that was created to remotely control another computer. To enable VNC type the following,
 ```
