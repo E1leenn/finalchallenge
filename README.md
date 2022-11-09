@@ -23,7 +23,7 @@ Example of the pixelated image. <br>
  Note: Only do the following on first initial boot
 
 ## PuTTy 
-PuTTy will allow for running SSH. After installing PuTTy, enter the hostname "raspberrypi"
+PuTTy allows free implementation of SSH for PCs running Microsoft Windows. After installing PuTTy, enter the hostname "raspberrypi"
 ![](images/putty.webp)
 
 After you entering the hostname, click "open" and a new window appears. Enter your username and password here. The Raspbian default login is user “pi” with password “raspberry“.
