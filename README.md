@@ -64,7 +64,7 @@ Select **Enable VNC**
 Use Advanced Port Scanner to scan your network ip address in order to connect to VNC Viewer. Click "Start" to scart scanning. 
 ![](images/advance%20PortScanner.png)
 
-Next, open VNC Viewer. Enter your Raspberry Pi ip address to to remotely access the desktop of your Raspberry Pi over the internet. 
+Next, open VNC Viewer. Enter your Raspberry Pi ip address to remotely access the desktop of your Raspberry Pi over the internet. 
 ![](images/vncStartpage.png)
 
 Enter the username and password for the raspberry pi login and press "OK". 
@@ -72,6 +72,9 @@ Enter the username and password for the raspberry pi login and press "OK".
 
 The VNC session should start, and you should see your Raspberry Pi desktop.
 ![](images/vnc_viewer_local_4.png)
+
+To start coding, click on the raspberry pi logo and under Programming, look for Thonny Python IDE and click on it.
+
 
 # Setting Up The GUI
 To create a tkinter GUI, we need to import the tkinter library. 
