@@ -28,11 +28,11 @@ PuTTy allows free implementation of SSH for PCs running Microsoft Windows. After
 ![](images/putty.webp)
 
 
-After you enter the hostname, click "open" and a new window appears. Enter your username and password here. The Raspbian default login is user “pi” with password “raspberry“.
+After you enter the hostname, click "open" and a command prompt window should appear. Enter your username and password here. The Raspbian default login is user “pi” with password “raspberry“.
 
 ![](images/RaspberryPi_boot.png)
 
-You may change you password with the following command ```sudo passwd```
+You may change you password with the following command: ```sudo passwd```
 
 ### 1. Update Raspberry pi
 Onced logged in, update the Raspberry Pi. 
@@ -50,10 +50,6 @@ Select ```3 Interface Options```<br>
 Select ```P2 SSH```<br>
 Select **Enable SSH**
 
-## Advanced Port Scanner
-Use Advanced Port Scanner to scan your nestwork ip address in order to connect to VNC Viewer. Click "Start" to scart scanning. 
-![](images/advance%20PortScanner.png)
-
 ## VNC Viewer
 ### Enable Virtual Network Computing (VNC) <br>
 VNC is a cross-platform screen sharing system that was created to remotely control another computer. To enable VNC, open terminal on your Raspberry Pi and try the following. 
@@ -63,6 +59,10 @@ sudo raspi-config
 Select ```3 Interface Options```<br>
 Select ```P3 VNC```<br>
 Select **Enable VNC**
+
+## Advanced Port Scanner
+Use Advanced Port Scanner to scan your network ip address in order to connect to VNC Viewer. Click "Start" to scart scanning. 
+![](images/advance%20PortScanner.png)
 
 Next, open VNC Viewer. Enter your Raspberry Pi ip address to to remotely access the desktop of your Raspberry Pi over the internet. 
 ![](images/vncStartpage.png)
