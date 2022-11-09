@@ -14,6 +14,7 @@ Example of the pixelated image. <br>
 **Model** : RaspberryPi 4 Model B <br>
 **OS** : Raspbian <br>
 **Version** : Buster
+
 ![](images/raspberryPi.png)
 
 ## Software 
@@ -64,15 +65,19 @@ Select **Enable VNC**
 
 ## Advanced Port Scanner
 Use Advanced Port Scanner to scan your network ip address in order to connect to VNC Viewer. Click "Start" to scart scanning. 
+
 ![](images/advance%20PortScanner.png)
 
 Next, open VNC Viewer. Enter your Raspberry Pi ip address to remotely access the desktop of your Raspberry Pi over the internet. 
+
 ![](images/vncStartpage.png)
 
 Enter the username and password for the raspberry pi login and press "OK". 
+
 ![](images/vncpilogin.png)
 
 The VNC session should start, and you should see your Raspberry Pi desktop.
+
 ![](images/vnc_viewer_local_4.png)
 
 
@@ -98,6 +103,7 @@ main.mainloop()
 ```
 
 Output <br>
+
 ![](images/window.png)
 
 # Frame Function
@@ -124,6 +130,7 @@ frame4 = Frame(main)
 frame4.grid(row=2, columnspan=2)
 ```
 Output <br>
+
 ![](images/frameEXAMPLE.png)
 
 # Create 32 x 32 Buttons
@@ -137,6 +144,7 @@ for j in range (32):
     button[i][j].grid(row=i, column=j)
 ```
 Output <br>
+
 ![](images/whitebtns.png)
 
 # Create Shades Buttons
@@ -167,6 +175,7 @@ black = Button(frame2, text="Black", font=("Calibri, 10"), bg='grey1', fg='white
 black.grid(row=7, column=0)
 ```
 Output <br>
+
 ![](images/colour%20btns.png)
 
 ## Assign function to the 32x32 buttons and shades Buttons
@@ -238,6 +247,7 @@ for j in range (32):
     button[i][j].grid(row=i, column=j)
 ```
 Output <br>
+
 ![](images/ezgif.com-gif-maker.gif)
 
 # Features Buttons 
@@ -256,6 +266,7 @@ seq = Button(frame3, text="Sequence",font=("Calibri, 12"), bg='#ff007f', width=1
 seq.grid(row=0, column=3)
 ```
 Output <br>
+
 ![](images/features%20btn.png)
 
 ## Assign function to the features buttons
@@ -322,15 +333,19 @@ seq.grid(row=0, column=3)
 ```
 
 Output for All White feature button <br>
+
 ![](images/allwhite.png)
 
 Output for All Black feature button <br>
+
 ![](images/allblack.png)
 
 Output for x pattern feature button<br>
+
 ![](images/xpattern.png)
 
 Output for sequence feature button <br>
+
 ![](images/sequence.png)
 
 # Send Button 
@@ -341,6 +356,7 @@ send = Button(frame4, text="Send Image!", font=("Calibri, 12"), width=13, height
 send.grid(row=0, column=0)
 ```
 Output <br>
+
 ![](images/send%20btn.png)
 
 ## Assign function to the send button. 
@@ -441,15 +457,19 @@ send.grid(row=0, column=0)
 ```
 
 Output of the value of All White.<br>
+
 ![](images/valuewhite.png)
 
 Output of the value of All Black.<br>
+
 ![](images/valueblack.png)
 
 Output of the value of All X Pattern.<br>
+
 ![](images/valueX.png)
 
 Output of the value of Sequence.<br>
+
 ![](images/valueseq.png)
 
 # How to run the program on terminal **(provide figure can explain better)**
