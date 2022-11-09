@@ -446,7 +446,7 @@ Output of the value of Sequence.<br>
 
 # How to run the program on terminal **(provide figure can explain better)**
 1. Open the terminal on raspberryPi.  
-2. In the terminal, type the following commands:
-Assuming you saved the file under the 'EGL314' folder on the desktop,
+2. In the terminal, type the following commands: <br>
+This is assuming you saved the file under the 'EGL314' folder on the desktop,
   - ``` cd /home/pi/Desktop/EGL314/ ```
   - ``` python3 filename ```
