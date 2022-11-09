@@ -20,7 +20,7 @@ Example of the pixelated image. <br>
 3. VNC Viewer
 
 # Setting up the Raspberry Pi x
- Note: Only do the following on first initial boot
+ Note: Only do the following on first initial boot.
 
 ## PuTTy 
 PuTTy allows free implementation of SSH for PCs running Microsoft Windows. After installing PuTTy, enter the hostname "raspberrypi".<br> **(missing 1 more step)**
@@ -32,10 +32,10 @@ After you entered the hostname, click "open" and a command prompt window should 
 
 ![](images/RaspberryPi_boot.png)
 
-You may change you password with the following command: ```sudo passwd```
+You may change your password with the following command: ```sudo passwd```
 
 ### 1. Update Raspberry pi
-Onced logged in, update the Raspberry Pi. 
+Once logged in, update the Raspberry Pi. 
 ```
 sudo apt update
 sudo apt upgrade
