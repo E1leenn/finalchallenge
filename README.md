@@ -8,7 +8,10 @@ Example of the pixelated image. <br>
 ![](images/32gui.png)
 
 # Installation of Software and Hardware
-## Hardware - RaspberryPi 4 Model B
+## Hardware
+**Model** : RaspberryPi 4 Model B <br>
+**OS** : Raspbian <br>
+**Version** : Buster
 ![](images/raspberryPi.png)
 
 ## Software 
