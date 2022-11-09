@@ -28,7 +28,7 @@ PuTTy allows free implementation of SSH for PCs running Microsoft Windows. After
 ![](images/putty.webp)
 
 
-After you enter the hostname, click "open" and a command prompt window should appear. Enter your username and password here. The Raspbian default login is user “pi” with password “raspberry“.
+After you entered the hostname, click "open" and a command prompt window should appear. Enter your username and password here. The Raspbian default login is user “pi” with password “raspberry“.
 
 ![](images/RaspberryPi_boot.png)
 
