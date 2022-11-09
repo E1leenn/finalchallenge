@@ -404,3 +404,9 @@ Output of the value of All X Pattern.<br>
 
 Output of the value of Sequence.<br>
 ![](images/valueseq.png)
+
+# How to run the program on terminal 
+1. Open VNC to connect to your raspberryPi. 
+2. open terminal on raspberryPi. 
+3. In the terminal, type the following commands. 
+  - 
