@@ -303,7 +303,7 @@ for j in range (32):
 ```
 Output <br>
 
-![](images/ezgif.com-gif-maker.gif)
+![Alt text](images/ezgif.com-gif-maker.gif)
 *Screen recording of the function of the shades buttons*
 
 # Preset Buttons 
