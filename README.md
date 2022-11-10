@@ -7,7 +7,7 @@ Example of the pixelated image. <br>
 
 ## Final Look of the GUI (UPDATE THIS IMAGE COZ GOT TYPO 'SEND IMAGED' BUTTON)
 
-![](images/32gui.png)
+![](images/gui_main.jpg)
 
 # Installation of Software and Hardware
 ## Hardware
