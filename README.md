@@ -63,7 +63,7 @@ B --> A
 2. Advanced Port Scanner
 3. VNC Viewer
 
-# Setting up the Raspberry Pi x
+# Setting up the Raspberry Pi
  Note: Only do the following on first initial boot.
 
 ## PuTTy 
