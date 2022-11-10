@@ -72,7 +72,7 @@ Select **Enable VNC**
 Use Advanced Port Scanner to scan your network ip address in order to connect to VNC Viewer. Click "Start" to scart scanning. 
 
 ![](images/advance%20PortScanner.png) <br>
-*Screenshot of Advanced Port Scanner*
+*Screenshot of Advanced Port Scanner* <br>
 Next, open VNC Viewer. Enter your Raspberry Pi ip address to remotely access the desktop of your Raspberry Pi over the internet. 
 
 ![](images/vncStartpage.png)
