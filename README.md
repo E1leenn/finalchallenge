@@ -28,13 +28,14 @@ E-->G[HDMI Monitor]
 *Screenshot of GUI*
 
 ## System Diagram of GUI
+
 ```mermaid
 graph TD
-A[main.py] --> B[32x32 grid]
-B --> A
-A --> C[change_colour]
+A[main.py] --> C[change_colour]
 C --> A
-C --> I[Shades]
+C --> I[<font size = 3>Shades<br><font size=2>White<br>6 Shades of grey<br>Black]
+A --> B[32 x 32 Grid]
+I --> B
 A --> D[Preset]
 D --> A
 D --> E[All White]
@@ -42,8 +43,12 @@ D --> F[All Black]
 D --> G[X Pattern]
 D --> H[Sequence]
 A --> J[Send Image]
+E --> B
+H --> B
+G --> B
+F --> B
+B --> A
 ```
-
 
 # Installation of Software and Hardware
 ## Hardware
