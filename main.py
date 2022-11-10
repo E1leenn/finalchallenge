@@ -48,26 +48,26 @@ def change_colour(m):
 def allwht():
   for j in range (32):
     for i in range (32):
-      button[i][j].config(bg='white')
+      button[i][j].config(bg='grey99')
       value[i][j] = 0
 
 def allblk():
   for j in range (32):
     for i in range (32):
-      button[i][j].config(bg='black')
+      button[i][j].config(bg='grey1')
       value[i][j] = 90
 
 def pattern():
   for j in range (32):
     for i in range (32):
       if i == j: 
-        button[i][j].config(bg='grey')
-        value[i][j] = 10
+        button[i][j].config(bg='grey66')
+        value[i][j] = 40
       elif i + j == 31: 
-        button[i][j].config(bg='grey')
-        value[i][j] = 10
+        button[i][j].config(bg='grey66')
+        value[i][j] = 40
       else:
-        button[i][j].config(bg='white')
+        button[i][j].config(bg='grey99')
 
 
 
