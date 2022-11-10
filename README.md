@@ -477,6 +477,5 @@ Output of the value of Sequence.<br>
 2. In the terminal, type the following commands: <br>
 (This is assuming you saved the file under the 'EGL314' folder on the desktop)
  ``` cd /home/pi/Desktop/EGL314/ ```
-<br>
 Once inside the directory folder of where your file is, type the following:
 ``` python3 filename ```
