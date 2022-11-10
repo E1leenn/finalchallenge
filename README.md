@@ -28,7 +28,6 @@ E-->G[HDMI Monitor]
 *Screenshot of GUI*
 
 ## Code Flowchard
-
 ```mermaid
 graph TD
 A[main.py] --> C[change_colour]
@@ -49,6 +48,7 @@ G --> B
 F --> B
 B --> A
 ```
+*Code Flow Chart*
 
 # Installation of Software and Hardware
 ## Hardware
