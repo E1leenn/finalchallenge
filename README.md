@@ -7,7 +7,7 @@ Example of the pixelated image. <br>
 
 ## Final Look of the GUI
 
-![](images/gui_main.jpg)
+![](images/gui_final.jpg)
 
 # Installation of Software and Hardware
 ## Hardware
