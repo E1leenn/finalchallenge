@@ -67,7 +67,7 @@ B --> A
  Note: Only do the following on first initial boot.
 
 ## PuTTy 
-PuTTy allows free implementation of SSH for PCs running Microsoft Windows. After installing PuTTy, enter the hostname "raspberrypi".<br> **(missing 1 more step)**
+PuTTy allows free implementation of SSH for PCs running Microsoft Windows. After installing PuTTy, enter the hostname "raspberrypi".<br>
 
 ![](images/putty.webp) <br>
 *Credit: https://tutorials-raspberrypi.com/raspberry-pi-remote-access-by-using-ssh-and-putty/*
