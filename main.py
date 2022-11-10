@@ -2,7 +2,7 @@ from tkinter import *
 
 
 def whitebtn(i, j):
-  global colour
+  global colour, value
 
   # print("i is {} and j is {}".format(i,j))  
   # print("i is {} and j is {}".format(type(i), type(j))) 
