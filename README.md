@@ -194,7 +194,7 @@ button = [[j for j in range(32)] for i in range(32)]
 
 for j in range (32):
   for i in range (32):
-    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1)
+    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, bg='white')
     button[i][j].grid(row=i, column=j)
 ```
 Output <br>
@@ -299,7 +299,7 @@ button = [[j for j in range(32)] for i in range(32)]
 
 for j in range (32):
   for i in range (32):
-    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, command=lambda r=i, c=j:whitebtn(r, c))
+    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
     button[i][j].grid(row=i, column=j)
 ```
 Output <br>
