@@ -27,7 +27,7 @@ E-->G[HDMI Monitor]
 ![](images/gui_final.jpg) <br>
 *Screenshot of GUI*
 
-## Code Flowchard
+## Code Flowchart
 ```mermaid
 graph TD
 A[main.py] --> C[change_colour]
