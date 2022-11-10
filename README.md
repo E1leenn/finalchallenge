@@ -95,7 +95,6 @@ The VNC session should start, and you should see your Raspberry Pi desktop.
 To start coding, click on the raspberry pi logo and under Programming, look for Thonny Python IDE and click on it.
 
 ![](images/thonny_ide_start.png)
-
 *Credit: https://roboticsbackend.com/thonny-ide-raspberry-pi-os/*
 
 
@@ -117,7 +116,7 @@ main.mainloop()
 
 Output <br>
 
-![](images/window.png)
+![](images/window.png) <br>
 *Screenshot of a sample window*
 
 # Frame Function
@@ -145,7 +144,7 @@ frame4.grid(row=2, columnspan=2)
 ```
 Output <br>
 
-![](images/frameEXAMPLE.png)
+![](images/frameEXAMPLE.png) <br>
 *Screenshot of a frame window*
 
 # Create 32 x 32 Buttons
@@ -160,7 +159,7 @@ for j in range (32):
 ```
 Output <br>
 
-![](images/whitebtns.png)
+![](images/whitebtns.png) <br>
 *Screenshot of  32x32 grid from final output*
 
 # Create Shades Buttons
@@ -192,7 +191,7 @@ black.grid(row=7, column=0)
 ```
 Output <br>
 
-![](images/colour%20btns.png)
+![](images/colour%20btns.png) <br>
 *Screenshot of shades button*
 
 ## Assign function to the 32x32 buttons and shades Buttons
@@ -285,7 +284,7 @@ seq.grid(row=0, column=3)
 ```
 Output <br>
 
-![](images/features%20btn.png)
+![](images/features%20btn.png) <br>
 *Screenshot of features button*
 
 ## Assign function to the features buttons
@@ -353,22 +352,22 @@ seq.grid(row=0, column=3)
 
 Output for All White feature button <br>
 
-![](images/allwhite.png)
+![](images/allwhite.png) <br>
 *Screenshot of final output with all white preset*
 
 Output for All Black feature button <br>
 
-![](images/allblack.png)
+![](images/allblack.png) <br>
 *Screenshot of final output with all black preset*
 
 Output for x pattern feature button<br>
 
-![](images/xpattern.png)
+![](images/xpattern.png) <br>
 *Screenshot of final output with x pattern preset*
 
 Output for sequence feature button <br>
 
-![](images/sequence.png)
+![](images/sequence.png) <br>
 *Screenshot of final output with sequence preset*
 
 # Send Button 
@@ -380,7 +379,7 @@ send.grid(row=0, column=0)
 ```
 Output <br>
 
-![](images/send%20btn.png)
+![](images/send%20btn.png) <br>
 *Screenshot of send button*
 
 ## Assign function to the send button. 
@@ -482,22 +481,22 @@ send.grid(row=0, column=0)
 
 Output of the value of All White.<br>
 
-![](images/valuewhite.png)
+![](images/valuewhite.png) <br>
 *Screenshot of values of all white features*
 
 Output of the value of All Black.<br>
 
-![](images/valueblack.png)
+![](images/valueblack.png) <br>
 *Screenshot of values of all black features*
 
 Output of the value of X Pattern.<br>
 
-![](images/valueX.png)
+![](images/valueX.png) <br>
 *Screenshot of values of x pattern features*
 
 Output of the value of Sequence.<br>
 
-![](images/valueseq.png)
+![](images/valueseq.png) <br>
 *Screenshot of values of sequence features*
 
 # How to run the program on terminal
