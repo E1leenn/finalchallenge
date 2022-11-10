@@ -3,7 +3,7 @@ This documentation is an introduction about the 32 x 32 GUI and it's features. T
 
 Example of the pixelated image. <br>
 
-![](images/pixiliseArt.png)
+![](images/pixiliseArt.png) <br>
 *Fu Yongwei, EGL314 - Lecture 1 Module Introduction*
 
 ## Final Look of the GUI
