@@ -543,7 +543,7 @@ Output of the value of Sequence.<br>
 1. Open the terminal on raspberryPi.  
 2. In the terminal, type the following commands: <br>
 (This is assuming you saved the file under the 'Documents' folder)<br>
- ``` cd /home/pi/Documents/ ```
+ ``` cd /home/pi/Documents ```
 3. Once inside the directory folder of where your file is, type the following: <br>
 ``` python3 main.py``` 
 
