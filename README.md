@@ -8,7 +8,7 @@ Example of the pixelated image. <br>
 
 ## Final Look of the GUI
 
-![](images/gui_final.jpg)
+![](images/gui_final.jpg) <br>
 *Group C (Daryll,Eileen,Celine,Nicholas)*
 
 # Installation of Software and Hardware
@@ -17,7 +17,7 @@ Example of the pixelated image. <br>
 **OS** : Raspbian <br>
 **Version** : Buster
 
-![](images/raspberryPi.png)
+![](images/raspberryPi.png) <br>
 *Fu Yongwei, EGL314 - Lecture 1 Module Introduction*
 
 ## Software 
@@ -31,13 +31,13 @@ Example of the pixelated image. <br>
 ## PuTTy 
 PuTTy allows free implementation of SSH for PCs running Microsoft Windows. After installing PuTTy, enter the hostname "raspberrypi".<br> **(missing 1 more step)**
 
-![](images/putty.webp)
+![](images/putty.webp) <br>
 *Credit: https://tutorials-raspberrypi.com/raspberry-pi-remote-access-by-using-ssh-and-putty/*
 
 
 After you entered the hostname, click "open" and a command prompt window should appear. Enter your username and password here. The Raspbian default login is user “pi” with password “raspberry“.
 
-![](images/RaspberryPi_boot.png)
+![](images/RaspberryPi_boot.png) <br>
 *Credit: https://librarymakers.net/using-cli-raspberry-pi*
 
 You may change your password with the following command: ```sudo passwd```
@@ -72,7 +72,7 @@ Select **Enable VNC**
 Use Advanced Port Scanner to scan your network ip address in order to connect to VNC Viewer. Click "Start" to scart scanning. 
 
 ![](images/advance%20PortScanner.png)
-*Advanced Port Scanner screenshot*
+**Advanced Port Scanner screenshot**
 Next, open VNC Viewer. Enter your Raspberry Pi ip address to remotely access the desktop of your Raspberry Pi over the internet. 
 
 ![](images/vncStartpage.png)
