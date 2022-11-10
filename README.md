@@ -5,7 +5,7 @@ Example of the pixelated image. <br>
 
 ![](images/pixiliseArt.png)
 
-## Final Look of the GUI (UPDATE THIS IMAGE COZ GOT TYPO 'SEND IMAGED' BUTTON)
+## Final Look of the GUI
 
 ![](images/gui_main.jpg)
 
