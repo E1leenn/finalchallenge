@@ -96,7 +96,6 @@ Select ```3 Interface Options```<br>
 Select ```P2 SSH```<br>
 Select **Enable SSH**
 
-## VNC Viewer
 ### Enable Virtual Network Computing (VNC) <br>
 VNC is a cross-platform screen sharing system that was created to remotely control another computer. To enable VNC, open terminal on your Raspberry Pi and try the following. 
 ```
@@ -112,6 +111,7 @@ Use Advanced Port Scanner to scan your network ip address in order to connect to
 ![](images/advance%20PortScanner.png) <br>
 *Screenshot of Advanced Port Scanner* <br>
 
+## VNC Viewer
 Next, open VNC Viewer. Enter your Raspberry Pi ip address to remotely access the desktop of your Raspberry Pi over the internet.
 
 ![](images/vnc_connection.jfif) <br>
