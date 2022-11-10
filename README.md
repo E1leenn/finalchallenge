@@ -117,7 +117,7 @@ Next, open VNC Viewer. Enter your Raspberry Pi ip address to remotely access the
 ![](images/vnc_connection.jfif) <br>
 *Screenshot of VNC Viewer*
 
-This step is to create new connection for raspberry pi. 
+### This step is to create new connection for raspberry pi. 
 ![](images/vncStartpage.png)
 *Screenshot of VNC Viewer*
 
