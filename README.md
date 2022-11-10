@@ -9,13 +9,12 @@ Example of the pixelated image. <br>
 ## Final Look of the GUI
 
 ![](images/gui_final.jpg) <br>
-*Group C (Daryll,Eileen,Celine,Nicholas)*
+*Screenshot of GUI*
 
 # Installation of Software and Hardware
 ## Hardware
 **Model** : RaspberryPi 4 Model B <br>
-**OS** : Raspbian <br>
-**Version** : Buster
+**OS Version** : Raspbian GNU/Linux 10 (buster) <br>
 
 ![](images/raspberryPi.png) <br>
 *Fu Yongwei, EGL314 - Lecture 1 Module Introduction*
@@ -77,6 +76,7 @@ Use Advanced Port Scanner to scan your network ip address in order to connect to
 Next, open VNC Viewer. Enter your Raspberry Pi ip address to remotely access the desktop of your Raspberry Pi over the internet.
 
 ![](images/vnc_connection.jfif)
+*Create new connection for raspberry pi*
 
 ![](images/vncStartpage.png)
 *Screenshot of VNC Viewer*
@@ -84,15 +84,18 @@ Next, open VNC Viewer. Enter your Raspberry Pi ip address to remotely access the
 Enter the username and password for the raspberry pi login and press "OK". 
 
 ![](images/vncpilogin.png)
+*Credit: https://www.pitunnel.com/doc/access-vnc-remote-desktop-raspberry-pi-over-internet*
 
 The VNC session should start, and you should see your Raspberry Pi desktop.
 
 ![](images/vnc_viewer_local_4.png)
+*Credit: https://www.pitunnel.com/doc/access-vnc-remote-desktop-raspberry-pi-over-internet*
 
 
 To start coding, click on the raspberry pi logo and under Programming, look for Thonny Python IDE and click on it.
 
 ![](images/thonny_ide_start.png)
+*Credit: https://roboticsbackend.com/thonny-ide-raspberry-pi-os/*
 
 
 # Setting Up The GUI
@@ -114,6 +117,7 @@ main.mainloop()
 Output <br>
 
 ![](images/window.png)
+*Screenshot of a sample window*
 
 # Frame Function
 We are using the frame function to group and organize the widget to make it neater so that it is user friendly.
@@ -141,6 +145,7 @@ frame4.grid(row=2, columnspan=2)
 Output <br>
 
 ![](images/frameEXAMPLE.png)
+*Screenshot of a frame window*
 
 # Create 32 x 32 Buttons
 We are using a list of list and nested for loop to create a 32 x 32 buttons. 
@@ -155,6 +160,7 @@ for j in range (32):
 Output <br>
 
 ![](images/whitebtns.png)
+*Screenshot of  32x32 grid from final output*
 
 # Create Shades Buttons
 Below is the codes to create shades buttons. Change the text and background colour accordingly to get different shades buttons. 
@@ -186,6 +192,7 @@ black.grid(row=7, column=0)
 Output <br>
 
 ![](images/colour%20btns.png)
+*Screenshot of shades button*
 
 ## Assign function to the 32x32 buttons and shades Buttons
 Create a variable to store colour value. 
@@ -258,6 +265,7 @@ for j in range (32):
 Output <br>
 
 ![](images/ezgif.com-gif-maker.gif)
+**
 
 # Features Buttons 
 To create the features buttons, the code is similar to the shades button. Change the text and background colour accordingly. 
@@ -277,6 +285,7 @@ seq.grid(row=0, column=3)
 Output <br>
 
 ![](images/features%20btn.png)
+*Screenshot of features button*
 
 ## Assign function to the features buttons
 Below are the function codes for All White. 
@@ -344,18 +353,22 @@ seq.grid(row=0, column=3)
 Output for All White feature button <br>
 
 ![](images/allwhite.png)
+*Screenshot of final output with all white preset*
 
 Output for All Black feature button <br>
 
 ![](images/allblack.png)
+*Screenshot of final output with all black preset*
 
 Output for x pattern feature button<br>
 
 ![](images/xpattern.png)
+*Screenshot of final output with x pattern preset*
 
 Output for sequence feature button <br>
 
 ![](images/sequence.png)
+*Screenshot of final output with sequence preset*
 
 # Send Button 
 When the send button is pressed, it will output the value of the different shades. 
@@ -367,6 +380,7 @@ send.grid(row=0, column=0)
 Output <br>
 
 ![](images/send%20btn.png)
+*Screenshot of send button*
 
 ## Assign function to the send button. 
 First, create a variable to store the value. 
@@ -468,18 +482,22 @@ send.grid(row=0, column=0)
 Output of the value of All White.<br>
 
 ![](images/valuewhite.png)
+*Screenshot of values of all white features*
 
 Output of the value of All Black.<br>
 
 ![](images/valueblack.png)
+*Screenshot of values of all black features*
 
-Output of the value of All X Pattern.<br>
+Output of the value of X Pattern.<br>
 
 ![](images/valueX.png)
+*Screenshot of values of x pattern features*
 
 Output of the value of Sequence.<br>
 
 ![](images/valueseq.png)
+*Screenshot of values of sequence features*
 
 # How to run the program on terminal
 1. Open the terminal on raspberryPi.  
