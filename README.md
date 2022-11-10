@@ -302,7 +302,7 @@ for j in range (32):
     button[i][j].grid(row=i, column=j)
 ```
 Output <br>
-![Alt text](images/ezgif.com-gif-maker.gif)
+![Alt text](images/ezgif.com-gif-maker.gif) <br>
 *Screen recording of the function of the shades buttons*
 
 # Preset Buttons 
