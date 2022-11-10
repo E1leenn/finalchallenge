@@ -95,6 +95,7 @@ The VNC session should start, and you should see your Raspberry Pi desktop.
 To start coding, click on the raspberry pi logo and under Programming, look for Thonny Python IDE and click on it.
 
 ![](images/thonny_ide_start.png)
+
 *Credit: https://roboticsbackend.com/thonny-ide-raspberry-pi-os/*
 
 
