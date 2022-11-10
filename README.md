@@ -309,10 +309,10 @@ Output <br>
 # Preset Buttons 
 To create the preset buttons, the code is similar to the shades button. Change the text and background colour accordingly. 
 ```
-allwhite = Button(frame3, text="All White",font=("Calibri, 12"), bg='white', width=13, height=2)
+allwhite = Button(frame3, text="All White",font=("Calibri, 12"), bg='grey99', width=13, height=2)
 allwhite.grid(row=0, column=0)
 
-allblack = Button(frame3, text="All Black",font=("Calibri, 12"), bg='black', fg='white', width=13, height=2)
+allblack = Button(frame3, text="All Black",font=("Calibri, 12"), bg='grey1', fg='white', width=13, height=2)
 allblack.grid(row=0, column=1)
 
 xpattern = Button(frame3, text="X Pattern",font=("Calibri, 12"), bg='gold', width=13, height=2)
@@ -353,7 +353,7 @@ def pattern():
       elif i + j == 31: 
         button[i][j].config(bg='grey33')
       else:
-        button[i][j].config(bg='white')
+        button[i][j].config(bg='grey99')
 
 ```
 
@@ -371,15 +371,15 @@ def ramseq():
       elif j >= 18 and j <= 24:
         button[i][j].config(bg='grey66')
       elif j >= 24 and j <= 32:
-        button[i][j].config(bg='grey55')
+        button[i][j].config(bg='grey44')
 ```
 
 Add the commands to the preset buttons. 
 ```
-allwhite = Button(frame3, text="All White",font=("Calibri, 12"), bg='white', width=13, height=2, command=allwht)
+allwhite = Button(frame3, text="All White",font=("Calibri, 12"), bg='grey99', width=13, height=2, command=allwht)
 allwhite.grid(row=0, column=0)
 
-allblack = Button(frame3, text="All Black",font=("Calibri, 12"), bg='black', fg='white', width=13, height=2, command=allblk)
+allblack = Button(frame3, text="All Black",font=("Calibri, 12"), bg='grey1', fg='white', width=13, height=2, command=allblk)
 allblack.grid(row=0, column=1)
 
 xpattern = Button(frame3, text="X Pattern",font=("Calibri, 12"), bg='gold', width=13, height=2, command=pattern)
@@ -483,7 +483,8 @@ def pattern():
         button[i][j].config(bg='grey33')
         value[i][j] = 60
       else:
-        button[i][j].config(bg='white')
+        button[i][j].config(bg='grey99')
+        value[i][j] = 0
 ```
 Below are the code for sequence after adding the value. 
 ```
@@ -544,4 +545,4 @@ Output of the value of Sequence.<br>
 (This is assuming you saved the file under the 'EGL314' folder on the desktop)<br>
  ``` cd /home/pi/Desktop/EGL314/ ```
 3. Once inside the directory folder of where your file is, type the following: <br>
-``` python3 filename ```
+``` python3 main.py``` 
