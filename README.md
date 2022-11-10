@@ -27,7 +27,7 @@ E-->G[HDMI Monitor]
 ![](images/gui_final.jpg) <br>
 *Screenshot of GUI*
 
-## System Diagram of GUI
+## Code Flowchard
 
 ```mermaid
 graph TD
