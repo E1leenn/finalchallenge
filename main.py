@@ -118,8 +118,8 @@ for j in range (32):
 
     #print(button)
 
-# #shades button
-white = Button(frame2, text="White", font=("Calibri, 10"), bg='#grey99', width=13, height=2, command=lambda m=0:change_colour(m))
+#shades button
+white = Button(frame2, text="White", font=("Calibri, 10"), bg='grey99', width=13, height=2, command=lambda m=0:change_colour(m))
 white.grid(row=0, column=0)
 grey1 = Button(frame2, text="Grey1", font=("Calibri, 10"), bg='grey88', width=13, height=2, command=lambda m=1:change_colour(m))
 grey1.grid(row=1, column=0)
@@ -136,7 +136,7 @@ grey6.grid(row=6, column=0)
 black = Button(frame2, text="Black", font=("Calibri, 10"), bg='grey1', fg='white', width=13, height=2, command=lambda m=7:change_colour(m))
 black.grid(row=7, column=0)
 
-# # #colour button
+#colour button
 allwhite = Button(frame3, text="All White",font=("Calibri, 12"), bg='white', width=13, height=2, command=allwht)
 allwhite.grid(row=0, column=0)
 
