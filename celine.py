@@ -84,39 +84,33 @@ def ramseq():
         button[i][j].config(bg='grey44')
         value[i][j] = 50 
 
+def get_x_and_y(event):
+   global lasx, lasy
+   lasx, lasy = event.x, event.y
+
 def paint(event):
+    global lasx, lasy
+    
     if colour == 0: 
-        x1, y1 = (event.x-1), (event.y-1)
-        x2, y2 = (event.x+1), (event.y+1)
-        c.create_oval(x1,y1,x2,y2,fill='grey99',outline='grey99')
+        c.create_line((lasx,lasy, event.x, event.y),fill='grey99',width=4)  
     elif colour == 1:
-        x1, y1 = (event.x-1), (event.y-1)
-        x2, y2 = (event.x+1), (event.y+1)
-        c.create_oval(x1,y1,x2,y2,fill='grey88',outline='grey88')
+        c.create_line((lasx,lasy, event.x, event.y),fill='grey88',width=4)
+        
     elif colour == 2:
-        x1, y1 = (event.x-1), (event.y-1)
-        x2, y2 = (event.x+1), (event.y+1)
-        c.create_oval(x1,y1,x2,y2,fill='grey77',outline='grey77')
+        c.create_line((lasx,lasy, event.x, event.y),fill='grey77',width=4)
     elif colour == 3: 
-        x1, y1 = (event.x-1), (event.y-1)
-        x2, y2 = (event.x+1), (event.y+1)
-        c.create_oval(x1,y1,x2,y2,fill='grey66',outline='grey66') 
+        c.create_line((lasx,lasy, event.x, event.y),fill='grey66',width=4)
     elif colour == 4:
-        x1, y1 = (event.x-1), (event.y-1)
-        x2, y2 = (event.x+1), (event.y+1)
-        c.create_oval(x1,y1,x2,y2,fill='grey44',outline='grey44')
+        c.create_line((lasx,lasy, event.x, event.y),fill='grey44',width=4)
     elif colour == 5: 
-        x1, y1 = (event.x-1), (event.y-1)
-        x2, y2 = (event.x+1), (event.y+1)
-        c.create_oval(x1,y1,x2,y2,fill='grey33',outline='grey33') 
+        c.create_line((lasx,lasy, event.x, event.y),fill='grey33',width=4)
     elif colour == 6:
-        x1, y1 = (event.x-1), (event.y-1)
-        x2, y2 = (event.x+1), (event.y+1)
-        c.create_oval(x1,y1,x2,y2,fill='grey11',outline='grey11')
+        c.create_line((lasx,lasy, event.x, event.y),fill='grey11',width=4)
     else: 
-        x1, y1 = (event.x-1), (event.y-1)
-        x2, y2 = (event.x+1), (event.y+1)
-        c.create_oval(x1,y1,x2,y2,fill='grey1',outline='grey11') 
+        c.create_line((lasx,lasy, event.x, event.y),fill='grey11',width=4)
+
+    lasx, lasy = event.x, event.y
+    
 
 def clearbtn():
     c.delete('all')
@@ -153,6 +147,9 @@ frame5.grid(row=0, column=0)
 
 c = Canvas(tab2, width=443, height=380, bg='white')
 c.grid(row=0, column=0)
+# c.pack(anchor='nw', fill='both', expand=1)
+
+c.bind('<Button-1>', get_x_and_y)
 c.bind('<B1-Motion>',paint)
 
 # 3x3 grid
