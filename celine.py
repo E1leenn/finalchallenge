@@ -23,7 +23,7 @@ def whitebtn(i, j):
     button[i][j].config(bg='grey33')
     value[i][j] = 60
   elif colour == 6:
-    button[i][j].config(bg='grey11')
+    button[i][j].config(bg='grey22')
     value[i][j] = 70
   else: 
     button[i][j].config(bg='grey1')
@@ -89,13 +89,12 @@ def get_x_and_y(event):
    lasx, lasy = event.x, event.y
 
 def paint(event):
-    global lasx, lasy
+    global lasx, lasy, value
     
     if colour == 0: 
         c.create_line((lasx,lasy, event.x, event.y),fill='grey99',width=4)  
     elif colour == 1:
         c.create_line((lasx,lasy, event.x, event.y),fill='grey88',width=4)
-        
     elif colour == 2:
         c.create_line((lasx,lasy, event.x, event.y),fill='grey77',width=4)
     elif colour == 3: 
@@ -105,12 +104,11 @@ def paint(event):
     elif colour == 5: 
         c.create_line((lasx,lasy, event.x, event.y),fill='grey33',width=4)
     elif colour == 6:
-        c.create_line((lasx,lasy, event.x, event.y),fill='grey11',width=4)
+        c.create_line((lasx,lasy, event.x, event.y),fill='grey22',width=4)
     else: 
         c.create_line((lasx,lasy, event.x, event.y),fill='grey11',width=4)
 
     lasx, lasy = event.x, event.y
-    
 
 def clearbtn():
     c.delete('all')
