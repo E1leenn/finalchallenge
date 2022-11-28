@@ -124,8 +124,8 @@ notebook = ttk.Notebook(main) #widget that manages a collection of windows/displ
 tab1 = Frame(notebook) #new frame for tab 1
 tab2 = Frame(notebook) #new frame for tab 2
 
-notebook.add(tab1,text="Tab 1")
-notebook.add(tab2,text="Tab 2")
+notebook.add(tab1,text="Grid")
+notebook.add(tab2,text="Draw")
 notebook.grid(row=0, column = 0)
 
 frame1 = Frame(tab1) #3x3 btn
