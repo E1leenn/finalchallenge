@@ -64,7 +64,6 @@ def pattern():
         value[i][j] = 0
 
 
-
 def ramseq():
   for j in range (32):
     for i in range (32):
@@ -130,6 +129,7 @@ notebook.grid(row=0, column = 0)
 
 frame1 = Frame(tab1) #3x3 btn
 frame1.grid(row=0, column=0)
+frame1.grid(ipadx='64px', ipady='64px')
 
 frame2 = Frame(main) #shades btn
 frame2.grid(row=0, column=1)
@@ -141,11 +141,12 @@ frame4 = Frame(main)
 frame4.grid(row=2, columnspan=2) #send btn
 
 frame5 = Frame(tab2)
-frame5.grid(row=0, column=0)
+frame5.grid(row=0, column=0) 
 
 c = Canvas(tab2, width=443, height=380, bg='white')
 c.grid(row=0, column=0)
 # c.pack(anchor='nw', fill='both', expand=1)
+c.grid(ipadx='64px', ipady='64px')
 
 c.bind('<Button-1>', get_x_and_y)
 c.bind('<B1-Motion>',paint)
@@ -154,11 +155,11 @@ c.bind('<B1-Motion>',paint)
 button = [[j for j in range(32)] for i in range(32)]
 
 value = [[0 for i in range(32)] for j in range(32)]
-print("Value is {}".format(value))
+# print("Value is {}".format(value))
 
 for j in range (32):
   for i in range (32):
-    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
+    button[i][j] = Button(frame1, font=("Calibri, 5"), width=2, height=2, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
     button[i][j].grid(row=i, column=j)
 
 #clear button
