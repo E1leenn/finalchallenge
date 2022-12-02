@@ -129,7 +129,7 @@ notebook.grid(row=0, column = 0)
 
 frame1 = Frame(tab1) #3x3 btn
 frame1.grid(row=0, column=0)
-frame1.grid(ipadx='64px', ipady='64px')
+# frame1.grid(ipadx='64px', ipady='64px')
 
 frame2 = Frame(main) #shades btn
 frame2.grid(row=0, column=1)
@@ -143,10 +143,10 @@ frame4.grid(row=2, columnspan=2) #send btn
 frame5 = Frame(tab2)
 frame5.grid(row=0, column=0) 
 
-c = Canvas(tab2, width=443, height=380, bg='white')
+c = Canvas(tab2, width=62, height=64, bg='white')
 c.grid(row=0, column=0)
 # c.pack(anchor='nw', fill='both', expand=1)
-c.grid(ipadx='64px', ipady='64px')
+# c.grid(ipadx='64px', ipady='64px')
 
 c.bind('<Button-1>', get_x_and_y)
 c.bind('<B1-Motion>',paint)
