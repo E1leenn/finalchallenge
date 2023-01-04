@@ -84,12 +84,10 @@ def tictaotoe(x,y):
                     elif j == 5 + yoff: 
                         btn[x][y].config(bg="black")
 
-
 main = Tk()
 
 frame1 = Frame(main)
 frame1.grid(rowspan=2, column=0)
-
 
 btn = [[i for i in range (32)] for j in range (32)]
 for i in range (32):
