@@ -113,6 +113,11 @@ def paint(event):
 def clearbtn():
     c.delete('all')
 
+def tictactoe():
+  frame2.destroy()
+  frame3.destroy()
+  frame4.destroy()
+
 main = Tk()
 main.title("Group C")
 
@@ -123,7 +128,7 @@ notebook = ttk.Notebook(main) #widget that manages a collection of windows/displ
 
 tab1 = Frame(notebook) #new frame for tab 1
 tab2 = Frame(notebook) #new frame for tab 2
-tab3 = Frame(notebook) #new frame for tab3
+tab3 = Frame(notebook) #new frame for tab 3
 
 notebook.add(tab1,text="Grid")
 notebook.add(tab2,text="Draw")
@@ -143,10 +148,10 @@ frame3.grid(row=1, columnspan=2) #colour btns
 frame4 = Frame(main)
 frame4.grid(row=2, columnspan=2) #send btn
 
-frame5 = Frame(tab2)
+frame5 = Frame(tab2) # draw canvas 
 frame5.grid(row=0, column=0) 
 
-frame6 = Frame(tab3)
+frame6 = Frame(tab3) # tictactoe
 frame6.grid(row=0, column=0)
 
 c = Canvas(tab2, width=155, height=160, bg='white')
@@ -158,17 +163,14 @@ c.bind('<Button-1>', get_x_and_y)
 c.bind('<B1-Motion>',paint)
 
 
-
 #3x3 buttons for tic tac toe
 button6 = [[j for j in range(3)] for i in range(3)]
-
 value = [[0 for i in range(3)] for j in range(3)]
 
 for j in range (3):
   for i in range (3):
     button6[i][j] = Button(frame6, font=("Calibri, 23"), width=10, height=5, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
     button6[i][j].grid(row=i, column=j)
-
 
 
 # 32x32 grid
