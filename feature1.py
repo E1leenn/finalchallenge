@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 # import student_pub
 
 def changeto(m):
@@ -8,7 +9,6 @@ def changeto(m):
 
 def tictaotoe(x,y):
     global pattern, xoff, yoff
-
     if x == 0 and y == 0:
         xoff = 0
         yoff = 0
@@ -40,7 +40,8 @@ def tictaotoe(x,y):
     if pattern == 0: 
         var = "X"
         gui[x][y].config(text=var)
-
+        condition(logic(var))
+        print(logic(var))
         for i in range (32):
             for j in range (32):
                 if i == xoff and j == yoff: 
@@ -96,7 +97,8 @@ def tictaotoe(x,y):
     else:
         var = "O"
         gui[x][y].config(text=var)
-        
+        condition(logic(var))
+        print(logic(var))
         for i in range (32):
             for j in range (32):
                 if j == 1 + yoff: 
@@ -153,60 +155,44 @@ def tictaotoe(x,y):
                         btn[i][j].config(bg="black")
 
     # student_pub.pubpic(value)
-    logic(x,y)
+    # logic(x,y)
 
+def check():
+    global p
+    for x in range (3):
+        for y in range (3):
+            if (gui[x][y].cget('text') == 'X' or gui[x][y].cget('text') == 'O'):
+                p = p+1
 
-def logic(x,y):
-    global pattern 
-    print("pattern is ", pattern)
+def logic(y):
+    global p
+    p = 0
+    check()
+    print(p)
+    if      ((gui[0][0].cget('text') == y and gui[0][1].cget('text') == y and gui[0][2].cget('text') == y) or
+			(gui[1][0].cget('text') == y and gui[1][1].cget('text') == y and gui[1][2].cget('text') == y) or
+			(gui[2][0].cget('text') == y and gui[2][1].cget('text') == y and gui[2][2].cget('text') == y) or
+			(gui[0][0].cget('text') == y and gui[1][0].cget('text') == y and gui[2][0].cget('text') == y) or
+			(gui[0][1].cget('text') == y and gui[1][1].cget('text') == y and gui[2][1].cget('text') == y) or
+			(gui[0][2].cget('text') == y and gui[1][2].cget('text') == y and gui[2][2].cget('text') == y) or
+			(gui[0][0].cget('text') == y and gui[1][1].cget('text') == y and gui[2][2].cget('text') == y) or
+			(gui[0][2].cget('text') == y and gui[1][1].cget('text') == y and gui[2][0].cget('text') == y)):
+            return y
+    elif (p >= 9):
+        c = 'c'
+        return c
+    else:  
+        return N
     
-    print("logic......") 
-    
-    result = ''
-    if x == 0:
-        for y in range(0, 3):
-            if gui[x][y].cget('text') == "":
-                print('')
-            elif gui[x][y].cget('text') == 'X':
-                print('X')
-                result = result+'X'
-            elif gui[x][y].cget('text') == 'O': 
-                print('O')
-                result = result+'O'
-            else:
-                print('lose')
-    elif x == 1:
-        for y in range(0, 3):
-            if gui[x][y].cget('text') == "":
-                print('')
-            elif gui[x][y].cget('text') == 'X':
-                print('X')
-                result = result+'X'
-            elif gui[x][y].cget('text') == 'O': 
-                print('O')
-                result = result+'O'
-            else:
-                print('lose')
-    else:
-        for y in range(0, 3):
-            if gui[x][y].cget('text') == "":
-                print('')
-            elif gui[x][y].cget('text') == 'X':
-                print('X')
-                result = result+'X'
-            elif gui[x][y].cget('text') == 'O': 
-                print('O')
-                result = result+'O'
-            else:
-                print('lose') 
 
-        string1 = 'XXX'
-        string2 = 'OOO'
-        if string1 in result or string2 in result:
-            print('win')
-        else:
-            print('lose') 
-    
+def condition(var):
+    if var == "O": 
+        messagebox.showinfo("Winner", "Player 1 won the match")
+    elif var == "X": 
+        messagebox.showinfo("Winner", "Player 2 won the match")
+    elif var == 'c': 
+        messagebox.showinfo("TIE", "tie game")
+
 
 def clear():
     for i in range (32):
@@ -252,6 +238,7 @@ oimg = PhotoImage(file="o.png")
 xoff = 0
 yoff = 0
 pattern = 0 
+p = 0
 
 xbtn = Button(frame3, text="", image=ximg, command=lambda m=0:changeto(m))
 xbtn.grid(row=0, column=0)
