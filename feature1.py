@@ -205,6 +205,46 @@ def clear():
             gui[x][y].config(text='')
 
     print("Clear All")
+    border()
+
+def border(): 
+    print("Borders")
+    for j in range (32):
+        for i in range (32):
+            if i == 8: 
+                value[i][j] = 7
+            elif i == 9: 
+                value[i][j] = 7
+            elif i == 10: 
+                value[i][j] = 7
+            elif i == 11: 
+                value[i][j] = 7
+            elif i == 20: 
+                value[i][j] = 7
+            elif i ==  21: 
+                value[i][j] = 7
+            elif i == 22: 
+                value[i][j] = 7
+            elif i == 23: 
+                value[i][j] = 7
+            elif j == 8: 
+                value[i][j] = 7
+            elif j == 9: 
+                value[i][j] = 7
+            elif j == 10: 
+                value[i][j] = 7
+            elif j == 11: 
+                value[i][j] = 7
+            elif j == 20: 
+                value[i][j] = 7
+            elif j ==  21: 
+                value[i][j] = 7
+            elif j == 22: 
+                value[i][j] = 7
+            elif j == 23: 
+                value[i][j] = 7
+            else:
+                value[i][j] = 0
 
 main = Tk()
 
@@ -240,54 +280,21 @@ yoff = 0
 pattern = 0 
 p = 0
 
-xbtn = Button(frame3, text="", image=ximg, command=lambda m=0:changeto(m))
-xbtn.grid(row=0, column=0)
-
 obtn = Button(frame3, text="", image=oimg, command=lambda m=1:changeto(m))
-obtn.grid(row=0, column=1)
+obtn.grid(row=0, column=0)
+xbtn = Button(frame3, text="", image=ximg, command=lambda m=0:changeto(m))
+xbtn.grid(row=0, column=1)
+
+p1 = Label(frame3, text="Player 1 is O", font=("Courier", 10))
+p1.grid(row=2, columnspan=2)
+p2 = Label(frame3, text="Player 2 is X", font=("Courier", 10))
+p2.grid(row=3, columnspan=2)
 
 clearbtn = Button(frame3, text="Clear", font=("Courier", 15), command=clear)
 clearbtn.grid(row=1, columnspan=2)
-
-## black border 
-for j in range (32):
-  for i in range (32):
-    if i == 8: 
-        value[i][j] = 7
-    elif i == 9: 
-        value[i][j] = 7
-    elif i == 10: 
-        value[i][j] = 7
-    elif i == 11: 
-        value[i][j] = 7
-    elif i == 20: 
-        value[i][j] = 7
-    elif i ==  21: 
-        value[i][j] = 7
-    elif i == 22: 
-        value[i][j] = 7
-    elif i == 23: 
-        value[i][j] = 7
-    elif j == 8: 
-        value[i][j] = 7
-    elif j == 9: 
-        value[i][j] = 7
-    elif j == 10: 
-        value[i][j] = 7
-    elif j == 11: 
-        value[i][j] = 7
-    elif j == 20: 
-        value[i][j] = 7
-    elif j ==  21: 
-        value[i][j] = 7
-    elif j == 22: 
-        value[i][j] = 7
-    elif j == 23: 
-        value[i][j] = 7
-    else:
-        value[i][j] = 0
         
 print(value)
 # student_pub.pubpic(value)
-
+border()
+# main.after_idle(border())
 main.mainloop()

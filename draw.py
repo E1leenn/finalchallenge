@@ -31,7 +31,8 @@ def whitebtn(i, j):
     value[i][j] = 90
 
 def sendbtn():
-  print(value)
+  #print(value)
+  print(canvasdraw)
 
 def change_colour(m): 
   global colour
@@ -90,25 +91,33 @@ def get_x_and_y(event):
 
 def paint(event):
     global lasx, lasy, value
-    
-    if colour == 0: 
-        c.create_line((lasx,lasy, event.x, event.y),fill='grey99',width=4)  
-    elif colour == 1:
-        c.create_line((lasx,lasy, event.x, event.y),fill='grey88',width=4)
-    elif colour == 2:
-        c.create_line((lasx,lasy, event.x, event.y),fill='grey77',width=4)
-    elif colour == 3: 
-        c.create_line((lasx,lasy, event.x, event.y),fill='grey66',width=4)
-    elif colour == 4:
-        c.create_line((lasx,lasy, event.x, event.y),fill='grey44',width=4)
-    elif colour == 5: 
-        c.create_line((lasx,lasy, event.x, event.y),fill='grey33',width=4)
-    elif colour == 6:
-        c.create_line((lasx,lasy, event.x, event.y),fill='grey22',width=4)
-    else: 
-        c.create_line((lasx,lasy, event.x, event.y),fill='grey11',width=4)
+    if lasx >= 0 and lasx <= 575 and lasy >= 0 and lasy <= 575:
+      if colour == 0: 
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey99',width=4)
+          canvasdraw[lasx][lasy] = 0
+      elif colour == 1:
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey88',width=4)
+          canvasdraw[lasx][lasy] = 1
+      elif colour == 2:
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey77',width=4)
+          canvasdraw[lasx][lasy] = 2
+      elif colour == 3: 
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey66',width=4)
+          canvasdraw[lasx][lasy] = 3
+      elif colour == 4:
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey44',width=4)
+          canvasdraw[lasx][lasy] = 4
+      elif colour == 5: 
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey33',width=4)
+          canvasdraw[lasx][lasy] = 5
+      elif colour == 6:
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey22',width=4)
+          canvasdraw[lasx][lasy] = 6
+      else: 
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey11',width=4)
+          canvasdraw[lasx][lasy] = 7
 
-    lasx, lasy = event.x, event.y
+      lasx, lasy = event.x, event.y
 
 def clearbtn():
     c.delete('all')
@@ -121,9 +130,6 @@ def tictactoe():
 main = Tk()
 main.title("Group C")
 
-#this variable to store the colour choice 
-colour = 0
-
 notebook = ttk.Notebook(main) #widget that manages a collection of windows/displays
 
 tab1 = Frame(notebook) #new frame for tab 1
@@ -132,10 +138,10 @@ tab3 = Frame(notebook) #new frame for tab 3
 
 notebook.add(tab1,text="Grid")
 notebook.add(tab2,text="Draw")
-notebook.add(tab3, text="tictactoe")
+# notebook.add(tab3, text="tictactoe")
 notebook.grid(row=0, column = 0)
 
-frame1 = Frame(tab1) #3x3 btn
+frame1 = Frame(tab1, width=800, height=800) #3x3 btn
 frame1.grid(row=0, column=0)
 # frame1.grid(ipadx='64px', ipady='64px')
 
@@ -151,26 +157,28 @@ frame4.grid(row=2, columnspan=2) #send btn
 frame5 = Frame(tab2) # draw canvas 
 frame5.grid(row=0, column=0) 
 
-frame6 = Frame(tab3) # tictactoe
-frame6.grid(row=0, column=0)
+# frame6 = Frame(tab3) # tictactoe
+# frame6.grid(row=0, column=0)
 
-c = Canvas(tab2, width=155, height=160, bg='white')
-c.grid(row=0, column=0, ipadx='155px', ipady='160px')
-#c.pack(anchor='nw', fill='both', expand=1)
-#c.grid(ipadx='64px', ipady='64px')
+c = Canvas(tab2, width=576, height=576, bg='white')  
+c.grid(row=0, column=0)
 
 c.bind('<Button-1>', get_x_and_y)
 c.bind('<B1-Motion>',paint)
 
+#this variable to store the colour choice 
+colour = 0
+canvasdraw = [[0 for i in range(576)] for j in range(576)]  # save eventxy into an array 
+#print(canvasdraw)
 
 #3x3 buttons for tic tac toe
-button6 = [[j for j in range(3)] for i in range(3)]
-value = [[0 for i in range(3)] for j in range(3)]
+# button6 = [[j for j in range(3)] for i in range(3)]
+# value = [[0 for i in range(3)] for j in range(3)]
 
-for j in range (3):
-  for i in range (3):
-    button6[i][j] = Button(frame6, font=("Calibri, 23"), width=10, height=5, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
-    button6[i][j].grid(row=i, column=j)
+# for j in range (3):
+#   for i in range (3):
+#     button6[i][j] = Button(frame6, font=("Calibri, 23"), width=10, height=5, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
+#     button6[i][j].grid(row=i, column=j)
 
 
 # 32x32 grid
@@ -181,7 +189,7 @@ value = [[0 for i in range(32)] for j in range(32)]
 
 for j in range (32):
   for i in range (32):
-    button[i][j] = Button(frame1, font=("Calibri, 5"), width=2, height=2, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
+    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
     button[i][j].grid(row=i, column=j)
 
 #clear button
