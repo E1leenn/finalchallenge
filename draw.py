@@ -116,8 +116,53 @@ def paint(event):
       else: 
           c.create_line((lasx,lasy, event.x, event.y),fill='grey11',width=4)
           canvasdraw[lasx][lasy] = 7
+      get_x_and_y(event)
 
-      lasx, lasy = event.x, event.y
+def scaledown(r, c):
+  global lasx, lasy
+  list = []
+  for x in range(r, c):
+    for y in range(r, c):
+      list.append(canvasdraw[x][y])
+  return list
+
+# def most_frequent(List):
+#   counter = 0
+#   num = List[0]
+     
+#   for i in List:
+#     curr_frequency = List.count(i)
+#     if(curr_frequency> counter):
+#       counter = curr_frequency
+#       num = i
+ 
+#   return num
+
+# def store():
+#   List = []
+#   for x in range(0, 17):
+#     List.append(most_frequent(18*x))
+#   #print(List)
+
+# def function0():
+#   for x in range(0, 32):
+#     function1(x)
+
+def function1(x):
+  
+  for x in range(x=18*(n-1)):
+
+    for y in range (y=x+17):
+      list.append()
+      return list()
+
+def function2():
+  list.append()
+  return list
+
+def function3(x):
+  list.append(x)
+  return list
 
 def clearbtn():
     c.delete('all')
@@ -126,6 +171,12 @@ def tictactoe():
   frame2.destroy()
   frame3.destroy()
   frame4.destroy()
+
+def save_img():
+  x = 18
+  for y in range(0, 32):
+    scaledown(y*x, (y*x)+(x-1))
+  #print(store())
 
 main = Tk()
 main.title("Group C")
@@ -165,6 +216,7 @@ c.grid(row=0, column=0)
 
 c.bind('<Button-1>', get_x_and_y)
 c.bind('<B1-Motion>',paint)
+c.bind('<Enter>', get_x_and_y)
 
 #this variable to store the colour choice 
 colour = 0
@@ -192,9 +244,6 @@ for j in range (32):
     button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
     button[i][j].grid(row=i, column=j)
 
-#clear button
-clear = Button(frame2, text="Clear", font=("Calibri, 10"), bg='grey99', width=13, height=2, command=clearbtn)
-clear.grid(row=0, column=0)
 
 #shades button
 white = Button(frame2, text="White", font=("Calibri, 10"), bg='grey99', width=13, height=2, command=lambda m=0:change_colour(m))
@@ -214,6 +263,10 @@ grey6.grid(row=7, column=0)
 black = Button(frame2, text="Black", font=("Calibri, 10"), bg='grey1', fg='white', width=13, height=2, command=lambda m=7:change_colour(m))
 black.grid(row=8, column=0)
 
+#save button
+savebtn = Button(frame2, text="Save", font=("Calibri, 10"), bg='light blue', fg='black', width=13, height=2, command=save_img)
+savebtn.grid(row=9, column=0)
+
 #colour button
 allwhite = Button(frame3, text="All White",font=("Calibri, 12"), bg='white', width=13, height=2, command=allwht)
 allwhite.grid(row=0, column=0)
@@ -221,11 +274,11 @@ allwhite.grid(row=0, column=0)
 allblack = Button(frame3, text="All Black",font=("Calibri, 12"), bg='black', fg='white', width=13, height=2, command=allblk)
 allblack.grid(row=0, column=1)
 
-xpattern = Button(frame3, text="X Pattern",font=("Calibri, 12"), bg='gold', width=13, height=2, command=pattern)
-xpattern.grid(row=0, column=2)
+clear = Button(frame3, text="Clear",font=("Calibri, 12"), bg='gold', width=13, height=2, command=clearbtn)
+clear.grid(row=0, column=2)
 
-seq = Button(frame3, text="Sequence",font=("Calibri, 12"), bg='#ff007f', width=13, height=2, command=ramseq)
-seq.grid(row=0, column=3)
+# 
+
 
 #send btn
 send = Button(frame4, text="Send Image!", font=("Calibri, 12"), width=13, height=2, command=lambda :sendbtn())
