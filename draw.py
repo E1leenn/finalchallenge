@@ -144,25 +144,50 @@ def scaledown(r, c):
 #     List.append(most_frequent(18*x))
 #   #print(List)
 
-# def function0():
-#   for x in range(0, 32):
-#     function1(x)
+def save_img():
+  savelist = []
+  #for _ in range(32):
+  savelist.append(function0())
+  print(len(savelist[0]), savelist)
 
-def function1(x):
-  
-  for x in range(x=18*(n-1)):
+def function0():
+  global newlist, freqlist
+  freqlist = []
+  newlist = []
+  # for x in range(1, 33):
+  #   function1(x)
+  for x in range(1, 33):
+    function1(x)
+  newlist = function1(x)
+  return newlist
+  #print(function1(x))
 
-    for y in range (y=x+17):
-      list.append()
-      return list()
+def function1(n):
+  num1 = 18*(n-1)
+  num2 = num1 + 18
+  list32 = [] #store all the value of 18x18 
+  #for x in range(num1, num2):
+  for x in range(0, 18):
+    for y in range(num1, num2):
+      list32.append(canvasdraw[x][y])
+  #print(len(list32), num1, num2)
+  return most_frequent(list32)
+  #print(len(list32))
 
-def function2():
-  list.append()
-  return list
+def most_frequent(List):
+  global freqlist
+  freq = max(set(List), key = List.count)
+  freqlist.append(freq)
+  return freqlist
+  #return freqlist
+  #print(freqlist)
+  #function3(freqlist)
+  #return function3(num)
 
-def function3(x):
-  list.append(x)
-  return list
+#def function3(x):
+  #global newlist
+  #newlist.append(x)
+  #print(newlist)
 
 def clearbtn():
     c.delete('all')
@@ -172,11 +197,10 @@ def tictactoe():
   frame3.destroy()
   frame4.destroy()
 
-def save_img():
-  x = 18
-  for y in range(0, 32):
-    scaledown(y*x, (y*x)+(x-1))
-  #print(store())
+# def save_img():
+#   x = 18
+#   for y in range(0, 32):
+#     scaledown(y*x, (y*x)+(x-1))
 
 main = Tk()
 main.title("Group C")
