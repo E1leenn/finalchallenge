@@ -144,11 +144,11 @@ def scaledown(r, c):
 #     List.append(most_frequent(18*x))
 #   #print(List)
 
-def save_img():
+""" def save_img():
   savelist = []
   #for _ in range(32):
   savelist.append(function0())
-  print(len(savelist[0]), savelist)
+  print(len(savelist), savelist)
 
 def function0():
   global newlist, freqlist
@@ -167,9 +167,9 @@ def function1(n):
   num2 = num1 + 18
   list32 = [] #store all the value of 18x18 
   #for x in range(num1, num2):
-  for x in range(0, 18):
-    for y in range(num1, num2):
-      list32.append(canvasdraw[x][y])
+  for x in range(num1, num2):
+    for y in range(18):
+      list32.append(canvasdraw[y][x])
   #print(len(list32), num1, num2)
   return most_frequent(list32)
   #print(len(list32))
@@ -187,7 +187,44 @@ def most_frequent(List):
 #def function3(x):
   #global newlist
   #newlist.append(x)
-  #print(newlist)
+  #print(newlist) """
+
+def save_img():
+  global list2
+  list2 = []
+  #f0(18)
+  [f0(i) for i in range(0, 576, 18)]
+  f1()
+  f2()
+  [f3() for _ in range(32)]
+  print(list0)
+def f0(x):
+  global list0
+  list = []
+  num1 = 18*(x-1)
+  num2 = num1 + 18
+  for i in range(x ,18+x):
+    for t in range(x ,18+x):
+      list.append(canvasdraw[i][t])
+  list0 = list
+
+def f1():
+  global freq0, list0
+  freq0 = 0
+  freq = max(set(list0), key = list0.count)
+  freq0 = freq
+  return freq0
+
+def f2():
+  global freq0, list1
+  list1 = []
+  list1 = [f1() for _ in range(32)]
+  #print(len(list1))
+  #list1.append(freq0)
+
+def f3():
+  global list1, list2
+  list2.append(list1)
 
 def clearbtn():
     c.delete('all')
