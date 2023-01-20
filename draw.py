@@ -189,30 +189,59 @@ def most_frequent(List):
   #newlist.append(x)
   #print(newlist) """
 
+def save_draw_colour(list):
+  for r in range(32):
+    for c in range(32):
+      if list[r][c] == 0:
+        button[r][c].config(bg='grey99')
+      elif list[r][c] == 1: 
+        button[r][c].config(bg='grey88')
+      elif list[r][c] == 2:
+        button[r][c].config(bg='grey77')
+      elif list[r][c] == 3: 
+        button[r][c].config(bg='grey66')
+      elif list[r][c] == 4:
+        button[r][c].config(bg='grey44')  
+      elif list[r][c] == 5: 
+        button[r][c].config(bg='grey33')
+      elif list[r][c] == 6:
+        button[r][c].config(bg='grey22')
+      else: 
+        button[r][c].config(bg='grey1')
+
 def save_img():
-  global list2, list1
+  global list2, list1, value
   list2 = []
   list1 = []
+  list3 = []
+  list4 = []
   #f0(18)
-  for i in range(0 , 19, 18):
-    for t in range(0 , 19, 18):
+  for i in range(0 , 576, 18):
+    list3 = []
+    for t in range(0 , 576, 18):
+      #list3 = []
       f0(i, t)
-  print(len(f0(i, t)))
-  #f1()
-  #f2()
-  #f3()
-def f0(x, y):
+      getnumber = f0(i, t)
+      #print(i, t)
+      list3.append(getnumber)
+    list4.append(list3)
+    #list3.append(list1)
+  save_draw_colour(list4)
+  print(list4)
+  
+def f0(x, y): #get the starting x, y of a 18x18 and to return 1 value back to rep the 18x18, to scale down a 18x18 to a 1x1
   global list0, list1, list2
   list = []
-  num1 = 18*(x-1)
-  num2 = num1 + 18
+  #num1 = 18*(x-1)
+  #num2 = num1 + 18
   for i in range(x ,18+x):
     for t in range(y ,18+y):
       list.append(canvasdraw[i][t])
   list0 = list
-  freq = max(set(list0), key = list0.count)
-  list1.append(freq)
-  return list1
+  freq = min(set(list0), key = list0.count) #using min instead cause if max almost everytime will get 0,harder for the draw to show; once the 18x18 grid got 1 value change, then return that value
+                                            #Link: https://www.geeksforgeeks.org/python-find-most-frequent-element-in-a-list/
+  #list1.append(freq)
+  return freq 
 
 """ def f1():
   global freq0, list0
