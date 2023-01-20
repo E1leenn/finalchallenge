@@ -190,25 +190,31 @@ def most_frequent(List):
   #print(newlist) """
 
 def save_img():
-  global list2
+  global list2, list1
   list2 = []
+  list1 = []
   #f0(18)
-  [f0(i) for i in range(0, 576, 18)]
-  f1()
-  f2()
-  [f3() for _ in range(32)]
-  print(list0)
-def f0(x):
-  global list0
+  for i in range(0 , 19, 18):
+    for t in range(0 , 19, 18):
+      f0(i, t)
+  print(len(f0(i, t)))
+  #f1()
+  #f2()
+  #f3()
+def f0(x, y):
+  global list0, list1, list2
   list = []
   num1 = 18*(x-1)
   num2 = num1 + 18
   for i in range(x ,18+x):
-    for t in range(x ,18+x):
+    for t in range(y ,18+y):
       list.append(canvasdraw[i][t])
   list0 = list
+  freq = max(set(list0), key = list0.count)
+  list1.append(freq)
+  return list1
 
-def f1():
+""" def f1():
   global freq0, list0
   freq0 = 0
   freq = max(set(list0), key = list0.count)
@@ -218,13 +224,14 @@ def f1():
 def f2():
   global freq0, list1
   list1 = []
-  list1 = [f1() for _ in range(32)]
+  #list1 = [f1() for _ in range(32)]
+  list1.append(f1() for _ in range(32))
   #print(len(list1))
   #list1.append(freq0)
 
 def f3():
   global list1, list2
-  list2.append(list1)
+  list2.append(list1) """
 
 def clearbtn():
     c.delete('all')
