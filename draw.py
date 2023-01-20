@@ -216,12 +216,12 @@ def save_img():
   list3 = []
   list4 = []
   #f0(18)
-  for i in range(0 , 576, 18):
+  for i in range(0, 576, 18):
     list3 = []
     for t in range(0 , 576, 18):
       #list3 = []
-      f0(i, t)
-      getnumber = f0(i, t)
+      #f0(t, i)
+      getnumber = f0(t, i) #getting the row downwards then col cause ur grid is store in the order row-column
       #print(i, t)
       list3.append(getnumber)
     list4.append(list3)
