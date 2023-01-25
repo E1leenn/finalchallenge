@@ -3,87 +3,87 @@ from tkinter import ttk
 
 
 def whitebtn(i, j):
-  global colour
+    global colour
 
-  if colour == 0:
-    button[i][j].config(bg='grey99')
-    value[i][j] = 0
-  elif colour == 1: 
-    button[i][j].config(bg='grey88')
-    value[i][j] = 20
-  elif colour == 2:
-    button[i][j].config(bg='grey77')
-    value[i][j] = 30
-  elif colour == 3: 
-    button[i][j].config(bg='grey66')
-    value[i][j] = 40
-  elif colour == 4:
-    button[i][j].config(bg='grey44')  
-    value[i][j] = 50
-  elif colour == 5: 
-    button[i][j].config(bg='grey33')
-    value[i][j] = 60
-  elif colour == 6:
-    button[i][j].config(bg='grey22')
-    value[i][j] = 70
-  else: 
-    button[i][j].config(bg='grey1')
-    value[i][j] = 90
-
-def sendbtn():
-  #print(value)
-  print(canvasdraw)
-
-def change_colour(m): 
-  global colour
-  colour=m 
-
-  print("colour is {}".format(colour))
-
-def allwht():
-  for j in range (32):
-    for i in range (32):
+    if colour == 0:
       button[i][j].config(bg='grey99')
       value[i][j] = 0
-
-def allblk():
-  for j in range (32):
-    for i in range (32):
+    elif colour == 1: 
+      button[i][j].config(bg='grey88')
+      value[i][j] = 20
+    elif colour == 2:
+      button[i][j].config(bg='grey77')
+      value[i][j] = 30
+    elif colour == 3: 
+      button[i][j].config(bg='grey66')
+      value[i][j] = 40
+    elif colour == 4:
+      button[i][j].config(bg='grey44')  
+      value[i][j] = 50
+    elif colour == 5: 
+      button[i][j].config(bg='grey33')
+      value[i][j] = 60
+    elif colour == 6:
+      button[i][j].config(bg='grey22')
+      value[i][j] = 70
+    else: 
       button[i][j].config(bg='grey1')
       value[i][j] = 90
 
-def pattern():
-  for j in range (32):
-    for i in range (32):
-      if i == j: 
-        button[i][j].config(bg='grey66')
-        value[i][j] = 40
-      elif i + j == 31: 
-        button[i][j].config(bg='grey66')
-        value[i][j] = 40
-      else:
+def sendbtn():
+    #print(value)
+    print(canvasdraw)
+
+def change_colour(m): 
+    global colour
+    colour=m 
+
+    print("colour is {}".format(colour))
+
+def allwht():
+    for j in range (32):
+      for i in range (32):
         button[i][j].config(bg='grey99')
         value[i][j] = 0
+
+def allblk():
+    for j in range (32):
+      for i in range (32):
+        button[i][j].config(bg='grey1')
+        value[i][j] = 90
+
+def pattern():
+    for j in range (32):
+      for i in range (32):
+        if i == j: 
+          button[i][j].config(bg='grey66')
+          value[i][j] = 40
+        elif i + j == 31: 
+          button[i][j].config(bg='grey66')
+          value[i][j] = 40
+        else:
+          button[i][j].config(bg='grey99')
+          value[i][j] = 0
 
 
 def ramseq():
-  for j in range (32):
-    for i in range (32):
-      if j < 6:
-        button[i][j].config(bg='grey99')
-        value[i][j] = 0
-      elif j >= 6 and j <= 12:
-        button[i][j].config(bg='grey88')
-        value[i][j] = 20
-      elif j >= 12 and j <= 18:
-        button[i][j].config(bg='grey77')
-        value[i][j] = 30
-      elif j >= 18 and j <= 24:
-        button[i][j].config(bg='grey66')
-        value[i][j] = 40
-      elif j >= 24 and j <= 32:
-        button[i][j].config(bg='grey44')
-        value[i][j] = 50 
+    for j in range (32):
+      for i in range (32):
+        if j < 6:
+          button[i][j].config(bg='grey99')
+          value[i][j] = 0
+        elif j >= 6 and j <= 12:
+          button[i][j].config(bg='grey88')
+          value[i][j] = 20
+        elif j >= 12 and j <= 18:
+          button[i][j].config(bg='grey77')
+          value[i][j] = 30
+        elif j >= 18 and j <= 24:
+          button[i][j].config(bg='grey66')
+          value[i][j] = 40
+        elif j >= 24 and j <= 32:
+          button[i][j].config(bg='grey44')
+          value[i][j] = 50 
 
 def get_x_and_y(event):
    global lasx, lasy
@@ -119,161 +119,75 @@ def paint(event):
       get_x_and_y(event)
 
 def scaledown(r, c):
-  global lasx, lasy
-  list = []
-  for x in range(r, c):
-    for y in range(r, c):
-      list.append(canvasdraw[x][y])
-  return list
+    global lasx, lasy
+    list = []
+    for x in range(r, c):
+      for y in range(r, c):
+        list.append(canvasdraw[x][y])
+    return list
 
-# def most_frequent(List):
-#   counter = 0
-#   num = List[0]
-     
-#   for i in List:
-#     curr_frequency = List.count(i)
-#     if(curr_frequency> counter):
-#       counter = curr_frequency
-#       num = i
- 
-#   return num
-
-# def store():
-#   List = []
-#   for x in range(0, 17):
-#     List.append(most_frequent(18*x))
-#   #print(List)
-
-""" def save_img():
-  savelist = []
-  #for _ in range(32):
-  savelist.append(function0())
-  print(len(savelist), savelist)
-
-def function0():
-  global newlist, freqlist
-  freqlist = []
-  newlist = []
-  # for x in range(1, 33):
-  #   function1(x)
-  for x in range(1, 33):
-    function1(x)
-  newlist = function1(x)
-  return newlist
-  #print(function1(x))
-
-def function1(n):
-  num1 = 18*(n-1)
-  num2 = num1 + 18
-  list32 = [] #store all the value of 18x18 
-  #for x in range(num1, num2):
-  for x in range(num1, num2):
-    for y in range(18):
-      list32.append(canvasdraw[y][x])
-  #print(len(list32), num1, num2)
-  return most_frequent(list32)
-  #print(len(list32))
-
-def most_frequent(List):
-  global freqlist
-  freq = max(set(List), key = List.count)
-  freqlist.append(freq)
-  return freqlist
-  #return freqlist
-  #print(freqlist)
-  #function3(freqlist)
-  #return function3(num)
-
-#def function3(x):
-  #global newlist
-  #newlist.append(x)
-  #print(newlist) """
 
 def save_draw_colour(list):
-  for r in range(32):
-    for c in range(32):
-      if list[r][c] == 0:
-        button[r][c].config(bg='grey99')
-      elif list[r][c] == 1: 
-        button[r][c].config(bg='grey88')
-      elif list[r][c] == 2:
-        button[r][c].config(bg='grey77')
-      elif list[r][c] == 3: 
-        button[r][c].config(bg='grey66')
-      elif list[r][c] == 4:
-        button[r][c].config(bg='grey44')  
-      elif list[r][c] == 5: 
-        button[r][c].config(bg='grey33')
-      elif list[r][c] == 6:
-        button[r][c].config(bg='grey22')
-      else: 
-        button[r][c].config(bg='grey1')
+    for r in range(32):
+      for c in range(32):
+        if list[r][c] == 0:
+          button[r][c].config(bg='grey99')
+        elif list[r][c] == 1: 
+          button[r][c].config(bg='grey88')
+        elif list[r][c] == 2:
+          button[r][c].config(bg='grey77')
+        elif list[r][c] == 3: 
+          button[r][c].config(bg='grey66')
+        elif list[r][c] == 4:
+          button[r][c].config(bg='grey44')  
+        elif list[r][c] == 5: 
+          button[r][c].config(bg='grey33')
+        elif list[r][c] == 6:
+          button[r][c].config(bg='grey22')
+        else: 
+          button[r][c].config(bg='grey1')
 
 def save_img():
-  global list2, list1, value
-  list2 = []
-  list1 = []
-  list3 = []
-  list4 = []
-  #f0(18)
-  for i in range(0, 576, 18):
+    global list2, list1, value
+    list2 = []
+    list1 = []
     list3 = []
-    for t in range(0 , 576, 18):
-      #list3 = []
-      #f0(t, i)
-      getnumber = f0(t, i) #getting the row downwards then col cause ur grid is store in the order row-column
-      #print(i, t)
-      list3.append(getnumber)
-    list4.append(list3)
-    #list3.append(list1)
-  save_draw_colour(list4)
-  print(list4)
+    list4 = []
+    #f0(18)
+    for i in range(0, 576, 18):
+      list3 = []
+      for t in range(0 , 576, 18):
+        #list3 = []
+        #f0(t, i)
+        getnumber = f0(t, i) #getting the row downwards then col cause grid is store in the order row-column
+        #print(i, t)
+        list3.append(getnumber)
+      list4.append(list3)
+      #list3.append(list1)
+    save_draw_colour(list4)
+    print(list4)
   
 def f0(x, y): #get the starting x, y of a 18x18 and to return 1 value back to rep the 18x18, to scale down a 18x18 to a 1x1
-  global list0, list1, list2
-  list = []
-  #num1 = 18*(x-1)
-  #num2 = num1 + 18
-  for i in range(x ,18+x):
-    for t in range(y ,18+y):
-      list.append(canvasdraw[i][t])
-  list0 = list
-  freq = min(set(list0), key = list0.count) #using min instead cause if max almost everytime will get 0,harder for the draw to show; once the 18x18 grid got 1 value change, then return that value
-                                            #Link: https://www.geeksforgeeks.org/python-find-most-frequent-element-in-a-list/
-  #list1.append(freq)
-  return freq 
-
-""" def f1():
-  global freq0, list0
-  freq0 = 0
-  freq = max(set(list0), key = list0.count)
-  freq0 = freq
-  return freq0
-
-def f2():
-  global freq0, list1
-  list1 = []
-  #list1 = [f1() for _ in range(32)]
-  list1.append(f1() for _ in range(32))
-  #print(len(list1))
-  #list1.append(freq0)
-
-def f3():
-  global list1, list2
-  list2.append(list1) """
+    global list0, list1, list2
+    list = []
+    #num1 = 18*(x-1)
+    #num2 = num1 + 18
+    for i in range(x ,18+x):
+      for t in range(y ,18+y):
+        list.append(canvasdraw[i][t])
+    list0 = list
+    freq = min(set(list0), key = list0.count) #using min instead cause if max almost everytime will get 0,harder for the draw to show; once the 18x18 grid got 1 value change, then return that value
+                                              #Link: https://www.geeksforgeeks.org/python-find-most-frequent-element-in-a-list/
+    #list1.append(freq)
+    return freq 
 
 def clearbtn():
     c.delete('all')
 
 def tictactoe():
-  frame2.destroy()
-  frame3.destroy()
-  frame4.destroy()
-
-# def save_img():
-#   x = 18
-#   for y in range(0, 32):
-#     scaledown(y*x, (y*x)+(x-1))
+    frame2.destroy()
+    frame3.destroy()
+    frame4.destroy()
 
 main = Tk()
 main.title("Group C")
