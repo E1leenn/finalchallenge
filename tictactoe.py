@@ -1,251 +1,300 @@
-#link: https://www.geeksforgeeks.org/tic-tac-toe-game-with-gui-using-tkinter-in-python/
-
-# Tic Tac Toe game with GUI
-# using tkinter
-
-# importing all necessary libraries
-import random
-import tkinter
 from tkinter import *
-from functools import partial
 from tkinter import messagebox
-from copy import deepcopy
+# import student_pub
 
-# sign variable to decide the turn of which player
-sign = 0
+def changeto(m):
+    global pattern
+    pattern = m 
+    # print("pattern is", pattern)
 
-# Creates an empty board
-global board
-board = [[" " for x in range(3)] for y in range(3)]
+def tictaotoe(x,y):
+    global pattern, xoff, yoff
+    if x == 0 and y == 0:
+        xoff = 0
+        yoff = 0
+    elif x == 0 and y == 1:
+        xoff = 0
+        yoff = 12
+    elif x == 0 and y == 2:
+        xoff = 0
+        yoff = 24
+    elif x == 1 and y == 0:
+        xoff = 12
+        yoff = 0 
+    elif x == 1 and y == 1: 
+        xoff = 12
+        yoff = 12
+    elif x == 1 and y == 2: 
+        xoff= 12
+        yoff = 24 
+    elif x == 2 and y == 0: 
+        xoff = 24
+        yoff = 0 
+    elif x == 2 and y == 1: 
+        xoff = 24
+        yoff = 12 
+    else: 
+        xoff = 24
+        yoff = 24
 
-# Check l(O/X) won the match or not
-# according to the rules of the game
+    if pattern == 0: 
+        var = "X"
+        gui[x][y].config(text=var)
+        condition(logic(var))
+        print(logic(var))
+        for i in range (32):
+            for j in range (32):
+                if i == xoff and j == yoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 1 and j == yoff + 1: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 2 and j == yoff + 2: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 3 and j == yoff + 3: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 4 and j == yoff + 4: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 5 and j == yoff + 5: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 6 and j == yoff + 6: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 7 and j == yoff + 7: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff and j == yoff + 7: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 1 and j == yoff + 6: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 2 and j == yoff + 5: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 3 and j == yoff + 4: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 4 and j == yoff + 3: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 5 and j == yoff + 2: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 6 and j == yoff + 1: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == xoff + 7 and j == yoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                
 
+    else:
+        var = "O"
+        gui[x][y].config(text=var)
+        condition(logic(var))
+        print(logic(var))
+        for i in range (32):
+            for j in range (32):
+                if j == 1 + yoff: 
+                    if i == 2 + xoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                    elif i == 3 + xoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                    elif i == 4 + xoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                    elif i == 5 + xoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif j == 6 + yoff: 
+                    if i == 2 + xoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                    elif i == 3 + xoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                    elif i == 4 + xoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                    elif i == 5 + xoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == 1 + xoff: 
+                    if j == 2 + yoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                    elif j == 3 + yoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                    elif j == 4 + yoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                    elif j == 5 + yoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                elif i == 6 + xoff: 
+                    if j == 2 + yoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                    elif j == 3 + yoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                    elif j == 4 + yoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
+                    elif j == 5 + yoff: 
+                        value[i][j] = 7
+                        btn[i][j].config(bg="black")
 
-def winner(b, l):
+    # student_pub.pubpic(value)
+    # logic(x,y)
 
-	return ((b[0][0] == l and b[0][1] == l and b[0][2] == l) or
-			(b[1][0] == l and b[1][1] == l and b[1][2] == l) or
-			(b[2][0] == l and b[2][1] == l and b[2][2] == l) or
-			(b[0][0] == l and b[1][0] == l and b[2][0] == l) or
-			(b[0][1] == l and b[1][1] == l and b[2][1] == l) or
-			(b[0][2] == l and b[1][2] == l and b[2][2] == l) or
-			(b[0][0] == l and b[1][1] == l and b[2][2] == l) or
-			(b[0][2] == l and b[1][1] == l and b[2][0] == l))
+def check():
+    global p
+    for x in range (3):
+        for y in range (3):
+            if (gui[x][y].cget('text') == 'X' or gui[x][y].cget('text') == 'O'):
+                p = p+1
 
-# Configure text on button while playing with another player
-def get_text(i, j, gb, l1, l2):
-	global sign
-	if board[i][j] == ' ':
-		if sign % 2 == 0:
-			l1.config(state=DISABLED)
-			l2.config(state=ACTIVE)
-			board[i][j] = "X"
-		else:
-			l2.config(state=DISABLED)
-			l1.config(state=ACTIVE)
-			board[i][j] = "O"
-		sign += 1
-		button[i][j].config(text=board[i][j])
-	if winner(board, "X"):
-		gb.destroy()
-		box = messagebox.showinfo("Winner", "Player 1 won the match")
-	elif winner(board, "O"):
-		gb.destroy()
-		box = messagebox.showinfo("Winner", "Player 2 won the match")
-	elif(isfull()):
-		gb.destroy()
-		box = messagebox.showinfo("Tie Game", "Tie Game")
+def logic(y):
+    global p
+    p = 0
+    check()
+    print(p)
+    if      ((gui[0][0].cget('text') == y and gui[0][1].cget('text') == y and gui[0][2].cget('text') == y) or
+			(gui[1][0].cget('text') == y and gui[1][1].cget('text') == y and gui[1][2].cget('text') == y) or
+			(gui[2][0].cget('text') == y and gui[2][1].cget('text') == y and gui[2][2].cget('text') == y) or
+			(gui[0][0].cget('text') == y and gui[1][0].cget('text') == y and gui[2][0].cget('text') == y) or
+			(gui[0][1].cget('text') == y and gui[1][1].cget('text') == y and gui[2][1].cget('text') == y) or
+			(gui[0][2].cget('text') == y and gui[1][2].cget('text') == y and gui[2][2].cget('text') == y) or
+			(gui[0][0].cget('text') == y and gui[1][1].cget('text') == y and gui[2][2].cget('text') == y) or
+			(gui[0][2].cget('text') == y and gui[1][1].cget('text') == y and gui[2][0].cget('text') == y)):
+            return y
+    elif (p >= 9):
+        c = 'c'
+        return c
+    else:  
+        return N
+    
 
-# Check if the player can push the button or not
-
-
-def isfree(i, j):
-	return board[i][j] == " "
-
-# Check the board is full or not
-
-
-def isfull():
-	flag = True
-	for i in board:
-		if(i.count(' ') > 0):
-			flag = False
-	return flag
-
-# Create the GUI of game board for play along with another player
-
-
-def gameboard_pl(game_board, l1, l2):
-	global button
-	button = []
-	for i in range(3):
-		m = 3+i
-		button.append(i)
-		button[i] = []
-		for j in range(3):
-			n = j
-			button[i].append(j)
-			get_t = partial(get_text, i, j, game_board, l1, l2)
-			button[i][j] = Button(
-				game_board, bd=5, command=get_t, height=4, width=8)
-			button[i][j].grid(row=m, column=n)
-	game_board.mainloop()
-
-# Decide the next move of system
-
-
-def pc():
-	possiblemove = []
-	for i in range(len(board)):
-		for j in range(len(board[i])):
-			if board[i][j] == ' ':
-				possiblemove.append([i, j])
-	move = []
-	if possiblemove == []:
-		return
-	else:
-		for let in ['O', 'X']:
-			for i in possiblemove:
-				boardcopy = deepcopy(board)
-				boardcopy[i[0]][i[1]] = let
-				if winner(boardcopy, let):
-					return i
-		corner = []
-		for i in possiblemove:
-			if i in [[0, 0], [0, 2], [2, 0], [2, 2]]:
-				corner.append(i)
-		if len(corner) > 0:
-			move = random.randint(0, len(corner)-1)
-			return corner[move]
-		edge = []
-		for i in possiblemove:
-			if i in [[0, 1], [1, 0], [1, 2], [2, 1]]:
-				edge.append(i)
-		if len(edge) > 0:
-			move = random.randint(0, len(edge)-1)
-			return edge[move]
-
-# Configure text on button while playing with system
-
-
-def get_text_pc(i, j, gb, l1, l2):
-	global sign
-	if board[i][j] == ' ':
-		if sign % 2 == 0:
-			l1.config(state=DISABLED)
-			l2.config(state=ACTIVE)
-			board[i][j] = "X"
-		else:
-			button[i][j].config(state=ACTIVE)
-			l2.config(state=DISABLED)
-			l1.config(state=ACTIVE)
-			board[i][j] = "O"
-		sign += 1
-		button[i][j].config(text=board[i][j])
-	x = True
-	if winner(board, "X"):
-		gb.destroy()
-		x = False
-		box = messagebox.showinfo("Winner", "Player won the match")
-	elif winner(board, "O"):
-		gb.destroy()
-		x = False
-		box = messagebox.showinfo("Winner", "Computer won the match")
-	elif(isfull()):
-		gb.destroy()
-		x = False
-		box = messagebox.showinfo("Tie Game", "Tie Game")
-	if(x):
-		if sign % 2 != 0:
-			move = pc()
-			button[move[0]][move[1]].config(state=DISABLED)
-			get_text_pc(move[0], move[1], gb, l1, l2)
-
-# Create the GUI of game board for play along with system
-
-
-def gameboard_pc(game_board, l1, l2):
-	global button
-	button = []
-	for i in range(3):
-		m = 3+i
-		button.append(i)
-		button[i] = []
-		for j in range(3):
-			n = j
-			button[i].append(j)
-			get_t = partial(get_text_pc, i, j, game_board, l1, l2)
-			button[i][j] = Button(
-				game_board, bd=5, command=get_t, height=4, width=8)
-			button[i][j].grid(row=m, column=n)
-	game_board.mainloop()
-
-# Initialize the game board to play with system
-
-
-def withpc(game_board):
-	game_board.destroy()
-	game_board = Tk()
-	game_board.title("Tic Tac Toe")
-	l1 = Button(game_board, text="Player : X", width=10)
-	l1.grid(row=1, column=1)
-	l2 = Button(game_board, text="Computer : O",
-				width=10, state=DISABLED)
-
-	l2.grid(row=2, column=1)
-	gameboard_pc(game_board, l1, l2)
-
-# Initialize the game board to play with another player
-
-
-def withplayer(game_board):
-	game_board.destroy()
-	game_board = Tk()
-	game_board.title("Tic Tac Toe")
-	l1 = Button(game_board, text="Player 1 : X", width=10)
-
-	l1.grid(row=1, column=1)
-	l2 = Button(game_board, text="Player 2 : O",
-				width=10, state=DISABLED)
-
-	l2.grid(row=2, column=1)
-	gameboard_pl(game_board, l1, l2)
-
-# main function
+def condition(var):
+    if var == "O": 
+        messagebox.showinfo("Winner", "Player 1 won the match")
+    elif var == "X": 
+        messagebox.showinfo("Winner", "Player 2 won the match")
+    elif var == 'c': 
+        messagebox.showinfo("TIE", "tie game")
 
 
-def play():
-	menu = Tk()
-	menu.geometry("250x250")
-	menu.title("Tic Tac Toe")
-	wpc = partial(withpc, menu)
-	wpl = partial(withplayer, menu)
+def clear():
+    for i in range (32):
+        for j in range (32):
+            btn[i][j].config(bg="white")
+            value[i][j] = 0
 
-	head = Button(menu, text="---Welcome to tic-tac-toe---",
-				activeforeground='red',
-				activebackground="yellow", bg="red",
-				fg="yellow", width=500, font='summer', bd=5)
+    for x in range(3):
+        for y in range(3):
+            gui[x][y].config(text='')
 
-	B1 = Button(menu, text="Single Player", command=wpc,
-				activeforeground='red',
-				activebackground="yellow", bg="red",
-				fg="yellow", width=500, font='summer', bd=5)
+    print("Clear All")
+    border()
 
-	B2 = Button(menu, text="Multi Player", command=wpl, activeforeground='red',
-				activebackground="yellow", bg="red", fg="yellow",
-				width=500, font='summer', bd=5)
+def border(): 
+    print("Borders")
+    for j in range (32):
+        for i in range (32):
+            if i == 8: 
+                value[i][j] = 7
+            elif i == 9: 
+                value[i][j] = 7
+            elif i == 10: 
+                value[i][j] = 7
+            elif i == 11: 
+                value[i][j] = 7
+            elif i == 20: 
+                value[i][j] = 7
+            elif i ==  21: 
+                value[i][j] = 7
+            elif i == 22: 
+                value[i][j] = 7
+            elif i == 23: 
+                value[i][j] = 7
+            elif j == 8: 
+                value[i][j] = 7
+            elif j == 9: 
+                value[i][j] = 7
+            elif j == 10: 
+                value[i][j] = 7
+            elif j == 11: 
+                value[i][j] = 7
+            elif j == 20: 
+                value[i][j] = 7
+            elif j ==  21: 
+                value[i][j] = 7
+            elif j == 22: 
+                value[i][j] = 7
+            elif j == 23: 
+                value[i][j] = 7
+            else:
+                value[i][j] = 0
 
-	B3 = Button(menu, text="Exit", command=menu.quit, activeforeground='red',
-				activebackground="yellow", bg="red", fg="yellow",
-				width=500, font='summer', bd=5)
-	head.pack(side='top')
-	B1.pack(side='top')
-	B2.pack(side='top')
-	B3.pack(side='top')
-	menu.mainloop()
+main = Tk()
 
+frame1 = Frame(main)
+frame1.grid(rowspan=2, column=0)
 
-# Call main function
-if __name__ == '__main__':
-	play()
+btn = [[i for i in range (32)] for j in range (32)]
+for i in range (32):
+    for j in range (32):
+        btn[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, bg="white")
+        btn[i][j].grid(row=i, column=j)
+
+frame2 = Frame(main)
+frame2.grid(row=0, column=1, padx=15)
+
+value = [[0 for i in range(32)] for j in range(32)]
+
+gui = [[x for x in range(3)] for y in range(3)]
+
+for x in range (3):
+    for y in range (3):
+        gui[x][y] = Button(frame2, font=("Calibri, 5"), width=18, height=12, command=lambda r=x, c=y:tictaotoe (r, c))
+        gui[x][y].grid(row=x, column=y)
+
+frame3 = Frame(main)
+frame3.grid(row=1, column=1)
+
+ximg = PhotoImage(file="x.png")
+oimg = PhotoImage(file="o.png")
+
+xoff = 0
+yoff = 0
+pattern = 0 
+p = 0
+
+obtn = Button(frame3, text="", image=oimg, command=lambda m=1:changeto(m))
+obtn.grid(row=0, column=0)
+xbtn = Button(frame3, text="", image=ximg, command=lambda m=0:changeto(m))
+xbtn.grid(row=0, column=1)
+
+p1 = Label(frame3, text="Player 1 is O", font=("Courier", 10))
+p1.grid(row=2, columnspan=2)
+p2 = Label(frame3, text="Player 2 is X", font=("Courier", 10))
+p2.grid(row=3, columnspan=2)
+
+clearbtn = Button(frame3, text="Clear", font=("Courier", 15), command=clear)
+clearbtn.grid(row=1, columnspan=2)
+        
+print(value)
+# student_pub.pubpic(value)
+border()
+# main.after_idle(border())
+main.mainloop()
