@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-from student_pub import *
+# from student_pub import *
 
 def whitebtn(i, j):
     global colour
@@ -207,24 +207,6 @@ def save_img():
         #list3 = []
         #f0(t, i)
         getnumber = f0(t, i) #getting the row downwards then col cause grid is store in the order row-column
-        #print(i, t)
-        list3.append(getnumber)
-      list4.append(list3)
-      #list3.append(list1)
-    save_draw_colour(list4)
-    print(list4)
-    global list2, list1, value
-    list2 = []
-    list1 = []
-    list3 = []
-    list4 = []
-    #f0(18)
-    for i in range(0, 800, 25):
-      list3 = []
-      for t in range(0 , 800, 25):
-        #list3 = []
-        #f0(t, i)
-        getnumber = f0(t, i) #getting the row downwards then col cause ur grid is store in the order row-column
         #print(i, t)
         list3.append(getnumber)
       list4.append(list3)

@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from student_pub import *
+# from student_pub import *
 
 def gridfunc():
     global var 
@@ -499,9 +499,13 @@ title.grid(row=0, column=0)
 # content 
 explaination = Frame(contentframe)
 explaination.grid(row=0, column=0)
-contenttitle = Label(explaination, text="Theme: Wonders of Our Childhood", font=("Courier", 15))
+contenttitle = Label(explaination, text="Theme: Wonders of Our Childhood", font=("Fixedsys", 15))
 contenttitle.grid(row=0, column=0)
-contenttxt = Label(explaination, text="Our features consists of games that remind us of our childhood.", font=("Courier", 15))
+contenttxt = Label(explaination, text="""Our features consists of games that remind us of our childhood.
+ We created these features as we wanted to bring some form of nostalgia
+ to our target audience and teach them the physics of polarisation 
+ through our interactive games while using our games as a form of relatability.""", font=("Courier", 15))
+
 contenttxt.grid(row=1, column=0)
 
 #mode 
