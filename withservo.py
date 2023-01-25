@@ -769,7 +769,7 @@ bottomframe = Frame(mazeframe, width=200, height=200)
 bottomframe.grid(row=2, column=1)
 
 # Create an object of tkinter ImageTk
-img = ImageTk.PhotoImage(Image.open("diagram.png"))
+img = PhotoImage(file="diagram.png")
 # resized_image = img.resize((300,400), Image.ANTIALIAS)
 # new_image = ImageTk.PhotoImage(resized_image)
 # new_image.show()
