@@ -540,11 +540,12 @@ Output of the value of Sequence.<br>
 *Screenshot of values of sequence preset*
 
 # Features 
-### Feature 1, TicTacToe game. When players select the O or X icons they can choose to be player 1 or 2 and play against each other.
+## Feature 1 - TicTacToe 
+### When players select the O or X icons they can choose to be player 1 or 2 and play against each other.
 
 <br>
 
-Below is an image of the GUI
+Below is an image of the TicTacToe GUI
 ![](images/TicTacToe.png) <br>
 *Screenshot of TicTacToe GUI*
 
@@ -728,7 +729,7 @@ Output of O winning
 
 
 <br>
-Output of the value of grid
+Output of the value of grid which determine the shades on the panel. 
 
 ![](images/tictactoegridvalue.png)
 *Screenshot of values of TicTacToe grid*
