@@ -157,24 +157,32 @@ def scaledown(r, c):
 
 
 def save_draw_colour(list):
-    for r in range(32):
-      for c in range(32):
-        if list[r][c] == 0:
-          button[r][c].config(bg='grey99')
-        elif list[r][c] == 1: 
-          button[r][c].config(bg='grey88')
-        elif list[r][c] == 2:
-          button[r][c].config(bg='grey77')
-        elif list[r][c] == 3: 
-          button[r][c].config(bg='grey66')
-        elif list[r][c] == 4:
-          button[r][c].config(bg='grey44')  
-        elif list[r][c] == 5: 
-          button[r][c].config(bg='grey33')
-        elif list[r][c] == 6:
-          button[r][c].config(bg='grey22')
-        else: 
-          button[r][c].config(bg='grey1')
+  for r in range(32):
+    for c in range(32):
+      if list[r][c] == 0:
+        button[r][c].config(bg='grey99')
+        value[r][c] = 0
+      elif list[r][c] == 1: 
+        button[r][c].config(bg='grey88')
+        value[r][c] = 20
+      elif list[r][c] == 2:
+        button[r][c].config(bg='grey77')
+        value[r][c] = 30
+      elif list[r][c] == 3: 
+        button[r][c].config(bg='grey66')
+        value[r][c] = 40
+      elif list[r][c] == 4:
+        button[r][c].config(bg='grey44')
+        value[r][c] = 50  
+      elif list[r][c] == 5: 
+        button[r][c].config(bg='grey33')
+        value[r][c] = 60
+      elif list[r][c] == 6:
+        button[r][c].config(bg='grey22')
+        value[r][c] = 70
+      else: 
+        button[r][c].config(bg='grey1')
+        value[r][c] = 90
 
 def save_img():
     global list2, list1, value
@@ -182,12 +190,9 @@ def save_img():
     list1 = []
     list3 = []
     list4 = []
-    #f0(18)
     for i in range(0, 576, 18):
       list3 = []
       for t in range(0 , 576, 18):
-        #list3 = []
-        #f0(t, i)
         getnumber = f0(t, i) #getting the row downwards then col cause grid is store in the order row-column
         #print(i, t)
         list3.append(getnumber)
