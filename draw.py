@@ -166,6 +166,24 @@ def save_img():
       #list3.append(list1)
     save_draw_colour(list4)
     print(list4)
+    global list2, list1, value
+    list2 = []
+    list1 = []
+    list3 = []
+    list4 = []
+    #f0(18)
+    for i in range(0, 800, 25):
+      list3 = []
+      for t in range(0 , 800, 25):
+        #list3 = []
+        #f0(t, i)
+        getnumber = f0(t, i) #getting the row downwards then col cause ur grid is store in the order row-column
+        #print(i, t)
+        list3.append(getnumber)
+      list4.append(list3)
+      #list3.append(list1)
+    save_draw_colour(list4)
+    print(list4)
   
 def f0(x, y): #get the starting x, y of a 18x18 and to return 1 value back to rep the 18x18, to scale down a 18x18 to a 1x1
     global list0, list1, list2
@@ -203,9 +221,8 @@ notebook.add(tab2,text="Draw")
 # notebook.add(tab3, text="tictactoe")
 notebook.grid(row=0, column = 0)
 
-frame1 = Frame(tab1, width=800, height=800) #3x3 btn
+frame1 = Frame(tab1, width=800, height=800) 
 frame1.grid(row=0, column=0)
-# frame1.grid(ipadx='64px', ipady='64px')
 
 frame2 = Frame(main) #shades btn
 frame2.grid(row=0, column=1)
@@ -232,17 +249,6 @@ c.bind('<Enter>', get_x_and_y)
 #this variable to store the colour choice 
 colour = 0
 canvasdraw = [[0 for i in range(576)] for j in range(576)]  # save eventxy into an array 
-#print(canvasdraw)
-
-#3x3 buttons for tic tac toe
-# button6 = [[j for j in range(3)] for i in range(3)]
-# value = [[0 for i in range(3)] for j in range(3)]
-
-# for j in range (3):
-#   for i in range (3):
-#     button6[i][j] = Button(frame6, font=("Calibri, 23"), width=10, height=5, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
-#     button6[i][j].grid(row=i, column=j)
-
 
 # 32x32 grid
 button = [[j for j in range(32)] for i in range(32)]
