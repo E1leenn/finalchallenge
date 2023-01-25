@@ -225,6 +225,10 @@ def f0(x, y): #get the starting x, y of a 18x18 and to return 1 value back to re
 
 def clearbtn():
     c.delete('all')
+    allwht()
+    for i in range(800):
+        for j in range(800):
+            canvasdraw[i][j] = 0
 
 #########################################################################################
 
