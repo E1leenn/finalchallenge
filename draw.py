@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-
+from student_pub import *
 
 def whitebtn(i, j):
   global colour
@@ -33,7 +33,8 @@ def whitebtn(i, j):
 def sendbtn():
   #print(value)
   print(canvasdraw)
-
+  # pubpic(value)
+  
 def change_colour(m): 
   global colour
   colour=m 
@@ -194,20 +195,28 @@ def save_draw_colour(list):
     for c in range(32):
       if list[r][c] == 0:
         button[r][c].config(bg='grey99')
+        value[r][c] = 0
       elif list[r][c] == 1: 
         button[r][c].config(bg='grey88')
+        value[r][c] = 20
       elif list[r][c] == 2:
         button[r][c].config(bg='grey77')
+        value[r][c] = 30
       elif list[r][c] == 3: 
         button[r][c].config(bg='grey66')
+        value[r][c] = 40
       elif list[r][c] == 4:
-        button[r][c].config(bg='grey44')  
+        button[r][c].config(bg='grey44')
+        value[r][c] = 50  
       elif list[r][c] == 5: 
         button[r][c].config(bg='grey33')
+        value[r][c] = 60
       elif list[r][c] == 6:
         button[r][c].config(bg='grey22')
+        value[r][c] = 70
       else: 
         button[r][c].config(bg='grey1')
+        value[r][c] = 90
 
 def save_img():
   global list2, list1, value
