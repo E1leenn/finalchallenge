@@ -91,7 +91,7 @@ def get_x_and_y(event):
 
 def paint(event):
     global lasx, lasy, value
-    if lasx >= 0 and lasx <= 575 and lasy >= 0 and lasy <= 575:
+    if lasx >= 0 and lasx <= 799 and lasy >= 0 and lasy <= 799:
       if colour == 0: 
           c.create_line((lasx,lasy, event.x, event.y),fill='grey99',width=4)
           canvasdraw[lasx][lasy] = 0
@@ -216,9 +216,9 @@ def save_img():
   list3 = []
   list4 = []
   #f0(18)
-  for i in range(0, 576, 18):
+  for i in range(0, 800, 25):
     list3 = []
-    for t in range(0 , 576, 18):
+    for t in range(0 , 800, 25):
       #list3 = []
       #f0(t, i)
       getnumber = f0(t, i) #getting the row downwards then col cause ur grid is store in the order row-column
@@ -234,8 +234,8 @@ def f0(x, y): #get the starting x, y of a 18x18 and to return 1 value back to re
   list = []
   #num1 = 18*(x-1)
   #num2 = num1 + 18
-  for i in range(x ,18+x):
-    for t in range(y ,18+y):
+  for i in range(x ,125+x):
+    for t in range(y ,25+y):
       list.append(canvasdraw[i][t])
   list0 = list
   freq = min(set(list0), key = list0.count) #using min instead cause if max almost everytime will get 0,harder for the draw to show; once the 18x18 grid got 1 value change, then return that value
@@ -308,7 +308,7 @@ frame5.grid(row=0, column=0)
 # frame6 = Frame(tab3) # tictactoe
 # frame6.grid(row=0, column=0)
 
-c = Canvas(tab2, width=576, height=576, bg='white')  
+c = Canvas(tab2, width=800, height=800, bg='white')  
 c.grid(row=0, column=0)
 
 c.bind('<Button-1>', get_x_and_y)
@@ -317,7 +317,7 @@ c.bind('<Enter>', get_x_and_y)
 
 #this variable to store the colour choice 
 colour = 0
-canvasdraw = [[0 for i in range(576)] for j in range(576)]  # save eventxy into an array 
+canvasdraw = [[0 for i in range(800)] for j in range(800)]  # save eventxy into an array 
 #print(canvasdraw)
 
 #3x3 buttons for tic tac toe
