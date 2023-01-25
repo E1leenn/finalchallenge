@@ -6,6 +6,9 @@ def gridfunc():
     var = "Grid"
     title.config(text=var)
 
+    contenttitle.grid_forget()
+    contenttxt.grid_forget()
+
     tttframe.grid_forget()
     gndframe.grid(row=0, column=0)
     dframe.grid_forget()
@@ -16,6 +19,9 @@ def drawfunc():
     var = "Draw"
     title.config(text=var)
 
+    contenttitle.grid_forget()
+    contenttxt.grid_forget()
+
     tttframe.grid_forget()
     gndframe.grid(row=0, column=0)
     gframe.grid_forget()
@@ -25,8 +31,10 @@ def tttfunc():
     global var 
     var = "Welcome to Tic-Tac-Toe"
     title.config(text=var)
-    # dframe.grid_forget()
-    # gframe.grid_forget()
+    
+    contenttitle.grid_forget()
+    contenttxt.grid_forget()
+    
     gndframe.grid_forget()
     tttframe.grid(row=0, column=0)
 
@@ -481,6 +489,14 @@ var = "Welcome!!!"
 titlefont = ("Fixedsys", 25)
 title = Label(titleframe, text=var, font=titlefont)
 title.grid(row=0, column=0)
+
+# content 
+explaination = Frame(contentframe)
+explaination.grid(row=0, column=0)
+contenttitle = Label(explaination, text="Theme: Wonders of Our Childhood", font=("Courier", 15))
+contenttitle.grid(row=0, column=0)
+contenttxt = Label(explaination, text="Our features consists of games that remind us of our childhood.", font=("Courier", 15))
+contenttxt.grid(row=1, column=0)
 
 #mode 
 modefont = ("Courier", 15)
