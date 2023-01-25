@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-# from student_pub import *
+from student_pub import *
 
 def gridfunc():
     global var 
@@ -30,7 +30,7 @@ def drawfunc():
 
 def tttfunc():
     global var 
-    var = "Welcome to Tic-Tac-Toe"
+    var = "ic-Tac-Toe"
     title.config(text=var)
     
     contenttitle.grid_forget()
@@ -505,7 +505,6 @@ contenttxt = Label(explaination, text="""Our features consists of games that rem
  We created these features as we wanted to bring some form of nostalgia
  to our target audience and teach them the physics of polarisation 
  through our interactive games while using our games as a form of relatability.""", font=("Courier", 15))
-
 contenttxt.grid(row=1, column=0)
 
 #mode 
@@ -640,5 +639,5 @@ p2.grid(row=3, columnspan=2)
 clearbtn = Button(tttframe3, text="Clear", font=("Courier", 15), command=clear)
 clearbtn.grid(row=1, columnspan=2)
 
-
+# student_pub.pubpic(value)
 main.mainloop()
