@@ -207,13 +207,11 @@ Feature 1 is the classic TicTacToe game. You can choose to be either Player 1 or
 
 <br>
 This scenario is when O wins the game
-
 ![](images/Owin.png)
 *Screenshot of TicTacToe page in GUI*
 
 <br>
 This scenario is when X wins the game
-
 ![](images/Xwin.png)
 *Screenshot of TicTacToe page in GUI*
 
