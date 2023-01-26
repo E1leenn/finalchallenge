@@ -384,9 +384,6 @@ for j in range (32):
     button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
     button[i][j].grid(row=i, column=j)
 ```
-Output <br>
-![Alt text](images/ezgif.com-gif-maker.gif) <br>
-*Screen recording of the function of the shades buttons*
 
 # Preset Buttons 
 To create the preset buttons, the code is similar to the shades button. Change the text and background colour accordingly. 
@@ -397,16 +394,7 @@ allwhite.grid(row=0, column=0)
 allblack = Button(frame3, text="All Black",font=("Calibri, 12"), bg='grey1', fg='white', width=13, height=2)
 allblack.grid(row=0, column=1)
 
-xpattern = Button(frame3, text="X Pattern",font=("Calibri, 12"), bg='gold', width=13, height=2)
-xpattern.grid(row=0, column=2)
-
-seq = Button(frame3, text="Sequence",font=("Calibri, 12"), bg='#ff007f', width=13, height=2)
-seq.grid(row=0, column=3)
 ```
-Output <br>
-
-![](images/features%20btn.png) <br>
-*Screenshot of preset button*
 
 ## Assign function to the preset buttons
 Below are the function codes for All White. 
@@ -425,36 +413,6 @@ def allblk():
       button[i][j].config(bg='grey1')
 ```
 
-Below are the function codes for X Pattern. 
-```
-def pattern():
-  for j in range (32):
-    for i in range (32):
-      if i == j: 
-        button[i][j].config(bg='grey33')
-      elif i + j == 31: 
-        button[i][j].config(bg='grey33')
-      else:
-        button[i][j].config(bg='grey99')
-
-```
-
-Below are the function codes for Sequence. 
-```
-def ramseq():
-  for j in range (32):
-    for i in range (32):
-      if j < 6:
-        button[i][j].config(bg='grey99')
-      elif j >= 6 and j <= 12:
-        button[i][j].config(bg='grey88')
-      elif j >= 12 and j <= 18:
-        button[i][j].config(bg='grey77')
-      elif j >= 18 and j <= 24:
-        button[i][j].config(bg='grey66')
-      elif j >= 24 and j <= 32:
-        button[i][j].config(bg='grey44')
-```
 
 Add the commands to the preset buttons. 
 ```
@@ -464,38 +422,26 @@ allwhite.grid(row=0, column=0)
 allblack = Button(frame3, text="All Black",font=("Calibri, 12"), bg='grey1', fg='white', width=13, height=2, command=allblk)
 allblack.grid(row=0, column=1)
 
-xpattern = Button(frame3, text="X Pattern",font=("Calibri, 12"), bg='gold', width=13, height=2, command=pattern)
-xpattern.grid(row=0, column=2)
 
-seq = Button(frame3, text="Sequence",font=("Calibri, 12"), bg='#ff007f', width=13, height=2, command=ramseq)
-seq.grid(row=0, column=3)
 ```
 
 Output for All White preset button <br>
 
-![](images/allwhite.png) <br>
+![](images/Grid.JPG) <br>
 *Screenshot of final output with all white preset*
 
 Output for All Black preset button <br>
 
-![](images/allblack.png) <br>
+![](images/Allblack.JPG) <br>
 *Screenshot of final output with all black preset*
 
-Output for x pattern preset button<br>
 
-![](images/xpattern.png) <br>
-*Screenshot of final output with x pattern preset*
-
-Output for sequence preset button <br>
-
-![](images/sequence.png) <br>
-*Screenshot of final output with sequence preset*
 
 # Send Button 
 When the send button is pressed, it will output the value of the different shades. 
 Below is the codes to create send button. 
 ```
-send = Button(frame4, text="Send Image!", font=("Calibri, 12"), width=13, height=2)
+send = Button(frame4, text="Send Image!", font=("Calibri, 12"), width=13, height=2, command=lambda :sendbtn())
 send.grid(row=0, column=0)
 ```
 Output <br>
@@ -553,46 +499,11 @@ def allblk():
       button[i][j].config(bg='grey1')
       value[i][j] = 90
 ```
-Below are the code for X Pattern button after adding the value. 
-```
-def pattern():
-  for j in range (32):
-    for i in range (32):
-      if i == j: 
-        button[i][j].config(bg='grey33')
-        value[i][j] = 60
-      elif i + j == 31: 
-        button[i][j].config(bg='grey33')
-        value[i][j] = 60
-      else:
-        button[i][j].config(bg='grey99')
-        value[i][j] = 0
-```
-Below are the code for sequence after adding the value. 
-```
-def ramseq():
-  for j in range (32):
-    for i in range (32):
-      if j < 6:
-        button[i][j].config(bg='grey99')
-        value[i][j] = 0
-      elif j >= 6 and j <= 12:
-        button[i][j].config(bg='grey88')
-        value[i][j] = 20
-      elif j >= 12 and j <= 18:
-        button[i][j].config(bg='grey77')
-        value[i][j] = 30
-      elif j >= 18 and j <= 24:
-        button[i][j].config(bg='grey66')
-        value[i][j] = 40
-      elif j >= 24 and j <= 32:
-        button[i][j].config(bg='grey44')
-        value[i][j] = 50 
-```
+
 Function code for send button. 
 ```
 def sendbtn():
-  print(value)
+  pubpic(value)
 ```
 
 Add in the command for send button 
@@ -601,25 +512,6 @@ send = Button(frame4, text="Send Image!", font=("Calibri, 12"), width=13, height
 send.grid(row=0, column=0)
 ```
 
-Output of the value of All White.<br>
-
-![](images/valuewhite.png) <br>
-*Screenshot of values of all white preset*
-
-Output of the value of All Black.<br>
-
-![](images/valueblack.png) <br>
-*Screenshot of values of all black preset*
-
-Output of the value of X Pattern.<br>
-
-![](images/valueX.png) <br>
-*Screenshot of values of x pattern preset*
-
-Output of the value of Sequence.<br>
-
-![](images/valueseq.png) <br>
-*Screenshot of values of sequence preset*
 
 # How to run the program on terminal
 1. Open the terminal on raspberryPi.  
