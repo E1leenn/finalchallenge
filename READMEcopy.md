@@ -232,13 +232,66 @@ Output <br>
 *Screenshot of a sample window*
 
 # Features
-## Tic Tac Toe
+## Feature 1
+### TicTacToe
+
 Feature 1 is the classic TicTacToe game. You can choose to be either Player 1 or Player 2 based on selecting the X or O symbol as shown in the interface below.
 
 ![](images/TicTacToe.png)
 *Screenshot of TicTacToe page in GUI*
 
 <br>
+This section of code is to build the grid and buttons, arrange them as well.
+
+```
+tttframe = Frame(contentframe)
+
+tttframe1 = Frame(tttframe)
+tttframe1.grid(rowspan=2, column=0)
+
+btn = [[i for i in range (32)] for j in range (32)]
+for i in range (32):
+    for j in range (32):
+        btn[i][j] = Button(tttframe1, font=("Calibri, 5"), width=1, height=1, bg="white")
+        btn[i][j].grid(row=i, column=j)
+
+tttframe2 = Frame(tttframe)
+tttframe2.grid(row=0, column=1, padx=15)
+
+value = [[0 for i in range(32)] for j in range(32)]
+
+gui = [[x for x in range(3)] for y in range(3)]
+
+for x in range (3):
+    for y in range (3):
+        gui[x][y] = Button(tttframe2, font=("Calibri, 5"), width=18, height=12, command=lambda r=x, c=y:tictaotoe (r, c))
+        gui[x][y].grid(row=x, column=y)
+
+tttframe3 = Frame(tttframe)
+tttframe3.grid(row=1, column=1)
+```
+<br>
+This scenario is when O wins the game
+
+![](images/Owin.png)
+
+*Screenshot of TicTacToe page in GUI*
+
+<br>
+
+This scenario is when X wins the game
+
+![](images/Xwin.png)
+
+*Screenshot of TicTacToe page in GUI*
+
+<br>
+
+## Feature 2
+### Draw
+Feature 2 is a drawing feature, users can press and hold the left click of a mouse or trackpad to draw whatever image they wish. Then have it converted to grid form.
+
+
 
 
 # Frame Function
