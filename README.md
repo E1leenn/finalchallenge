@@ -282,7 +282,7 @@ sudo pigpiod
 *Screenshot of the GUI*
 
 ## Draw Page
-![](images/????.png)
+![](images/DrawFeature.png)
 *Screenshot of the GUI*
 
 ## Tic-Tac-Toe Page
