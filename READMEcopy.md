@@ -98,6 +98,12 @@ B --> A
 
 ![](images/raspberryPi.png) <br>
 *Fu Yongwei, EGL314 - Lecture 1 Module Introduction*
+## Installation for maze
+The cardboard used for the maze is 65cm x 45cm
+![](images/MazeBase.JPG) <br>
+
+
+![](images/laser.JPG) <br>
 
 ## Software 
 1. PuTTy
