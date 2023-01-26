@@ -1,4 +1,27 @@
-# 32 x 32 GUI Documentation 
+# Table of Content
+1. Project Introduction
+
+2. System Diagram
+
+3. Flowchart
+
+4. Installation of Software & Hardware
+
+5. Setting up Raspberry Pi
+
+6. Start up page
+
+7. Features
+- Tic Tac Toe
+- Drawing
+- Laser Maze
+
+9. Running program from terminal
+
+10. All pages within program
+
+
+## 32x32, Wonders of Our Childhood
 This documentation is an introduction about the 32 x 32 GUI and it's features. The purpose of this GUI is to control the polarised motor to display a pixelated image. Users can choose from an array of different shades of grey as well as preset patterns to play with the GUI. 
 
 Example of the pixelated image. <br>
