@@ -29,23 +29,40 @@ Example of the pixelated image. <br>
 ![](images/pixiliseArt.png) <br>
 *Fu Yongwei, EGL314 - Lecture 1 Module Introduction*
 
+## Project Learning Point
+We want to showcase to our target audience about the physics of polarisation  
+and brewster angle through our interactive games. And why these particular features?
+Because there is some form of nostalgia as these are games we have played at least 
+once during our childhood which also adds relatability to our audience. 
+<br>
+## Project Backsory
+Behind these arcade games, there is always something to learn behind the scenes 
+and we wanna tell them how interesting and cool it is. How they are made better with inovation and how the may be relatively complex to build.
+
+<br>
+
+## Research? 
+
+<br>
+
 ## System Diagram of Hardware and Software
 
 ``` mermaid
 graph TD
 A[Laptop]-->B[VNC Viewer]
 B-->A
-A-->C[Putty-SSH / WinSCP - SCP]
+A-->C[MQTT]
 C-->A
-C-->D[Network Router]
-D-->E[Raspberry Pi]
-F[Keyboard / Mouse]-->E
-E-->G[HDMI Monitor]
+B-->D
+C-->D[Raspberry Pi]
+D-->E[Main Server]
+E-->F[ESP32]
+F-->G[Servo Motors]
 ```
 *Fu Yongwei, huats-club/EGL314starterkit* <br>
 *Credit: https://github.com/huats-club/EGL314starterkit*
 
-# Final Look of the GUI
+# Final Look of the GUI, Main page
 
 ![](images/gui_final.jpg) <br>
 *Screenshot of GUI*
