@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from student_pub import *
+# from student_pub import *
 
 def gridfunc():
     global var 
@@ -493,7 +493,7 @@ modeframe.grid(row=1, column=1, padx=15, pady=15)
 #title for different mode
 var = "Welcome!!!"
 titlefont = ("Fixedsys", 25)
-title = Label(titleframe, text=var, font=titlefont)
+title = Label(titleframe, text=var, font=titlefont, fg="#a5678e")
 title.grid(row=0, column=0)
 
 # content 
@@ -510,12 +510,14 @@ contenttxt.grid(row=1, column=0)
 #mode 
 modefont = ("Courier", 15)
 
-default = Button(modeframe, text="Grid", font=modefont, command=gridfunc)
+default = Button(modeframe, text="Grid", font=modefont, bg="#97d2e1", command=gridfunc)
 default.grid(row=0, column=0, padx=5, pady=5)
-draw = Button(modeframe, text="Draw", font=modefont, command=drawfunc)
+draw = Button(modeframe, text="Draw", font=modefont, bg="#ebbbbd", command=drawfunc)
 draw.grid(row=1, column=0, padx=5, pady=5)
-ttt = Button(modeframe, text="Tic-Tac-Toe", font=modefont, command=tttfunc)
-ttt.grid(row=2, column=0)
+ttt = Button(modeframe, text="Tic-Tac-Toe", font=modefont, bg="#f5d788", command=tttfunc)
+ttt.grid(row=2, column=0, padx=5, pady=5)
+maze = Button(modeframe, text="Maze", font=modefont, bg="#9b9655")
+maze.grid(row=3, column=0, padx=5, pady=5)
 
 ############################################ GRID 
 gndframe = Frame(contentframe)

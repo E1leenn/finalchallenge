@@ -1,4 +1,27 @@
-# 32 x 32 GUI Documentation 
+# Table of Content
+1. Project Introduction
+
+2. System Diagram
+
+3. Flowchart
+
+4. Installation of Software & Hardware
+
+5. Setting up Raspberry Pi
+
+6. Start up page
+
+7. Features
+- Tic Tac Toe
+- Drawing
+- Laser Maze
+
+9. Running program from terminal
+
+10. All pages within program
+
+
+## 32x32, Wonders of Our Childhood
 This documentation is an introduction about the 32 x 32 GUI and it's features. The purpose of this GUI is to control the polarised motor to display a pixelated image. Users can choose from an array of different shades of grey as well as preset patterns to play with the GUI. 
 
 Example of the pixelated image. <br>
@@ -6,23 +29,40 @@ Example of the pixelated image. <br>
 ![](images/pixiliseArt.png) <br>
 *Fu Yongwei, EGL314 - Lecture 1 Module Introduction*
 
+## Project Learning Point
+We want to showcase to our target audience about the physics of polarisation  
+and brewster angle through our interactive games. And why these particular features?
+Because there is some form of nostalgia as these are games we have played at least 
+once during our childhood which also adds relatability to our audience. 
+<br>
+## Project Backsory
+Behind these arcade games, there is always something to learn behind the scenes 
+and we wanna tell them how interesting and cool it is. How they are made better with inovation and how the may be relatively complex to build.
+
+<br>
+
+## Research? 
+
+<br>
+
 ## System Diagram of Hardware and Software
 
 ``` mermaid
 graph TD
 A[Laptop]-->B[VNC Viewer]
 B-->A
-A-->C[Putty-SSH / WinSCP - SCP]
+A-->C[MQTT]
 C-->A
-C-->D[Network Router]
-D-->E[Raspberry Pi]
-F[Keyboard / Mouse]-->E
-E-->G[HDMI Monitor]
+B-->D
+C-->D[Raspberry Pi]
+D-->E[Main Server]
+E-->F[ESP32]
+F-->G[Servo Motors]
 ```
 *Fu Yongwei, huats-club/EGL314starterkit* <br>
 *Credit: https://github.com/huats-club/EGL314starterkit*
 
-# Final Look of the GUI
+# Final Look of the GUI, Main page
 
 ![](images/gui_final.jpg) <br>
 *Screenshot of GUI*
@@ -538,222 +578,6 @@ Output of the value of Sequence.<br>
 
 ![](images/valueseq.png) <br>
 *Screenshot of values of sequence preset*
-
-# Features 
-## Feature 1 - TicTacToe 
-### When players select the O or X icons they can choose to be player 1 or 2 and play against each other.
-
-<br>
-
-Below is an image of the TicTacToe GUI
-![](images/TicTacToe.png) <br>
-*Screenshot of TicTacToe GUI*
-
-<br>
-Below are the code to create the 3x3 grid used to place the O and X symbols
-
-```
-for x in range (3):
-    for y in range (3):
-        gui[x][y] = Button(frame2, font=("Calibri, 5"), width=18, height=12, command=lambda r=x, c=y:tictaotoe (r, c))
-        gui[x][y].grid(row=x, column=y)
-```
-<br>
-Below are the code to create the O and X symbols and place them on the 32x32 grid formate
-
-```
-def tictaotoe(x,y):
-    global pattern, xoff, yoff
-    if x == 0 and y == 0:
-        xoff = 0
-        yoff = 0
-    elif x == 0 and y == 1:
-        xoff = 0
-        yoff = 12
-    elif x == 0 and y == 2:
-        xoff = 0
-        yoff = 24
-    elif x == 1 and y == 0:
-        xoff = 12
-        yoff = 0 
-    elif x == 1 and y == 1: 
-        xoff = 12
-        yoff = 12
-    elif x == 1 and y == 2: 
-        xoff= 12
-        yoff = 24 
-    elif x == 2 and y == 0: 
-        xoff = 24
-        yoff = 0 
-    elif x == 2 and y == 1: 
-        xoff = 24
-        yoff = 12 
-    else: 
-        xoff = 24
-        yoff = 24
-
-    if pattern == 0: 
-        var = "X"
-        gui[x][y].config(text=var)
-        condition(logic(var))
-        print(logic(var))
-        for i in range (32):
-            for j in range (32):
-                if i == xoff and j == yoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 1 and j == yoff + 1: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 2 and j == yoff + 2: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 3 and j == yoff + 3: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 4 and j == yoff + 4: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 5 and j == yoff + 5: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 6 and j == yoff + 6: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 7 and j == yoff + 7: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff and j == yoff + 7: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 1 and j == yoff + 6: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 2 and j == yoff + 5: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 3 and j == yoff + 4: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 4 and j == yoff + 3: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 5 and j == yoff + 2: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 6 and j == yoff + 1: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == xoff + 7 and j == yoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                
-
-    else:
-        var = "O"
-        gui[x][y].config(text=var)
-        condition(logic(var))
-        print(logic(var))
-        for i in range (32):
-            for j in range (32):
-                if j == 1 + yoff: 
-                    if i == 2 + xoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                    elif i == 3 + xoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                    elif i == 4 + xoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                    elif i == 5 + xoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif j == 6 + yoff: 
-                    if i == 2 + xoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                    elif i == 3 + xoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                    elif i == 4 + xoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                    elif i == 5 + xoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == 1 + xoff: 
-                    if j == 2 + yoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                    elif j == 3 + yoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                    elif j == 4 + yoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                    elif j == 5 + yoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                elif i == 6 + xoff: 
-                    if j == 2 + yoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                    elif j == 3 + yoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                    elif j == 4 + yoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-                    elif j == 5 + yoff: 
-                        value[i][j] = 7
-                        btn[i][j].config(bg="black")
-```
-<br>
-Output of selecting X and O 
-
-![](images/XandOselect.png) <br>
-*Screenshot of TicTacToe GUI with X and O selected on top corners*
-
-<br>
-Output of X winning
-
-![](images/Xwin.png)
-*Screenshot of TicTacToe GUI when X wins*
-
-<br>
-Output of O winning
-
-![](images/Owin.png)
-*Screenshot of TicTacToe GUI when O wins*
-
-
-<br>
-Output of the value of grid which determine the shades on the panel. 
-
-![](images/tictactoegridvalue.png)
-*Screenshot of values of TicTacToe grid*
-
-<br>
-Output of the value of X and O selection
-
-![](images/tictactoeSelectionValue.png)
-*Screenshot of values of X and O selection on top corners*
-
-<br>
-Output of the value of X win
-
-![](images/XwinValue.png)
-*Screenshot of values of X winning*
-
-<br>
-Output of the value of O win
-
-![](images/OwinValue.png)
-*Screenshot of values of O winning*
-
-
-<br>
 
 # How to run the program on terminal
 1. Open the terminal on raspberryPi.  
