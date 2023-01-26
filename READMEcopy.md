@@ -62,11 +62,6 @@ F-->G[Servo Motors]
 *Fu Yongwei, huats-club/EGL314starterkit* <br>
 *Credit: https://github.com/huats-club/EGL314starterkit*
 
-# Final Look of the GUI, Main page
-
-![](images/gui_final.jpg) <br>
-*Screenshot of GUI*
-
 ## Code Flowchart
 ```mermaid
 graph TD
@@ -82,6 +77,12 @@ D --> F[All Black]
 D --> G[X Pattern]
 D --> H[Sequence]
 A --> J[Send Image]
+A--> K[Features] --> L[TicTacToe]
+A--> K --> M[Draw]
+A --> K --> N[Laser Maze]
+N --> B
+M --> B
+L --> B
 E --> B
 H --> B
 G --> B
@@ -102,9 +103,9 @@ B --> A
 1. PuTTy
 2. Advanced Port Scanner
 3. VNC Viewer
+4. Pi GPIO Library
 
-# Setting up the Raspberry Pi
- Note: Only do the following on first initial boot.
+
 
 ## PuTTy 
 PuTTy allows free implementation of SSH for PCs running Microsoft Windows. After installing PuTTy, enter the hostname "raspberrypi".<br>
@@ -112,38 +113,6 @@ PuTTy allows free implementation of SSH for PCs running Microsoft Windows. After
 ![](images/putty.webp) <br>
 *Credit: https://tutorials-raspberrypi.com/raspberry-pi-remote-access-by-using-ssh-and-putty/*
 
-
-After you entered the hostname, click "open" and a command prompt window should appear. Enter your username and password here. The Raspbian default login is user “pi” with password “raspberry“.
-
-![](images/RaspberryPi_boot.png) <br>
-*Credit: https://librarymakers.net/using-cli-raspberry-pi*
-
-You may change your password with the following command: ```sudo passwd```
-
-### 1. Update Raspberry pi
-Once logged in, update the Raspberry Pi. 
-```
-sudo apt update
-sudo apt upgrade
-```
-### 2. Configuring Raspberry pi
-### Enable SSH <br>
-SSH is a is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network. To enable SSH type the following,
-```
-sudo raspi-config
-```
-Select ```3 Interface Options```<br>
-Select ```P2 SSH```<br>
-Select **Enable SSH**
-
-### Enable Virtual Network Computing (VNC) <br>
-VNC is a cross-platform screen sharing system that was created to remotely control another computer. To enable VNC, open terminal on your Raspberry Pi and try the following. 
-```
-sudo raspi-config
-```
-Select ```3 Interface Options```<br>
-Select ```P3 VNC```<br>
-Select **Enable VNC**
 
 ## Advanced Port Scanner
 Use Advanced Port Scanner to scan your network ip address in order to connect to VNC Viewer. Click "Start" to scart scanning. 
@@ -177,6 +146,69 @@ To start coding, click on the raspberry pi logo and under Programming, look for 
 ![](images/thonny_ide_start.png)
 *Credit: https://roboticsbackend.com/thonny-ide-raspberry-pi-os/*
 
+<br>
+
+## Pi GPIO Library
+Go to this link to view all commands to install the PiGPIOd library, reduces jitter on servo motor
+<br>*Credit: http://abyz.me.uk/rpi/pigpio/download.html*<br>
+Code used to install Library as shown in image, enter in Terminal of Raspberry Pi
+```
+wget https://github.com/joan2937/pigpio/archive/master.zip
+unzip master.zip
+cd pigpio-master
+make
+sudo make install
+```
+
+
+![](images/pigpioLibrary.png)
+*Screenshot of Google Chrome webpage*
+
+Before starting the program to control the servos, you must activate the daemon from the terminal.
+
+```
+sudo pigpiod
+```
+
+![](images/daemon.png)
+*Screenshot of Terminal in Raspberry Pi*
+
+# Setting up the Raspberry Pi
+ Note: Only do the following on first initial boot.
+
+After you entered the hostname, click "open" and a command prompt window should appear. Enter your username and password here. The Raspbian default login is user “pi” with password “raspberry“.
+
+![](images/RaspberryPi_boot.png) <br>
+*Credit: https://librarymakers.net/using-cli-raspberry-pi*
+
+You may change your password with the following command: ```sudo passwd```
+
+### 1. Update Raspberry pi
+Once logged in, update the Raspberry Pi. 
+```
+sudo apt update
+sudo apt upgrade
+```
+### 2. Configuring Raspberry pi
+### Enable SSH <br>
+SSH is a is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network. To enable SSH type the following,
+```
+sudo raspi-config
+```
+Select ```3 Interface Options```<br>
+Select ```P2 SSH```<br>
+Select **Enable SSH**
+
+### Enable Virtual Network Computing (VNC) <br>
+VNC is a cross-platform screen sharing system that was created to remotely control another computer. To enable VNC, open terminal on your Raspberry Pi and try the following. 
+```
+sudo raspi-config
+```
+Select ```3 Interface Options```<br>
+Select ```P3 VNC```<br>
+Select **Enable VNC**
+
+<br>
 
 # Setting Up The GUI
 To create a tkinter GUI, we need to import the tkinter library. 
@@ -198,6 +230,16 @@ Output <br>
 
 ![](images/window.png) <br>
 *Screenshot of a sample window*
+
+# Features
+## Tic Tac Toe
+Feature 1 is the classic TicTacToe game. You can choose to be either Player 1 or Player 2 based on selecting the X or O symbol as shown in the interface below.
+
+![](images/TicTacToe.png)
+*Screenshot of TicTacToe page in GUI*
+
+<br>
+
 
 # Frame Function
 We are using the frame function to group and organize the widget to make it neater so that it is user friendly.
