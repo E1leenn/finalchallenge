@@ -204,10 +204,12 @@ There are a total of three features......
 
 # Tic-Tac-Toe
 Feature 1 is the classic TicTacToe game. You can choose to be either Player 1 or Player 2 based on selecting the X or O symbol as shown in the interface below.
+
 <br>
 This scenario is when O wins the game
 ![](images/Owin.png)
 *Screenshot of TicTacToe page in GUI*
+
 <br>
 This scenario is when X wins the game
 ![](images/Xwin.png)
@@ -219,10 +221,12 @@ Users can press and hold the left click of a mouse or trackpad to draw on the ca
 ![](images/DrawFeature.png)
 *Screenshot of Draw page in GUI*
 <br>
+
 This is how it looks like when a user draws on the canvas. 
 ![](images/drawfeatureSmile.png)
 *Screenshot of Draw page in GUI*
 <br>
+
 This is how the drawing looks when the user save it and changes it to grid form.
 ![](images/drawfeaturetogrid.png)
 *Screenshot of Draw page in GUI*
@@ -233,6 +237,7 @@ This is how the drawing looks when the user save it and changes it to grid form.
 # Laser Maze
 ## Hardware for the Laser Maze
 The laser maze consist of 3 SG90 servos, 6 mirrors, breadboard, RaspberryPi, laser, jumperwires, photodiode sensor, 2 polarizers.<br>
+
 2 mirrors and 1 polarizer is attacted to the each of the servo to make it movable to direct the laser to the sensor. 
 
 The cardboard used as a base for the maze is 65cm x 45cm
@@ -248,6 +253,7 @@ The box that is used to hold the laser is 17cm x 12cm
 ### Pi GPIO Library
 Go to this link to view all commands to install the PiGPIOd library, reduces jitter on servo motor
 <br>*Credit: http://abyz.me.uk/rpi/pigpio/download.html*<br>
+
 Code used to install Library as shown in image, enter in Terminal of Raspberry Pi
 ```
 wget https://github.com/joan2937/pigpio/archive/master.zip
