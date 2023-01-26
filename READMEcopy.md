@@ -289,10 +289,177 @@ This scenario is when X wins the game
 
 ## Feature 2
 ### Draw
+
 Feature 2 is a drawing feature, users can press and hold the left click of a mouse or trackpad to draw whatever image they wish. Then have it converted to grid form.
 
+![](images/DrawFeature.png)
+
+*Screenshot of Draw page in GUI*
+
+<br>
+This line of code creates the canvas to draw on and stores selected colour.
+
+```
+dframe = Frame(gndframe)
+dframe.grid(row=0, column=0)
+
+c = Canvas(dframe, width=800, height=800, bg='white')  
+c.grid(row=0, column=0)
+
+c.bind('<Button-1>', get_x_and_y)
+c.bind('<B1-Motion>',paint)
+c.bind('<Enter>', get_x_and_y)
+
+#this variable to store the colour choice 
+colour = 0
+canvasdraw = [[0 for i in range(800)] for j in range(800)]  # save eventxy into an array 
+
+```
+
+<br>
+This is how it looks like when a user draws on the canvas
+
+![](images/drawfeatureSmile.png)
+
+*Screenshot of Draw page in GUI*
+
+<br>
+This is how the drawing looks when the user Saves it then changes it to grid form.
+
+![](images/drawfeaturetogrid.png)
+
+*Screenshot of Draw page in GUI*
+
+<br>
+
+## Feature 3
+### Laser Maze
+
+Feature 3 is a Laser Maze which users need to navigate through. Starting from the laser pointer at a fixed position shinning into a mirror. The user's task is the redirect the laser using the GUI that controls servo motors which have mirrors and a polariser attatched to them to reflect the beam into a sensor at the end in order to win the game.
+
+<br>
+
+This is the Laser Maze controls on the GUI
+
+![](images/lasermazegui.png)
+
+*Screenshot of Laser Maze page on the GUI*
+
+<br>
+
+This line of code is the starting settings of the motors upon starting the python file
+
+```
+s = AngularServo(25, initial_angle = 0, min_pulse_width = 1/1000, max_pulse_width =2/1000
+                , frame_width = 20/1000, pin_factory = factory, min_angle=-90, max_angle=90)
+
+s1 = AngularServo(12 , initial_angle = 0, min_pulse_width = 1/1000, max_pulse_width =2/1000
+                , frame_width = 20/1000, pin_factory = factory, min_angle=-90, max_angle=90)
+
+s2 = AngularServo(24 , initial_angle = 75, min_pulse_width = 1/1000, max_pulse_width =2/1000
+                , frame_width = 20/1000, pin_factory = factory, min_angle=-90, max_angle=90)
+
+```
+
+This line of code is the calculation of the angles when pushing the buttons on the GUI to turn the motors. And to reset the motors to a preset angle.
+
+```
+counter_s = 0
+counter_s1 = 0
+counter_s2 = 0
+
+def subtract():
+    global counter_s 
+    counter_s -=15
+    s.angle = 0 + counter_s
+    s.angle = int(s.angle - 15) 
+    print("motor1: ", s.angle)
+    
+    
+    if s.angle == -90:
+        counter_s = -90
+        
+    
+#     s1.angle = int(slider1.value)
+#     print("motor2: ",s1.angle)
+    
+def addition():
+    
+    global counter_s 
+    counter_s  +=15
+    s.angle = 0 + counter_s 
+    print("motor1:", s.angle)
+    
+    if s.angle == 90.0:
+        counter_s  = 90.0
+        tkinter.messagebox.showinfo("You have reached the maximum angle")
 
 
+
+
+def subtract2():
+    global counter_s1 
+    counter_s1 -=15
+    s1.angle = 0 + counter_s1 
+    #s.angle = int(s.angle - 15) 
+    print("motor2: ", s1.angle)
+    
+    
+    if s1.angle == -90.0:
+        counter_s1 = -90.0
+        print("You have reached the minimum angle")
+    
+    #s1.angle = int(slider1.value)
+    #print("motor2: ",s1.angle)
+    
+def addition2():
+    global counter_s1
+    counter_s1 +=15
+    s1.angle = 0 + counter_s1
+    print("motor2:", s1.angle)
+    
+    if s1.angle == 90.0:
+        counter_s1 = 90.0
+        print("You have reached the maximum angle")
+
+
+
+def subtract3():
+    global counter_s2 
+    counter_s2 -=15
+    s2.angle = 0 + counter_s2 
+    #s.angle = int(s.angle - 15) 
+    print("Polariser: ", s2.angle)
+    
+    
+    if s2.angle == -90.0:
+        counter_s2 = -90.0
+        print("You have reached the minimum angle")
+    
+    #s1.angle = int(slider1.value)
+    #print("motor2: ",s1.angle)
+    
+def addition3():
+    global counter_s2
+    counter_s2 +=15
+    s2.angle = 0 + counter_s2
+    print("Polariser:", s2.angle)
+    
+    if s2.angle == 90.0:
+        counter_s2 = 90.0
+        print("You have reached the maximum angle")
+        
+        
+def reset_motor():
+    s.angle = 0.0
+    s1.angle = 0.0
+    s2.angle = 75.0
+    print(s.angle,s1.angle,s2.angle)
+```
+
+
+
+<br>
 
 # Frame Function
 We are using the frame function to group and organize the widget to make it neater so that it is user friendly.
@@ -321,6 +488,8 @@ Output <br>
 
 ![](images/frameEXAMPLE.png) <br>
 *Screenshot of a frame window*
+
+
 
 # Create 32 x 32 Buttons
 We are using a list of list and nested for loop to create a 32 x 32 buttons. 
