@@ -98,12 +98,19 @@ B --> A
 
 ![](images/raspberryPi.png) <br>
 *Fu Yongwei, EGL314 - Lecture 1 Module Introduction*
+
 ## Installation for maze
-The cardboard used for the maze is 65cm x 45cm
+The laser maze consist of 3 SG90 servos, 6 mirrors, breadboard, RaspberryPi, laser, jumperwires, photodiode sensor, 2 polarizers.<br>
+2 mirrors and 1 polarizer is attacted to the each of the servo to make it movable to direct the laser to the sensor. 
+
+The cardboard used as a base for the maze is 65cm x 45cm
 ![](images/MazeBase.JPG) <br>
 
-
+The box that is used to hold the laser is 17cm x 12cm
 ![](images/laser.JPG) <br>
+
+
+![](images/pi.JPG)<br>
 
 ## Software 
 1. PuTTy
@@ -401,8 +408,6 @@ def addition():
         tkinter.messagebox.showinfo("You have reached the maximum angle")
 
 
-
-
 def subtract2():
     global counter_s1 
     counter_s1 -=15
@@ -427,8 +432,6 @@ def addition2():
     if s1.angle == 90.0:
         counter_s1 = 90.0
         print("You have reached the maximum angle")
-
-
 
 def subtract3():
     global counter_s2 
@@ -462,7 +465,6 @@ def reset_motor():
     s2.angle = 75.0
     print(s.angle,s1.angle,s2.angle)
 ```
-
 
 
 <br>
