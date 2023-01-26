@@ -22,8 +22,8 @@ Behind these arcade games, there is always something to learn behind the scenes 
   - [Draw](#draw)
   - [Tic-Tac-Toe](#tic-tac-toe)
   - [Laser Maze](#laser-maze)
-      - [Hardware]
-      - [Software]
+      - [Hardware](#hardware-for-the-laser-maze)
+      - [Software](#software-for-laser-maze-gui)
 - [Final Look of the GUI](#final-look-of-gui)
 - [How to Run on Terminal](#how-to-run-on-terminal)
 
