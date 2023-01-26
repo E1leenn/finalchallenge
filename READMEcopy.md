@@ -74,8 +74,7 @@ A --> D[Preset]
 D --> A
 D --> E[All White]
 D --> F[All Black]
-D --> G[X Pattern]
-D --> H[Sequence]
+D --> G[Clear]
 A --> J[Send Image]
 A--> K[Features] --> L[TicTacToe]
 A--> K --> M[Draw]
@@ -84,7 +83,6 @@ N --> B
 M --> B
 L --> B
 E --> B
-H --> B
 G --> B
 F --> B
 B --> A
@@ -105,9 +103,10 @@ The laser maze consist of 3 SG90 servos, 6 mirrors, breadboard, RaspberryPi, las
 
 The cardboard used as a base for the maze is 65cm x 45cm
 ![](images/MazeBase.JPG) <br>
+*Image of the cardboard used for the maze*
 
 The box that is used to hold the laser is 17cm x 12cm
-![](images/laser.JPG) <br>
+![](images/laser.JPG) <br> 
 
 
 ![](images/pi.JPG)<br>
