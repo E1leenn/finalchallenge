@@ -216,7 +216,7 @@ This scenario is when X wins the game
 *Screenshot of TicTacToe page in GUI*
 
 # Draw
-Users can press and hold the left click of a mouse or trackpad to draw on the canvas then have it converted to grid form.
+Users can select one of the shades colour, press and hold the left click of a mouse or trackpad to draw on the canvas then have it converted to grid form.
 
 ![](images/DrawFeature.png)
 *Screenshot of Draw page in GUI*
@@ -277,16 +277,20 @@ sudo pigpiod
 ![](images/homepg.png)
 *Screenshot of the GUI*
 
-## Grid Page
+## Grid GUI
 ![](images/gridpage.png)
 *Screenshot of the GUI*
 
-## Draw Page
+## Draw GUI
 ![](images/DrawFeature.png)
 *Screenshot of the GUI*
 
-## Tic-Tac-Toe Page
+## Tic-Tac-Toe GUI
 ![](images/tttpg.png)
+*Screenshot of the GUI*
+
+## Laser Maze GUI
+![](images/lasermazegui.png)
 *Screenshot of the GUI*
 
 # How to Run on Terminal 
