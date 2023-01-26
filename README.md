@@ -176,6 +176,7 @@ Output <br>
 
 ![](images/window.png) <br>
 *Screenshot of a sample window*
+
  ## Frame Function 
 We are using the frame function to group and organize the widget to make it neater so that it is user friendly. Below are the three main frames that form the GUI. 
 
@@ -195,8 +196,7 @@ modeframe = Frame(main)
 modeframe.grid(row=1, column=1, padx=15, pady=15)
 ```
 Output <br>
-
-![](images\overallframe.png) <br>
+![](images/overallframe.png) <br>
 *Screenshot of a frame window*
 
 # Features
