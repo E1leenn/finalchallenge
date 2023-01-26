@@ -30,7 +30,7 @@ def drawfunc():
 
 def tttfunc():
     global var 
-    var = "Welcome to Tic-Tac-Toe"
+    var = "Tic-Tac-Toe"
     title.config(text=var)
     
     contenttitle.grid_forget()
@@ -493,7 +493,7 @@ modeframe.grid(row=1, column=1, padx=15, pady=15)
 #title for different mode
 var = "Welcome!!!"
 titlefont = ("Fixedsys", 25)
-title = Label(titleframe, text=var, font=titlefont)
+title = Label(titleframe, text=var, font=titlefont, fg="#a5678e")
 title.grid(row=0, column=0)
 
 # content 
@@ -505,18 +505,19 @@ contenttxt = Label(explaination, text="""Our features consists of games that rem
  We created these features as we wanted to bring some form of nostalgia
  to our target audience and teach them the physics of polarisation 
  through our interactive games while using our games as a form of relatability.""", font=("Courier", 15))
-
 contenttxt.grid(row=1, column=0)
 
 #mode 
 modefont = ("Courier", 15)
 
-default = Button(modeframe, text="Grid", font=modefont, command=gridfunc)
+default = Button(modeframe, text="Grid", font=modefont, bg="#97d2e1", command=gridfunc)
 default.grid(row=0, column=0, padx=5, pady=5)
-draw = Button(modeframe, text="Draw", font=modefont, command=drawfunc)
+draw = Button(modeframe, text="Draw", font=modefont, bg="#ebbbbd", command=drawfunc)
 draw.grid(row=1, column=0, padx=5, pady=5)
-ttt = Button(modeframe, text="Tic-Tac-Toe", font=modefont, command=tttfunc)
-ttt.grid(row=2, column=0)
+ttt = Button(modeframe, text="Tic-Tac-Toe", font=modefont, bg="#f5d788", command=tttfunc)
+ttt.grid(row=2, column=0, padx=5, pady=5)
+maze = Button(modeframe, text="Maze", font=modefont, bg="#9b9655")
+maze.grid(row=3, column=0, padx=5, pady=5)
 
 ############################################ GRID 
 gndframe = Frame(contentframe)
@@ -640,5 +641,5 @@ p2.grid(row=3, columnspan=2)
 clearbtn = Button(tttframe3, text="Clear", font=("Courier", 15), command=clear)
 clearbtn.grid(row=1, columnspan=2)
 
-
+# student_pub.pubpic(value)
 main.mainloop()
