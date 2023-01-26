@@ -30,7 +30,7 @@ def drawfunc():
 
 def tttfunc():
     global var 
-    var = "ic-Tac-Toe"
+    var = "Tic-Tac-Toe"
     title.config(text=var)
     
     contenttitle.grid_forget()
