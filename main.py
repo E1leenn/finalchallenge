@@ -2,6 +2,12 @@ from tkinter import *
 from tkinter import messagebox
 # from student_pub import *
 
+def homefunc():
+    tttframe.grid_forget()
+    gndframe.grid_forget()
+    contenttitle.grid(row=0, column=0)
+    contenttxt.grid(row=1, column=0)
+
 def gridfunc():
     global var 
     var = "Grid"
@@ -483,11 +489,11 @@ main = Tk()
 # main.state('zoom')
 
 titleframe = Frame(main)
-titleframe.grid(row=0, columnspan=2)
+titleframe.grid(row=0, columnspan=1)
 contentframe = Frame(main)
 contentframe.grid(row=1, column=0)
 modeframe = Frame(main)
-modeframe.grid(row=1, column=1, padx=15, pady=15)
+modeframe.grid(row=1, column=1, pady=15)
 
 
 #title for different mode
@@ -499,6 +505,7 @@ title.grid(row=0, column=0)
 # content 
 explaination = Frame(contentframe)
 explaination.grid(row=0, column=0)
+
 contenttitle = Label(explaination, text="Theme: Wonders of Our Childhood", font=("Fixedsys", 15))
 contenttitle.grid(row=0, column=0)
 contenttxt = Label(explaination, text="""Our features consists of games that remind us of our childhood.
@@ -516,8 +523,8 @@ draw = Button(modeframe, text="Draw", font=modefont, bg="#ebbbbd", command=drawf
 draw.grid(row=1, column=0, padx=5, pady=5)
 ttt = Button(modeframe, text="Tic-Tac-Toe", font=modefont, bg="#f5d788", command=tttfunc)
 ttt.grid(row=2, column=0, padx=5, pady=5)
-maze = Button(modeframe, text="Maze", font=modefont, bg="#9b9655")
-maze.grid(row=3, column=0, padx=5, pady=5)
+start = Button(modeframe, text="Home Page", font=modefont, bg="#9b9655", command=homefunc)
+start.grid(row=3, column=0, padx=5, pady=5)
 
 ############################################ GRID 
 gndframe = Frame(contentframe)

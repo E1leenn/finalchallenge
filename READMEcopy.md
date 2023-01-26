@@ -117,8 +117,6 @@ The box that is used to hold the laser is 17cm x 12cm
 3. VNC Viewer
 4. Pi GPIO Library
 
-
-
 ## PuTTy 
 PuTTy allows free implementation of SSH for PCs running Microsoft Windows. After installing PuTTy, enter the hostname "raspberrypi".<br>
 
@@ -186,7 +184,7 @@ sudo pigpiod
 *Screenshot of Terminal in Raspberry Pi*
 
 # Setting up the Raspberry Pi
- Note: Only do the following on first initial boot.
+Note: Only do the following on first initial boot.
 
 After you entered the hostname, click "open" and a command prompt window should appear. Enter your username and password here. The Raspbian default login is user “pi” with password “raspberry“.
 
@@ -332,14 +330,12 @@ canvasdraw = [[0 for i in range(800)] for j in range(800)]  # save eventxy into 
 This is how it looks like when a user draws on the canvas
 
 ![](images/drawfeatureSmile.png)
-
 *Screenshot of Draw page in GUI*
 
 <br>
 This is how the drawing looks when the user Saves it then changes it to grid form.
 
 ![](images/drawfeaturetogrid.png)
-
 *Screenshot of Draw page in GUI*
 
 <br>

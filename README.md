@@ -1,33 +1,51 @@
-# 32 x 32 GUI Documentation 
-This documentation is an introduction about the 32 x 32 GUI and it's features. The purpose of this GUI is to control the polarised motor to display a pixelated image. Users can choose from an array of different shades of grey as well as preset patterns to play with the GUI. 
+# Wonders Of Our Childhood 
+In this documentation, we will be explaining about the different features of our project. Our theme is "Wonders Of Our Childhood", our features are based on our childhood that encapsulates the memories of the simpler times where we would play these games when we were younger. 
 
-Example of the pixelated image. <br>
+## Project Learning Point
+We want to showcase to our target audience about the physics of polarisation
+and brewster angle through our interactive games. And why these particular features? Because there is some form of nostalgia as these are games we have played at least once during our childhood which also adds relatability to our audience.
 
-![](images/pixiliseArt.png) <br>
-*Fu Yongwei, EGL314 - Lecture 1 Module Introduction*
+## Project Backstory
+Behind these arcade games, there is always something to learn behind the scenes and we wanna tell them how interesting and cool it is. How they are made better with inovation and how the may be relatively complex to build.
 
-## System Diagram of Hardware and Software
+# Table of Contents 
+- [System Diagram](#system-diagram)
+  - [Hardware](#hardware)
+  - [Software](#software)
+- [Installation](#installation)
+  - [Hardware](#installation-of-hardware)
+  - [Software](#installation-of-software)
+- [Setting up Raspberry Pi](#setting-up-raspberry-pi)
+- [Setting up GUI](#setting-up-gui)
+  - [Frame Function](#frame-function)
+- [Features](#features)
+  - [Draw](#draw)
+  - [Tic-Tac-Toe](#tic-tac-toe)
+  - [Laser Maze](#laser-maze)
+      - [Hardware]
+      - [Software]
+- [Final Look of the GUI](#final-look-of-gui)
+- [How to Run on Terminal](#how-to-run-on-terminal)
 
+
+# System Diagram
+## Hardware
 ``` mermaid
 graph TD
 A[Laptop]-->B[VNC Viewer]
 B-->A
-A-->C[Putty-SSH / WinSCP - SCP]
+A-->C[MQTT]
 C-->A
-C-->D[Network Router]
-D-->E[Raspberry Pi]
-F[Keyboard / Mouse]-->E
-E-->G[HDMI Monitor]
+B-->D
+C-->D[Raspberry Pi]
+D-->E[Main Server]
+E-->F[ESP32]
+F-->G[Servo Motors]
 ```
 *Fu Yongwei, huats-club/EGL314starterkit* <br>
 *Credit: https://github.com/huats-club/EGL314starterkit*
 
-# Final Look of the GUI
-
-![](images/gui_final.jpg) <br>
-*Screenshot of GUI*
-
-## Code Flowchart
+## Software 
 ```mermaid
 graph TD
 A[main.py] --> C[change_colour]
@@ -39,71 +57,39 @@ A --> D[Preset]
 D --> A
 D --> E[All White]
 D --> F[All Black]
-D --> G[X Pattern]
-D --> H[Sequence]
+D --> G[Clear]
 A --> J[Send Image]
+A--> K[Features] --> L[TicTacToe]
+A--> K --> M[Draw]
+A --> K --> N[Laser Maze]
+N --> B
+M --> B
+L --> B
 E --> B
-H --> B
 G --> B
 F --> B
 B --> A
 ```
 *Code Flow Chart*
 
-# Installation of Software and Hardware
-## Hardware
+# Installation 
+## Installation of Hardware
 **Model** : RaspberryPi 4 Model B <br>
 **OS Version** : Raspbian GNU/Linux 10 (buster) <br>
-
 ![](images/raspberryPi.png) <br>
 *Fu Yongwei, EGL314 - Lecture 1 Module Introduction*
 
-## Software 
+## Installation of Software
 1. PuTTy
 2. Advanced Port Scanner
 3. VNC Viewer
-
-# Setting up the Raspberry Pi
- Note: Only do the following on first initial boot.
+4. Pi GPIO Library
 
 ## PuTTy 
 PuTTy allows free implementation of SSH for PCs running Microsoft Windows. After installing PuTTy, enter the hostname "raspberrypi".<br>
 
 ![](images/putty.webp) <br>
 *Credit: https://tutorials-raspberrypi.com/raspberry-pi-remote-access-by-using-ssh-and-putty/*
-
-
-After you entered the hostname, click "open" and a command prompt window should appear. Enter your username and password here. The Raspbian default login is user “pi” with password “raspberry“.
-
-![](images/RaspberryPi_boot.png) <br>
-*Credit: https://librarymakers.net/using-cli-raspberry-pi*
-
-You may change your password with the following command: ```sudo passwd```
-
-### 1. Update Raspberry pi
-Once logged in, update the Raspberry Pi. 
-```
-sudo apt update
-sudo apt upgrade
-```
-### 2. Configuring Raspberry pi
-### Enable SSH <br>
-SSH is a is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network. To enable SSH type the following,
-```
-sudo raspi-config
-```
-Select ```3 Interface Options```<br>
-Select ```P2 SSH```<br>
-Select **Enable SSH**
-
-### Enable Virtual Network Computing (VNC) <br>
-VNC is a cross-platform screen sharing system that was created to remotely control another computer. To enable VNC, open terminal on your Raspberry Pi and try the following. 
-```
-sudo raspi-config
-```
-Select ```3 Interface Options```<br>
-Select ```P3 VNC```<br>
-Select **Enable VNC**
 
 ## Advanced Port Scanner
 Use Advanced Port Scanner to scan your network ip address in order to connect to VNC Viewer. Click "Start" to scart scanning. 
@@ -137,8 +123,42 @@ To start coding, click on the raspberry pi logo and under Programming, look for 
 ![](images/thonny_ide_start.png)
 *Credit: https://roboticsbackend.com/thonny-ide-raspberry-pi-os/*
 
+# Setting up Raspberry Pi
+Note: Only do the following on first initial boot.
 
-# Setting Up The GUI
+After you entered the hostname, click "open" and a command prompt window should appear. Enter your username and password here. The Raspbian default login is user “pi” with password “raspberry“.
+
+![](images/RaspberryPi_boot.png) <br>
+*Credit: https://librarymakers.net/using-cli-raspberry-pi*
+
+You may change your password with the following command: ```sudo passwd```
+
+### 1. Update Raspberry pi
+Once logged in, update the Raspberry Pi. 
+```
+sudo apt update
+sudo apt upgrade
+```
+### 2. Configuring Raspberry pi
+### Enable SSH <br>
+SSH is a is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network. To enable SSH type the following,
+```
+sudo raspi-config
+```
+Select ```3 Interface Options```<br>
+Select ```P2 SSH```<br>
+Select **Enable SSH**
+
+### Enable Virtual Network Computing (VNC) <br>
+VNC is a cross-platform screen sharing system that was created to remotely control another computer. To enable VNC, open terminal on your Raspberry Pi and try the following. 
+```
+sudo raspi-config
+```
+Select ```3 Interface Options```<br>
+Select ```P3 VNC```<br>
+Select **Enable VNC**
+
+# Setting up GUI
 To create a tkinter GUI, we need to import the tkinter library. 
 ```
 from tkinter import *
@@ -148,398 +168,122 @@ To create a window with our group title.
 main = Tk()
 main.title("Group C")
 ```
-
 For the window to stay on the screen, we need to loop it. 
 ```
 main.mainloop()
 ```
-
 Output <br>
 
 ![](images/window.png) <br>
 *Screenshot of a sample window*
+ ## Frame Function 
+We are using the frame function to group and organize the widget to make it neater so that it is user friendly. Below are the three main frames that form the GUI. 
 
-# Frame Function
-We are using the frame function to group and organize the widget to make it neater so that it is user friendly.
-
-Frame1 is to indicate the first frame for the 32x32 grid.
+Frame1 is to indicate the title for different features 
 ```
-frame1 = Frame(main)
-frame1.grid(row=0, column=0)
+titleframe = Frame(main)
+titleframe.grid(row=0, columnspan=2)
 ```
-Frame2 is to indicate the second frame for the shades buttons. 
+Frame2 is to indicate the content of different features 
 ```
-frame2 = Frame(main) 
-frame2.grid(row=0, column=1)
+contentframe = Frame(main)
+contentframe.grid(row=1, column=0)
 ```
-Frame 3 is to indicate the third frame for the preset buttons. 
+Frame 3 is to indicate the mode buttons to change between different features. 
 ```
-frame3 = Frame(main)
-frame3.grid(row=1, columnspan=2)
-```
-Frame4 is to indicate the fourth frame for the send button. 
-```
-frame4 = Frame(main)
-frame4.grid(row=2, columnspan=2)
+modeframe = Frame(main)
+modeframe.grid(row=1, column=1, padx=15, pady=15)
 ```
 Output <br>
 
-![](images/frameEXAMPLE.png) <br>
+![](images\overallframe.png) <br>
 *Screenshot of a frame window*
 
-# Create 32 x 32 Buttons
-We are using a list of list and nested for loop to create a 32 x 32 buttons. 
+# Features
+There are a total of three features......
+
+# Tic-Tac-Toe
+Feature 1 is the classic TicTacToe game. You can choose to be either Player 1 or Player 2 based on selecting the X or O symbol as shown in the interface below.
+<br>
+This scenario is when O wins the game
+![](images/Owin.png)
+*Screenshot of TicTacToe page in GUI*
+<br>
+This scenario is when X wins the game
+![](images/Xwin.png)
+*Screenshot of TicTacToe page in GUI*
+
+# Draw
+Users can press and hold the left click of a mouse or trackpad to draw on the canvas then have it converted to grid form.
+
+![](images/DrawFeature.png)
+*Screenshot of Draw page in GUI*
+<br>
+This is how it looks like when a user draws on the canvas. 
+![](images/drawfeatureSmile.png)
+*Screenshot of Draw page in GUI*
+<br>
+This is how the drawing looks when the user save it and changes it to grid form.
+![](images/drawfeaturetogrid.png)
+*Screenshot of Draw page in GUI*
+
+![](images/TicTacToe.png)
+*Screenshot of TicTacToe page in GUI*
+
+# Laser Maze
+## Hardware for the Laser Maze
+The laser maze consist of 3 SG90 servos, 6 mirrors, breadboard, RaspberryPi, laser, jumperwires, photodiode sensor, 2 polarizers.<br>
+2 mirrors and 1 polarizer is attacted to the each of the servo to make it movable to direct the laser to the sensor. 
+
+The cardboard used as a base for the maze is 65cm x 45cm
+![](images/MazeBase.JPG) <br>
+*Image of the cardboard used for the maze*
+
+The box that is used to hold the laser is 17cm x 12cm
+![](images/laser.JPG) <br> 
+
+![](images/pi.JPG)<br>
+
+## Software for Laser Maze GUI
+### Pi GPIO Library
+Go to this link to view all commands to install the PiGPIOd library, reduces jitter on servo motor
+<br>*Credit: http://abyz.me.uk/rpi/pigpio/download.html*<br>
+Code used to install Library as shown in image, enter in Terminal of Raspberry Pi
 ```
-button = [[j for j in range(32)] for i in range(32)]
-
-for j in range (32):
-  for i in range (32):
-    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, bg='white')
-    button[i][j].grid(row=i, column=j)
+wget https://github.com/joan2937/pigpio/archive/master.zip
+unzip master.zip
+cd pigpio-master
+make
+sudo make install
 ```
-Output <br>
+![](images/pigpioLibrary.png)
+*Screenshot of Google Chrome webpage*
 
-![](images/whitebtns.png) <br>
-*Screenshot of  32x32 grid from final output*
-
-# Create Shades Buttons
-Below is the codes to create shades buttons. Change the text and background colour accordingly to get different shades buttons. 
+Before starting the program to control the servos, you must activate the daemon from the terminal.
 ```
-white = Button(frame2, text="White", font=("Calibri, 10"), bg='grey99', width=13, height=2)
-white.grid(row=0, column=0)
-
-grey1 = Button(frame2, text="Grey1", font=("Calibri, 10"), bg='grey88', width=13, height=2)
-grey1.grid(row=1, column=0)
-
-grey2 = Button(frame2, text="Grey2", font=("Calibri, 10"), bg='grey77', width=13, height=2)
-grey2.grid(row=2, column=0)
-
-grey3 = Button(frame2, text="Grey3", font=("Calibri, 10"), bg='grey66', width=13, height=2)
-grey3.grid(row=3, column=0)
-
-grey4 = Button(frame2, text="Grey4", font=("Calibri, 10"), bg='grey44', width=13, height=2)
-grey4.grid(row=4, column=0)
-
-grey5 = Button(frame2, text="Grey5", font=("Calibri, 10"), bg='grey33', fg='white', width=13, height=2)
-grey5.grid(row=5, column=0)
-
-grey6 = Button(frame2, text="Grey6", font=("Calibri, 10"), bg='grey11', fg='white', width=13, height=2)
-grey6.grid(row=6, column=0)
-
-black = Button(frame2, text="Black", font=("Calibri, 10"), bg='grey1', fg='white', width=13, height=2)
-black.grid(row=7, column=0)
+sudo pigpiod
 ```
-Output <br>
+![](images/daemon.png)
+*Screenshot of Terminal in Raspberry Pi*
 
-![](images/colour%20btns.png) <br>
-*Screenshot of shades button*
+# Final Look of GUI
+## Start Up Page
+![](images/homepg.png)
+*Screenshot of the GUI*
 
-## Assign function to the 32x32 buttons and shades Buttons
-Create a variable to store colour value. 
-```
-colour = 0
-```
-Use Lambda Function for the 32x32 grid and the shades button. Lambda Function can be used anywhere that function objects are required. 
-```
-def change_colour(m): 
-  global colour
-  colour=m 
-```
-Add the command to the shades buttons. 
-```
-white = Button(frame2, text="White", font=("Calibri, 10"), bg='grey99', width=13, height=2, command=lambda m=0:change_colour(m))
-white.grid(row=0, column=0)
+## Grid Page
+![](images/gridpage.png)
+*Screenshot of the GUI*
 
-grey1 = Button(frame2, text="Grey1", font=("Calibri, 10"), bg='grey88', width=13, height=2, command=lambda m=1:change_colour(m))
-grey1.grid(row=1, column=0)
+## Draw Page
+![](images/????.png)
+*Screenshot of the GUI*
 
-grey2 = Button(frame2, text="Grey2", font=("Calibri, 10"), bg='grey77', width=13, height=2, command=lambda m=2:change_colour(m))
-grey2.grid(row=2, column=0)
+## Tic-Tac-Toe Page
+![](images/tttpg.png)
+*Screenshot of the GUI*
 
-grey3 = Button(frame2, text="Grey3", font=("Calibri, 10"), bg='grey66', width=13, height=2, command=lambda m=3:change_colour(m))
-grey3.grid(row=3, column=0)
-
-grey4 = Button(frame2, text="Grey4", font=("Calibri, 10"), bg='grey44', width=13, height=2, command=lambda m=4:change_colour(m))
-grey4.grid(row=4, column=0)
-
-grey5 = Button(frame2, text="Grey5", font=("Calibri, 10"), bg='grey33', fg='white', width=13, height=2, command=lambda m=5:change_colour(m))
-grey5.grid(row=5, column=0)
-
-grey6 = Button(frame2, text="Grey6", font=("Calibri, 10"), bg='grey11', fg='white', width=13, height=2, command=lambda m=6:change_colour(m))
-grey6.grid(row=6, column=0)
-
-black = Button(frame2, text="Black", font=("Calibri, 10"), bg='grey1', fg='white', width=13, height=2, command=lambda m=7:change_colour(m))
-black.grid(row=7, column=0)
-```
-Use if else statement to create fucntion for the white buttons. 
-```
-def whitebtn(i, j):
-  global colour
-
-  if colour == 0:
-    button[i][j].config(bg='grey99')
-  elif colour == 1: 
-    button[i][j].config(bg='grey88')
-  elif colour == 2:
-    button[i][j].config(bg='grey77')
-  elif colour == 3: 
-    button[i][j].config(bg='grey66')
-  elif colour == 4:
-    button[i][j].config(bg='grey44')  
-  elif colour == 5: 
-    button[i][j].config(bg='grey33')
-  elif colour == 6:
-    button[i][j].config(bg='grey11')
-  else: 
-    button[i][j].config(bg='grey1')
-```
-Add command to the button codes. 
-```
-button = [[j for j in range(32)] for i in range(32)]
-
-for j in range (32):
-  for i in range (32):
-    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
-    button[i][j].grid(row=i, column=j)
-```
-Output <br>
-![Alt text](images/ezgif.com-gif-maker.gif) <br>
-*Screen recording of the function of the shades buttons*
-
-# Preset Buttons 
-To create the preset buttons, the code is similar to the shades button. Change the text and background colour accordingly. 
-```
-allwhite = Button(frame3, text="All White",font=("Calibri, 12"), bg='grey99', width=13, height=2)
-allwhite.grid(row=0, column=0)
-
-allblack = Button(frame3, text="All Black",font=("Calibri, 12"), bg='grey1', fg='white', width=13, height=2)
-allblack.grid(row=0, column=1)
-
-xpattern = Button(frame3, text="X Pattern",font=("Calibri, 12"), bg='gold', width=13, height=2)
-xpattern.grid(row=0, column=2)
-
-seq = Button(frame3, text="Sequence",font=("Calibri, 12"), bg='#ff007f', width=13, height=2)
-seq.grid(row=0, column=3)
-```
-Output <br>
-
-![](images/features%20btn.png) <br>
-*Screenshot of preset button*
-
-## Assign function to the preset buttons
-Below are the function codes for All White. 
-```
-def allwht():
-  for j in range (32):
-    for i in range (32):
-      button[i][j].config(bg='grey99')
-```
-
-Below are the function codes for All Black.
-```
-def allblk():
-  for j in range (32):
-    for i in range (32):
-      button[i][j].config(bg='grey1')
-```
-
-Below are the function codes for X Pattern. 
-```
-def pattern():
-  for j in range (32):
-    for i in range (32):
-      if i == j: 
-        button[i][j].config(bg='grey33')
-      elif i + j == 31: 
-        button[i][j].config(bg='grey33')
-      else:
-        button[i][j].config(bg='grey99')
-
-```
-
-Below are the function codes for Sequence. 
-```
-def ramseq():
-  for j in range (32):
-    for i in range (32):
-      if j < 6:
-        button[i][j].config(bg='grey99')
-      elif j >= 6 and j <= 12:
-        button[i][j].config(bg='grey88')
-      elif j >= 12 and j <= 18:
-        button[i][j].config(bg='grey77')
-      elif j >= 18 and j <= 24:
-        button[i][j].config(bg='grey66')
-      elif j >= 24 and j <= 32:
-        button[i][j].config(bg='grey44')
-```
-
-Add the commands to the preset buttons. 
-```
-allwhite = Button(frame3, text="All White",font=("Calibri, 12"), bg='grey99', width=13, height=2, command=allwht)
-allwhite.grid(row=0, column=0)
-
-allblack = Button(frame3, text="All Black",font=("Calibri, 12"), bg='grey1', fg='white', width=13, height=2, command=allblk)
-allblack.grid(row=0, column=1)
-
-xpattern = Button(frame3, text="X Pattern",font=("Calibri, 12"), bg='gold', width=13, height=2, command=pattern)
-xpattern.grid(row=0, column=2)
-
-seq = Button(frame3, text="Sequence",font=("Calibri, 12"), bg='#ff007f', width=13, height=2, command=ramseq)
-seq.grid(row=0, column=3)
-```
-
-Output for All White preset button <br>
-
-![](images/allwhite.png) <br>
-*Screenshot of final output with all white preset*
-
-Output for All Black preset button <br>
-
-![](images/allblack.png) <br>
-*Screenshot of final output with all black preset*
-
-Output for x pattern preset button<br>
-
-![](images/xpattern.png) <br>
-*Screenshot of final output with x pattern preset*
-
-Output for sequence preset button <br>
-
-![](images/sequence.png) <br>
-*Screenshot of final output with sequence preset*
-
-# Send Button 
-When the send button is pressed, it will output the value of the different shades. 
-Below is the codes to create send button. 
-```
-send = Button(frame4, text="Send Image!", font=("Calibri, 12"), width=13, height=2)
-send.grid(row=0, column=0)
-```
-Output <br>
-
-![](images/send%20btn.png) <br>
-*Screenshot of send button*
-
-## Assign function to the send button. 
-First, create a variable to store the value. 
-```
-value = [[0 for i in range(32)] for j in range(32)]
-```
-Next, add value to the 32 x 32 button's function, shades button's function and preset button's function. <br>
-Below are the code for 32x32 buttons after adding the value. 
-```
-def whitebtn(i, j):
-  global colour, value
-
-  if colour == 0:
-    button[i][j].config(bg='grey99')
-    value[i][j] = 0
-  elif colour == 1: 
-    button[i][j].config(bg='grey88')
-    value[i][j] = 20
-  elif colour == 2:
-    button[i][j].config(bg='grey77')
-    value[i][j] = 30
-  elif colour == 3: 
-    button[i][j].config(bg='grey66')
-    value[i][j] = 40
-  elif colour == 4:
-    button[i][j].config(bg='grey44')  
-    value[i][j] = 50
-  elif colour == 5: 
-    button[i][j].config(bg='grey33')
-    value[i][j] = 60
-  elif colour == 6:
-    button[i][j].config(bg='grey11')
-    value[i][j] = 70
-  else: 
-    button[i][j].config(bg='grey1')
-    value[i][j] = 90
-```
-Below are the code for All White and All Black button after adding the value. 
-```
-def allwht():
-  for j in range (32):
-    for i in range (32):
-      button[i][j].config(bg='grey99')
-      value[i][j] = 0
-
-def allblk():
-  for j in range (32):
-    for i in range (32):
-      button[i][j].config(bg='grey1')
-      value[i][j] = 90
-```
-Below are the code for X Pattern button after adding the value. 
-```
-def pattern():
-  for j in range (32):
-    for i in range (32):
-      if i == j: 
-        button[i][j].config(bg='grey33')
-        value[i][j] = 60
-      elif i + j == 31: 
-        button[i][j].config(bg='grey33')
-        value[i][j] = 60
-      else:
-        button[i][j].config(bg='grey99')
-        value[i][j] = 0
-```
-Below are the code for sequence after adding the value. 
-```
-def ramseq():
-  for j in range (32):
-    for i in range (32):
-      if j < 6:
-        button[i][j].config(bg='grey99')
-        value[i][j] = 0
-      elif j >= 6 and j <= 12:
-        button[i][j].config(bg='grey88')
-        value[i][j] = 20
-      elif j >= 12 and j <= 18:
-        button[i][j].config(bg='grey77')
-        value[i][j] = 30
-      elif j >= 18 and j <= 24:
-        button[i][j].config(bg='grey66')
-        value[i][j] = 40
-      elif j >= 24 and j <= 32:
-        button[i][j].config(bg='grey44')
-        value[i][j] = 50 
-```
-Function code for send button. 
-```
-def sendbtn():
-  print(value)
-```
-
-Add in the command for send button 
-```
-send = Button(frame4, text="Send Image!", font=("Calibri, 12"), width=13, height=2, command=lambda :sendbtn())
-send.grid(row=0, column=0)
-```
-
-Output of the value of All White.<br>
-
-![](images/valuewhite.png) <br>
-*Screenshot of values of all white preset*
-
-Output of the value of All Black.<br>
-
-![](images/valueblack.png) <br>
-*Screenshot of values of all black preset*
-
-Output of the value of X Pattern.<br>
-
-![](images/valueX.png) <br>
-*Screenshot of values of x pattern preset*
-
-Output of the value of Sequence.<br>
-
-![](images/valueseq.png) <br>
-*Screenshot of values of sequence preset*
-
-# How to run the program on terminal
+# How to Run on Terminal 
 1. Open the terminal on raspberryPi.  
 2. In the terminal, type the following commands: <br>
 (This is assuming you saved the file under the 'Documents' folder)<br>
@@ -548,570 +292,410 @@ Output of the value of Sequence.<br>
 ``` python3 main.py``` 
 
 ![](images/terminal.png) <br>
-*Screenshot of termi# 32 x 32 GUI Documentation 
-This documentation is an introduction about the 32 x 32 GUI and it's features. The purpose of this GUI is to control the polarised motor to display a pixelated image. Users can choose from an array of different shades of grey as well as preset patterns to play with the GUI. 
+*Screenshot of terminal*
 
-Example of the pixelated image. <br>
-
-![](images/pixiliseArt.png) <br>
-*Fu Yongwei, EGL314 - Lecture 1 Module Introduction*
-
-## System Diagram of Hardware and Software
-
-``` mermaid
-graph TD
-A[Laptop]-->B[VNC Viewer]
-B-->A
-A-->C[Putty-SSH / WinSCP - SCP]
-C-->A
-C-->D[Network Router]
-D-->E[Raspberry Pi]
-F[Keyboard / Mouse]-->E
-E-->G[HDMI Monitor]
+# Code for Maze GUI
 ```
-*Fu Yongwei, huats-club/EGL314starterkit* <br>
-*Credit: https://github.com/huats-club/EGL314starterkit*
+# Import required libraries
+from gpiozero import AngularServo
+from guizero import App, Slider, Text, ButtonGroup
+from gpiozero.pins.pigpio import PiGPIOFactory
 
-# Final Look of the GUI
+from tkinter import *
+from PIL import ImageTk, Image
+from tkinter.ttk import *
+import tkinter.messagebox
 
-![](images/gui_final.jpg) <br>
-*Screenshot of GUI*
+# Create an instance of tkinter window
+win = Tk()
+style = Style()
 
-## Code Flowchart
-```mermaid
-graph TD
-A[main.py] --> C[change_colour]
-C --> A
-C --> I[<font size = 3>Shades<br><font size=2>White<br>6 Shades of grey<br>Black]
-A --> B[32 x 32 Grid]
-I --> B
-A --> D[Preset]
-D --> A
-D --> E[All White]
-D --> F[All Black]
-D --> G[X Pattern]
-D --> H[Sequence]
-A --> J[Send Image]
-E --> B
-H --> B
-G --> B
-F --> B
-B --> A
+factory = PiGPIOFactory()
+
+win.title("Laser Maze")
+
+# Define the geometry of the window
+win.geometry("2000x1100")
+# win.state('zoomed')
+
+s = AngularServo(25, initial_angle = 0, min_pulse_width = 1/1000, max_pulse_width =2/1000
+                , frame_width = 20/1000, pin_factory = factory, min_angle=-90, max_angle=90)
+
+s1 = AngularServo(12 , initial_angle = 0, min_pulse_width = 1/1000, max_pulse_width =2/1000
+                , frame_width = 20/1000, pin_factory = factory, min_angle=-90, max_angle=90)
+
+s2 = AngularServo(24 , initial_angle = 75, min_pulse_width = 1/1000, max_pulse_width =2/1000
+                , frame_width = 20/1000, pin_factory = factory, min_angle=-90, max_angle=90)
+
+leftframe = Frame(win, width=200, height=200)
+leftframe.grid(row=0, column=0)
+
+rightframe = Frame(win, width=200, height=200)
+rightframe.grid(row=0, column=1)
+
+bottomframe = Frame(win, width=200, height=200)
+bottomframe.grid(row=2, column=1)
+
+# Create an object of tkinter ImageTk
+img = ImageTk.PhotoImage(Image.open("diagram.png"))
+
+label = Label(leftframe, image = img)
+label.pack()
+
+counter_s = 0
+counter_s1 = 0
+counter_s2 = 0
+
+def subtract():
+    global counter_s 
+    counter_s -=15
+    s.angle = 0 + counter_s
+    s.angle = int(s.angle - 15) 
+    print("motor1: ", s.angle)
+    
+    if s.angle == -90:
+        counter_s = -90
+    
+def addition():
+    
+    global counter_s 
+    counter_s  +=15
+    s.angle = 0 + counter_s 
+    print("motor1:", s.angle)
+    
+    if s.angle == 90.0:
+        counter_s  = 90.0
+        tkinter.messagebox.showinfo("You have reached the maximum angle")
+
+def subtract2():
+    global counter_s1 
+    counter_s1 -=15
+    s1.angle = 0 + counter_s1 
+    #s.angle = int(s.angle - 15) 
+    print("motor2: ", s1.angle)
+    
+    if s1.angle == -90.0:
+        counter_s1 = -90.0
+        print("You have reached the minimum angle")
+    
+def addition2():
+    global counter_s1
+    counter_s1 +=15
+    s1.angle = 0 + counter_s1
+    print("motor2:", s1.angle)
+    
+    if s1.angle == 90.0:
+        counter_s1 = 90.0
+        print("You have reached the maximum angle")
+
+def subtract3():
+    global counter_s2 
+    counter_s2 -=15
+    s2.angle = 0 + counter_s2 
+    #s.angle = int(s.angle - 15) 
+    print("Polariser: ", s2.angle)
+    
+    if s2.angle == -90.0:
+        counter_s2 = -90.0
+        print("You have reached the minimum angle")
+    
+def addition3():
+    global counter_s2
+    counter_s2 +=15
+    s2.angle = 0 + counter_s2
+    print("Polariser:", s2.angle)
+    
+    if s2.angle == 90.0:
+        counter_s2 = 90.0
+        print("You have reached the maximum angle")
+        
+def reset_motor():
+    s.angle = 0.0
+    s1.angle = 0.0
+    s2.angle = 75.0
+    print(s.angle,s1.angle,s2.angle)
+
+welcome = Label(bottomframe, text ="Welcome to the laser maze game!", font=("Arial", 25)).grid(row=2, column=1)
+
+instructions = Label(bottomframe, text= "Here are a few instructions: \n 1) Your objective is to navigate the laser and hit the light sensor,\n 2) Play with the left and right buttons to turn the motor,\n 3) Hit the reset button to assign all the motors to its initial angle"
+, font= ("Courier", 15)).grid(row=3, column=1)
+
+motor1 = Label(rightframe, text ="Motor1").grid(row=3, column=1, padx=20, pady=20)
+btn1 = Button(rightframe, text = '<--', command = subtract)
+btn1.grid(row = 4, column = 1, pady = 10, padx = 20)
+
+btn2 = Button(rightframe, text = '-->', command = addition)
+btn2.grid(row = 4, column = 2, pady = 10, padx = 20)
+
+motor2 =Label(rightframe, text ="Motor2").grid(row=3,column=4, padx=20, pady=20)
+btn3 = Button(rightframe, text = '<--', command = subtract2)
+btn3.grid(row = 4, column = 4, pady = 10, padx = 20)
+
+btn4 = Button(rightframe, text = '-->', command = addition2)
+btn4.grid(row = 4, column = 5, pady = 10, padx = 20)
+
+motor3 =Label(rightframe, text ="Polariser").grid(row=6,column=3, padx=20, pady=20)
+btn5 = Button(rightframe, text = '<--', command = subtract3)
+btn5.grid(row = 8, column = 3, pady = 10, padx = 20)
+
+btn6 = Button(rightframe, text = '-->', command = addition3)
+btn6.grid(row = 9, column = 3, pady = 10, padx = 20)
+
+btn9 = Button(rightframe, text = 'Reset', command = reset_motor)
+btn9.grid(row = 15, column = 3, pady = 70, padx = 20)
+
+win.mainloop()
 ```
-*Code Flow Chart*
 
-# Installation of Software and Hardware
-## Hardware
-**Model** : RaspberryPi 4 Model B <br>
-**OS Version** : Raspbian GNU/Linux 10 (buster) <br>
-
-![](images/raspberryPi.png) <br>
-*Fu Yongwei, EGL314 - Lecture 1 Module Introduction*
-
-## Software 
-1. PuTTy
-2. Advanced Port Scanner
-3. VNC Viewer
-
-# Setting up the Raspberry Pi
- Note: Only do the following on first initial boot.
-
-## PuTTy 
-PuTTy allows free implementation of SSH for PCs running Microsoft Windows. After installing PuTTy, enter the hostname "raspberrypi".<br>
-
-![](images/putty.webp) <br>
-*Credit: https://tutorials-raspberrypi.com/raspberry-pi-remote-access-by-using-ssh-and-putty/*
-
-
-After you entered the hostname, click "open" and a command prompt window should appear. Enter your username and password here. The Raspbian default login is user “pi” with password “raspberry“.
-
-![](images/RaspberryPi_boot.png) <br>
-*Credit: https://librarymakers.net/using-cli-raspberry-pi*
-
-You may change your password with the following command: ```sudo passwd```
-
-### 1. Update Raspberry pi
-Once logged in, update the Raspberry Pi. 
-```
-sudo apt update
-sudo apt upgrade
-```
-### 2. Configuring Raspberry pi
-### Enable SSH <br>
-SSH is a is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network. To enable SSH type the following,
-```
-sudo raspi-config
-```
-Select ```3 Interface Options```<br>
-Select ```P2 SSH```<br>
-Select **Enable SSH**
-
-### Enable Virtual Network Computing (VNC) <br>
-VNC is a cross-platform screen sharing system that was created to remotely control another computer. To enable VNC, open terminal on your Raspberry Pi and try the following. 
-```
-sudo raspi-config
-```
-Select ```3 Interface Options```<br>
-Select ```P3 VNC```<br>
-Select **Enable VNC**
-
-## Advanced Port Scanner
-Use Advanced Port Scanner to scan your network ip address in order to connect to VNC Viewer. Click "Start" to scart scanning. 
-
-![](images/advance%20PortScanner.png) <br>
-*Screenshot of Advanced Port Scanner* <br>
-
-## VNC Viewer
-Next, open VNC Viewer. Enter your Raspberry Pi ip address to remotely access the desktop of your Raspberry Pi over the internet.
-
-![](images/vnc_connection.jfif) <br>
-*Screenshot of VNC Viewer*
-
-This step is to create new connection for raspberry pi. 
-![](images/vncStartpage.png)
-*Screenshot of VNC Viewer*
-
-Enter the username and password for the raspberry pi login and press "OK". 
-
-![](images/vncpilogin.png)
-*Credit: https://www.pitunnel.com/doc/access-vnc-remote-desktop-raspberry-pi-over-internet*
-
-The VNC session should start, and you should see your Raspberry Pi desktop.
-
-![](images/vnc_viewer_local_4.png)
-*Credit: https://www.pitunnel.com/doc/access-vnc-remote-desktop-raspberry-pi-over-internet*
-
-
-To start coding, click on the raspberry pi logo and under Programming, look for Thonny Python IDE and click on it.
-
-![](images/thonny_ide_start.png)
-*Credit: https://roboticsbackend.com/thonny-ide-raspberry-pi-os/*
-
-
-# Setting Up The GUI
-To create a tkinter GUI, we need to import the tkinter library. 
+# Code for the Gui
 ```
 from tkinter import *
-```
-To create a window with our group title. 
-```
-main = Tk()
-main.title("Group C")
-```
+from tkinter import messagebox
+# from student_pub import *
 
-For the window to stay on the screen, we need to loop it. 
-```
-main.mainloop()
-```
+def homefunc():
+    tttframe.grid_forget()
+    gndframe.grid_forget()
+    contenttitle.grid(row=0, column=0)
+    contenttxt.grid(row=1, column=0)
 
-Output <br>
+def gridfunc():
+    global var 
+    var = "Grid"
+    title.config(text=var)
 
-![](images/window.png) <br>
-*Screenshot of a sample window*
+    contenttitle.grid_forget()
+    contenttxt.grid_forget()
 
-# Frame Function
-We are using the frame function to group and organize the widget to make it neater so that it is user friendly.
+    tttframe.grid_forget()
+    gndframe.grid(row=0, column=0)
+    dframe.grid_forget()
+    gframe.grid(row=0, column=0)
 
-Frame1 is to indicate the first frame for the 32x32 grid.
-```
-frame1 = Frame(main)
-frame1.grid(row=0, column=0)
-```
-Frame2 is to indicate the second frame for the shades buttons. 
-```
-frame2 = Frame(main) 
-frame2.grid(row=0, column=1)
-```
-Frame 3 is to indicate the third frame for the preset buttons. 
-```
-frame3 = Frame(main)
-frame3.grid(row=1, columnspan=2)
-```
-Frame4 is to indicate the fourth frame for the send button. 
-```
-frame4 = Frame(main)
-frame4.grid(row=2, columnspan=2)
-```
-Output <br>
+def drawfunc():
+    global var 
+    var = "Draw"
+    title.config(text=var)
 
-![](images/frameEXAMPLE.png) <br>
-*Screenshot of a frame window*
+    contenttitle.grid_forget()
+    contenttxt.grid_forget()
 
-# Create 32 x 32 Buttons
-We are using a list of list and nested for loop to create a 32 x 32 buttons. 
-```
-button = [[j for j in range(32)] for i in range(32)]
+    tttframe.grid_forget()
+    gndframe.grid(row=0, column=0)
+    gframe.grid_forget()
+    dframe.grid(row=0, column=0)
 
-for j in range (32):
-  for i in range (32):
-    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, bg='white')
-    button[i][j].grid(row=i, column=j)
-```
-Output <br>
+def tttfunc():
+    global var 
+    var = "Tic-Tac-Toe"
+    title.config(text=var)
+    
+    contenttitle.grid_forget()
+    contenttxt.grid_forget()
+    
+    gndframe.grid_forget()
+    tttframe.grid(row=0, column=0)
 
-![](images/whitebtns.png) <br>
-*Screenshot of  32x32 grid from final output*
-
-# Create Shades Buttons
-Below is the codes to create shades buttons. Change the text and background colour accordingly to get different shades buttons. 
-```
-white = Button(frame2, text="White", font=("Calibri, 10"), bg='grey99', width=13, height=2)
-white.grid(row=0, column=0)
-
-grey1 = Button(frame2, text="Grey1", font=("Calibri, 10"), bg='grey88', width=13, height=2)
-grey1.grid(row=1, column=0)
-
-grey2 = Button(frame2, text="Grey2", font=("Calibri, 10"), bg='grey77', width=13, height=2)
-grey2.grid(row=2, column=0)
-
-grey3 = Button(frame2, text="Grey3", font=("Calibri, 10"), bg='grey66', width=13, height=2)
-grey3.grid(row=3, column=0)
-
-grey4 = Button(frame2, text="Grey4", font=("Calibri, 10"), bg='grey44', width=13, height=2)
-grey4.grid(row=4, column=0)
-
-grey5 = Button(frame2, text="Grey5", font=("Calibri, 10"), bg='grey33', fg='white', width=13, height=2)
-grey5.grid(row=5, column=0)
-
-grey6 = Button(frame2, text="Grey6", font=("Calibri, 10"), bg='grey11', fg='white', width=13, height=2)
-grey6.grid(row=6, column=0)
-
-black = Button(frame2, text="Black", font=("Calibri, 10"), bg='grey1', fg='white', width=13, height=2)
-black.grid(row=7, column=0)
-```
-Output <br>
-
-![](images/colour%20btns.png) <br>
-*Screenshot of shades button*
-
-## Assign function to the 32x32 buttons and shades Buttons
-Create a variable to store colour value. 
-```
-colour = 0
-```
-Use Lambda Function for the 32x32 grid and the shades button. Lambda Function can be used anywhere that function objects are required. 
-```
-def change_colour(m): 
-  global colour
-  colour=m 
-```
-Add the command to the shades buttons. 
-```
-white = Button(frame2, text="White", font=("Calibri, 10"), bg='grey99', width=13, height=2, command=lambda m=0:change_colour(m))
-white.grid(row=0, column=0)
-
-grey1 = Button(frame2, text="Grey1", font=("Calibri, 10"), bg='grey88', width=13, height=2, command=lambda m=1:change_colour(m))
-grey1.grid(row=1, column=0)
-
-grey2 = Button(frame2, text="Grey2", font=("Calibri, 10"), bg='grey77', width=13, height=2, command=lambda m=2:change_colour(m))
-grey2.grid(row=2, column=0)
-
-grey3 = Button(frame2, text="Grey3", font=("Calibri, 10"), bg='grey66', width=13, height=2, command=lambda m=3:change_colour(m))
-grey3.grid(row=3, column=0)
-
-grey4 = Button(frame2, text="Grey4", font=("Calibri, 10"), bg='grey44', width=13, height=2, command=lambda m=4:change_colour(m))
-grey4.grid(row=4, column=0)
-
-grey5 = Button(frame2, text="Grey5", font=("Calibri, 10"), bg='grey33', fg='white', width=13, height=2, command=lambda m=5:change_colour(m))
-grey5.grid(row=5, column=0)
-
-grey6 = Button(frame2, text="Grey6", font=("Calibri, 10"), bg='grey11', fg='white', width=13, height=2, command=lambda m=6:change_colour(m))
-grey6.grid(row=6, column=0)
-
-black = Button(frame2, text="Black", font=("Calibri, 10"), bg='grey1', fg='white', width=13, height=2, command=lambda m=7:change_colour(m))
-black.grid(row=7, column=0)
-```
-Use if else statement to create fucntion for the white buttons. 
-```
 def whitebtn(i, j):
-  global colour
+    global colour
 
-  if colour == 0:
-    button[i][j].config(bg='grey99')
-  elif colour == 1: 
-    button[i][j].config(bg='grey88')
-  elif colour == 2:
-    button[i][j].config(bg='grey77')
-  elif colour == 3: 
-    button[i][j].config(bg='grey66')
-  elif colour == 4:
-    button[i][j].config(bg='grey44')  
-  elif colour == 5: 
-    button[i][j].config(bg='grey33')
-  elif colour == 6:
-    button[i][j].config(bg='grey11')
-  else: 
-    button[i][j].config(bg='grey1')
-```
-Add command to the button codes. 
-```
-button = [[j for j in range(32)] for i in range(32)]
-
-for j in range (32):
-  for i in range (32):
-    button[i][j] = Button(frame1, font=("Calibri, 5"), width=1, height=1, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
-    button[i][j].grid(row=i, column=j)
-```
-Output <br>
-![Alt text](images/ezgif.com-gif-maker.gif) <br>
-*Screen recording of the function of the shades buttons*
-
-# Preset Buttons 
-To create the preset buttons, the code is similar to the shades button. Change the text and background colour accordingly. 
-```
-allwhite = Button(frame3, text="All White",font=("Calibri, 12"), bg='grey99', width=13, height=2)
-allwhite.grid(row=0, column=0)
-
-allblack = Button(frame3, text="All Black",font=("Calibri, 12"), bg='grey1', fg='white', width=13, height=2)
-allblack.grid(row=0, column=1)
-
-xpattern = Button(frame3, text="X Pattern",font=("Calibri, 12"), bg='gold', width=13, height=2)
-xpattern.grid(row=0, column=2)
-
-seq = Button(frame3, text="Sequence",font=("Calibri, 12"), bg='#ff007f', width=13, height=2)
-seq.grid(row=0, column=3)
-```
-Output <br>
-
-![](images/features%20btn.png) <br>
-*Screenshot of preset button*
-
-## Assign function to the preset buttons
-Below are the function codes for All White. 
-```
-def allwht():
-  for j in range (32):
-    for i in range (32):
-      button[i][j].config(bg='grey99')
-```
-
-Below are the function codes for All Black.
-```
-def allblk():
-  for j in range (32):
-    for i in range (32):
-      button[i][j].config(bg='grey1')
-```
-
-Below are the function codes for X Pattern. 
-```
-def pattern():
-  for j in range (32):
-    for i in range (32):
-      if i == j: 
-        button[i][j].config(bg='grey33')
-      elif i + j == 31: 
-        button[i][j].config(bg='grey33')
-      else:
-        button[i][j].config(bg='grey99')
-
-```
-
-Below are the function codes for Sequence. 
-```
-def ramseq():
-  for j in range (32):
-    for i in range (32):
-      if j < 6:
-        button[i][j].config(bg='grey99')
-      elif j >= 6 and j <= 12:
-        button[i][j].config(bg='grey88')
-      elif j >= 12 and j <= 18:
-        button[i][j].config(bg='grey77')
-      elif j >= 18 and j <= 24:
-        button[i][j].config(bg='grey66')
-      elif j >= 24 and j <= 32:
-        button[i][j].config(bg='grey44')
-```
-
-Add the commands to the preset buttons. 
-```
-allwhite = Button(frame3, text="All White",font=("Calibri, 12"), bg='grey99', width=13, height=2, command=allwht)
-allwhite.grid(row=0, column=0)
-
-allblack = Button(frame3, text="All Black",font=("Calibri, 12"), bg='grey1', fg='white', width=13, height=2, command=allblk)
-allblack.grid(row=0, column=1)
-
-xpattern = Button(frame3, text="X Pattern",font=("Calibri, 12"), bg='gold', width=13, height=2, command=pattern)
-xpattern.grid(row=0, column=2)
-
-seq = Button(frame3, text="Sequence",font=("Calibri, 12"), bg='#ff007f', width=13, height=2, command=ramseq)
-seq.grid(row=0, column=3)
-```
-
-Output for All White preset button <br>
-
-![](images/allwhite.png) <br>
-*Screenshot of final output with all white preset*
-
-Output for All Black preset button <br>
-
-![](images/allblack.png) <br>
-*Screenshot of final output with all black preset*
-
-Output for x pattern preset button<br>
-
-![](images/xpattern.png) <br>
-*Screenshot of final output with x pattern preset*
-
-Output for sequence preset button <br>
-
-![](images/sequence.png) <br>
-*Screenshot of final output with sequence preset*
-
-# Send Button 
-When the send button is pressed, it will output the value of the different shades. 
-Below is the codes to create send button. 
-```
-send = Button(frame4, text="Send Image!", font=("Calibri, 12"), width=13, height=2)
-send.grid(row=0, column=0)
-```
-Output <br>
-
-![](images/send%20btn.png) <br>
-*Screenshot of send button*
-
-## Assign function to the send button. 
-First, create a variable to store the value. 
-```
-value = [[0 for i in range(32)] for j in range(32)]
-```
-Next, add value to the 32 x 32 button's function, shades button's function and preset button's function. <br>
-Below are the code for 32x32 buttons after adding the value. 
-```
-def whitebtn(i, j):
-  global colour, value
-
-  if colour == 0:
-    button[i][j].config(bg='grey99')
-    value[i][j] = 0
-  elif colour == 1: 
-    button[i][j].config(bg='grey88')
-    value[i][j] = 20
-  elif colour == 2:
-    button[i][j].config(bg='grey77')
-    value[i][j] = 30
-  elif colour == 3: 
-    button[i][j].config(bg='grey66')
-    value[i][j] = 40
-  elif colour == 4:
-    button[i][j].config(bg='grey44')  
-    value[i][j] = 50
-  elif colour == 5: 
-    button[i][j].config(bg='grey33')
-    value[i][j] = 60
-  elif colour == 6:
-    button[i][j].config(bg='grey11')
-    value[i][j] = 70
-  else: 
-    button[i][j].config(bg='grey1')
-    value[i][j] = 90
-```
-Below are the code for All White and All Black button after adding the value. 
-```
-def allwht():
-  for j in range (32):
-    for i in range (32):
+    if colour == 0:
       button[i][j].config(bg='grey99')
       value[i][j] = 0
-
-def allblk():
-  for j in range (32):
-    for i in range (32):
+    elif colour == 1: 
+      button[i][j].config(bg='grey88')
+      value[i][j] = 20
+    elif colour == 2:
+      button[i][j].config(bg='grey77')
+      value[i][j] = 30
+    elif colour == 3: 
+      button[i][j].config(bg='grey66')
+      value[i][j] = 40
+    elif colour == 4:
+      button[i][j].config(bg='grey44')  
+      value[i][j] = 50
+    elif colour == 5: 
+      button[i][j].config(bg='grey33')
+      value[i][j] = 60
+    elif colour == 6:
+      button[i][j].config(bg='grey22')
+      value[i][j] = 70
+    else: 
       button[i][j].config(bg='grey1')
       value[i][j] = 90
-```
-Below are the code for X Pattern button after adding the value. 
-```
+
+def change_colour(m): 
+    global colour
+    colour=m 
+
+    print("colour is {}".format(colour))
+
+def allwht():
+    for j in range (32):
+      for i in range (32):
+        button[i][j].config(bg='grey99')
+        value[i][j] = 0
+
+def allblk():
+    for j in range (32):
+      for i in range (32):
+        button[i][j].config(bg='grey1')
+        value[i][j] = 90
+
 def pattern():
-  for j in range (32):
-    for i in range (32):
-      if i == j: 
-        button[i][j].config(bg='grey33')
-        value[i][j] = 60
-      elif i + j == 31: 
-        button[i][j].config(bg='grey33')
-        value[i][j] = 60
-      else:
-        button[i][j].config(bg='grey99')
-        value[i][j] = 0
-```
-Below are the code for sequence after adding the value. 
-```
+    for j in range (32):
+      for i in range (32):
+        if i == j: 
+          button[i][j].config(bg='grey66')
+          value[i][j] = 40
+        elif i + j == 31: 
+          button[i][j].config(bg='grey66')
+          value[i][j] = 40
+        else:
+          button[i][j].config(bg='grey99')
+          value[i][j] = 0
+
+
 def ramseq():
-  for j in range (32):
-    for i in range (32):
-      if j < 6:
-        button[i][j].config(bg='grey99')
-        value[i][j] = 0
-      elif j >= 6 and j <= 12:
-        button[i][j].config(bg='grey88')
-        value[i][j] = 20
-      elif j >= 12 and j <= 18:
-        button[i][j].config(bg='grey77')
-        value[i][j] = 30
-      elif j >= 18 and j <= 24:
-        button[i][j].config(bg='grey66')
-        value[i][j] = 40
-      elif j >= 24 and j <= 32:
-        button[i][j].config(bg='grey44')
-        value[i][j] = 50 
-```
-Function code for send button. 
-```
+    for j in range (32):
+      for i in range (32):
+        if j < 6:
+          button[i][j].config(bg='grey99')
+          value[i][j] = 0
+        elif j >= 6 and j <= 12:
+          button[i][j].config(bg='grey88')
+          value[i][j] = 20
+        elif j >= 12 and j <= 18:
+          button[i][j].config(bg='grey77')
+          value[i][j] = 30
+        elif j >= 18 and j <= 24:
+          button[i][j].config(bg='grey66')
+          value[i][j] = 40
+        elif j >= 24 and j <= 32:
+          button[i][j].config(bg='grey44')
+          value[i][j] = 50 
+
+###########################################################################################
 def sendbtn():
-  print(value)
-```
+    #print(value)
+    print(canvasdraw)
+    # pubpic(value)
 
-Add in the command for send button 
-```
-send = Button(frame4, text="Send Image!", font=("Calibri, 12"), width=13, height=2, command=lambda :sendbtn())
-send.grid(row=0, column=0)
-```
+def get_x_and_y(event):
+   global lasx, lasy
+   lasx, lasy = event.x, event.y
 
-Output of the value of All White.<br>
+def paint(event):
+    global lasx, lasy, value
+    if lasx >= 0 and lasx <= 799 and lasy >= 0 and lasy <= 799:
+      if colour == 0: 
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey99',width=4)
+          canvasdraw[lasx][lasy] = 0
+      elif colour == 1:
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey88',width=4)
+          canvasdraw[lasx][lasy] = 1
+      elif colour == 2:
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey77',width=4)
+          canvasdraw[lasx][lasy] = 2
+      elif colour == 3: 
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey66',width=4)
+          canvasdraw[lasx][lasy] = 3
+      elif colour == 4:
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey44',width=4)
+          canvasdraw[lasx][lasy] = 4
+      elif colour == 5: 
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey33',width=4)
+          canvasdraw[lasx][lasy] = 5
+      elif colour == 6:
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey22',width=4)
+          canvasdraw[lasx][lasy] = 6
+      else: 
+          c.create_line((lasx,lasy, event.x, event.y),fill='grey11',width=4)
+          canvasdraw[lasx][lasy] = 7
+      get_x_and_y(event)
 
-![](images/valuewhite.png) <br>
-*Screenshot of values of all white preset*
+def scaledown(r, c):
+    global lasx, lasy
+    list = []
+    for x in range(r, c):
+      for y in range(r, c):
+        list.append(canvasdraw[x][y])
+    return list
 
-Output of the value of All Black.<br>
 
-![](images/valueblack.png) <br>
-*Screenshot of values of all black preset*
+def save_draw_colour(list):
+  for r in range(32):
+    for c in range(32):
+      if list[r][c] == 0:
+        button[r][c].config(bg='grey99')
+        value[r][c] = 0
+      elif list[r][c] == 1: 
+        button[r][c].config(bg='grey88')
+        value[r][c] = 20
+      elif list[r][c] == 2:
+        button[r][c].config(bg='grey77')
+        value[r][c] = 30
+      elif list[r][c] == 3: 
+        button[r][c].config(bg='grey66')
+        value[r][c] = 40
+      elif list[r][c] == 4:
+        button[r][c].config(bg='grey44')
+        value[r][c] = 50  
+      elif list[r][c] == 5: 
+        button[r][c].config(bg='grey33')
+        value[r][c] = 60
+      elif list[r][c] == 6:
+        button[r][c].config(bg='grey22')
+        value[r][c] = 70
+      else: 
+        button[r][c].config(bg='grey1')
+        value[r][c] = 90
 
-Output of the value of X Pattern.<br>
+def save_img():
+    global list2, list1, value
+    list2 = []
+    list1 = []
+    list3 = []
+    list4 = []
+    for i in range(0, 800, 25):
+      list3 = []
+      for t in range(0 , 800, 25):
+        getnumber = f0(t, i) #getting the row downwards then col cause grid is store in the order row-column
+        #print(i, t)
+        list3.append(getnumber)
+      list4.append(list3)
+      #list3.append(list1)
+    save_draw_colour(list4)
+    print(list4)
+  
+def f0(x, y): #get the starting x, y of a 18x18 and to return 1 value back to rep the 18x18, to scale down a 18x18 to a 1x1
+    global list0, list1, list2
+    list = []
+    #num1 = 18*(x-1)
+    #num2 = num1 + 18
+    for i in range(x ,25+x):
+      for t in range(y ,25+y):
+        list.append(canvasdraw[i][t])
+    list0 = list
+    freq = min(set(list0), key = list0.count) #using min instead cause if max almost everytime will get 0,harder for the draw to show; once the 18x18 grid got 1 value change, then return that value
+                                              #Link: https://www.geeksforgeeks.org/python-find-most-frequent-element-in-a-list/
+    #list1.append(freq)
+    return freq 
 
-![](images/valueX.png) <br>
-*Screenshot of values of x pattern preset*
+def clearbtn():
+    c.delete('all')
+    allwht()
+    for i in range(800):
+        for j in range(800):
+            canvasdraw[i][j] = 0
 
-Output of the value of Sequence.<br>
+#########################################################################################
 
-![](images/valueseq.png) <br>
-*Screenshot of values of sequence preset*
+def changeto(m):
+    global pattern
+    pattern = m 
+    # print("pattern is", pattern)
 
-# Features 
-## Feature 1 - TicTacToe 
-### When players select the O or X icons they can choose to be player 1 or 2 and play against each other.
-
-<br>
-
-Below is an image of the TicTacToe GUI
-![](images/TicTacToe.png) <br>
-*Screenshot of TicTacToe GUI*
-
-<br>
-Below are the code to create the 3x3 grid used to place the O and X symbols
-
-```
-for x in range (3):
-    for y in range (3):
-        gui[x][y] = Button(frame2, font=("Calibri, 5"), width=18, height=12, command=lambda r=x, c=y:tictaotoe (r, c))
-        gui[x][y].grid(row=x, column=y)
-```
-<br>
-Below are the code to create the O and X symbols and place them on the 32x32 grid formate
-
-```
 def tictaotoe(x,y):
     global pattern, xoff, yoff
     if x == 0 and y == 0:
@@ -1258,65 +842,263 @@ def tictaotoe(x,y):
                     elif j == 5 + yoff: 
                         value[i][j] = 7
                         btn[i][j].config(bg="black")
+
+    # student_pub.pubpic(value)
+    # logic(x,y)
+
+def check():
+    global p
+    for x in range (3):
+        for y in range (3):
+            if (gui[x][y].cget('text') == 'X' or gui[x][y].cget('text') == 'O'):
+                p = p+1
+
+def logic(y):
+    global p
+    p = 0
+    check()
+    print(p)
+    if      ((gui[0][0].cget('text') == y and gui[0][1].cget('text') == y and gui[0][2].cget('text') == y) or
+			(gui[1][0].cget('text') == y and gui[1][1].cget('text') == y and gui[1][2].cget('text') == y) or
+			(gui[2][0].cget('text') == y and gui[2][1].cget('text') == y and gui[2][2].cget('text') == y) or
+			(gui[0][0].cget('text') == y and gui[1][0].cget('text') == y and gui[2][0].cget('text') == y) or
+			(gui[0][1].cget('text') == y and gui[1][1].cget('text') == y and gui[2][1].cget('text') == y) or
+			(gui[0][2].cget('text') == y and gui[1][2].cget('text') == y and gui[2][2].cget('text') == y) or
+			(gui[0][0].cget('text') == y and gui[1][1].cget('text') == y and gui[2][2].cget('text') == y) or
+			(gui[0][2].cget('text') == y and gui[1][1].cget('text') == y and gui[2][0].cget('text') == y)):
+            return y
+    elif (p >= 9):
+        c = 'c'
+        return c
+    else:  
+        return N
+    
+
+def condition(var):
+    if var == "O": 
+        messagebox.showinfo("Winner", "Player 1 won the match")
+    elif var == "X": 
+        messagebox.showinfo("Winner", "Player 2 won the match")
+    elif var == 'c': 
+        messagebox.showinfo("TIE", "tie game")
+
+
+def clear():
+    for i in range (32):
+        for j in range (32):
+            btn[i][j].config(bg="white")
+            value[i][j] = 0
+
+    for x in range(3):
+        for y in range(3):
+            gui[x][y].config(text='')
+
+    print("Clear All")
+    border()
+
+def border(): 
+    print("Borders")
+    for j in range (32):
+        for i in range (32):
+            if i == 8: 
+                value[i][j] = 7
+            elif i == 9: 
+                value[i][j] = 7
+            elif i == 10: 
+                value[i][j] = 7
+            elif i == 11: 
+                value[i][j] = 7
+            elif i == 20: 
+                value[i][j] = 7
+            elif i ==  21: 
+                value[i][j] = 7
+            elif i == 22: 
+                value[i][j] = 7
+            elif i == 23: 
+                value[i][j] = 7
+            elif j == 8: 
+                value[i][j] = 7
+            elif j == 9: 
+                value[i][j] = 7
+            elif j == 10: 
+                value[i][j] = 7
+            elif j == 11: 
+                value[i][j] = 7
+            elif j == 20: 
+                value[i][j] = 7
+            elif j ==  21: 
+                value[i][j] = 7
+            elif j == 22: 
+                value[i][j] = 7
+            elif j == 23: 
+                value[i][j] = 7
+            else:
+                value[i][j] = 0
+
+#################################################################################################
+main = Tk()
+# main.state('zoom')
+
+titleframe = Frame(main)
+titleframe.grid(row=0, columnspan=1)
+contentframe = Frame(main)
+contentframe.grid(row=1, column=0)
+modeframe = Frame(main)
+modeframe.grid(row=1, column=1, pady=15)
+
+
+#title for different mode
+var = "Welcome!!!"
+titlefont = ("Fixedsys", 25)
+title = Label(titleframe, text=var, font=titlefont, fg="#a5678e")
+title.grid(row=0, column=0)
+
+# content 
+explaination = Frame(contentframe)
+explaination.grid(row=0, column=0)
+
+contenttitle = Label(explaination, text="Theme: Wonders of Our Childhood", font=("Fixedsys", 15))
+contenttitle.grid(row=0, column=0)
+contenttxt = Label(explaination, text="""Our features consists of games that remind us of our childhood.
+ We created these features as we wanted to bring some form of nostalgia
+ to our target audience and teach them the physics of polarisation 
+ through our interactive games while using our games as a form of relatability.""", font=("Courier", 15))
+contenttxt.grid(row=1, column=0)
+
+#mode 
+modefont = ("Courier", 15)
+
+default = Button(modeframe, text="Grid", font=modefont, bg="#97d2e1", command=gridfunc)
+default.grid(row=0, column=0, padx=5, pady=5)
+draw = Button(modeframe, text="Draw", font=modefont, bg="#ebbbbd", command=drawfunc)
+draw.grid(row=1, column=0, padx=5, pady=5)
+ttt = Button(modeframe, text="Tic-Tac-Toe", font=modefont, bg="#f5d788", command=tttfunc)
+ttt.grid(row=2, column=0, padx=5, pady=5)
+start = Button(modeframe, text="Home Page", font=modefont, bg="#9b9655", command=homefunc)
+start.grid(row=3, column=0, padx=5, pady=5)
+
+############################################ GRID 
+gndframe = Frame(contentframe)
+
+gframe = Frame(gndframe)
+gframe.grid(row=0, column=0)
+
+gndframe2 = Frame(gndframe) #shades btn
+gndframe2.grid(row=0, column=1)
+gndframe3 = Frame(gndframe)
+gndframe3.grid(row=1, columnspan=2) #colour btns 
+gndframe4 = Frame(gndframe)
+gndframe4.grid(row=2, columnspan=2) #send btn
+
+# 32x32 grid
+button = [[j for j in range(32)] for i in range(32)]
+value = [[0 for i in range(32)] for j in range(32)]
+
+for j in range (32):
+  for i in range (32):
+    button[i][j] = Button(gframe, font=("Calibri, 5"), width=1, height=1, bg='white', command=lambda r=i, c=j:whitebtn(r, c))
+    button[i][j].grid(row=i, column=j)
+
+#shades button
+white = Button(gndframe2, text="White", font=("Calibri, 10"), bg='grey99', width=13, height=2, command=lambda m=0:change_colour(m))
+white.grid(row=1, column=0)
+grey1 = Button(gndframe2, text="Grey1", font=("Calibri, 10"), bg='grey88', width=13, height=2, command=lambda m=1:change_colour(m))
+grey1.grid(row=2, column=0)
+grey2 = Button(gndframe2, text="Grey2", font=("Calibri, 10"), bg='grey77', width=13, height=2, command=lambda m=2:change_colour(m))
+grey2.grid(row=3, column=0)
+grey3 = Button(gndframe2, text="Grey3", font=("Calibri, 10"), bg='grey66', width=13, height=2, command=lambda m=3:change_colour(m))
+grey3.grid(row=4, column=0)
+grey4 = Button(gndframe2, text="Grey4", font=("Calibri, 10"), bg='grey44', width=13, height=2, command=lambda m=4:change_colour(m))
+grey4.grid(row=5, column=0)
+grey5 = Button(gndframe2, text="Grey5", font=("Calibri, 10"), bg='grey33', fg='white', width=13, height=2, command=lambda m=5:change_colour(m))
+grey5.grid(row=6, column=0)
+grey6 = Button(gndframe2, text="Grey6", font=("Calibri, 10"), bg='grey11', fg='white', width=13, height=2, command=lambda m=6:change_colour(m))
+grey6.grid(row=7, column=0)
+black = Button(gndframe2, text="Black", font=("Calibri, 10"), bg='grey1', fg='white', width=13, height=2, command=lambda m=7:change_colour(m))
+black.grid(row=8, column=0)
+
+#save button
+savebtn = Button(gndframe2, text="Save", font=("Calibri, 10"), bg='light blue', fg='black', width=13, height=2, command=save_img)
+savebtn.grid(row=9, column=0)
+
+#colour button
+allwhite = Button(gndframe3, text="All White",font=("Calibri, 12"), bg='white', width=13, height=2, command=allwht)
+allwhite.grid(row=0, column=0)
+
+allblack = Button(gndframe3, text="All Black",font=("Calibri, 12"), bg='black', fg='white', width=13, height=2, command=allblk)
+allblack.grid(row=0, column=1)
+
+clear = Button(gndframe3, text="Clear",font=("Calibri, 12"), bg='gold', width=13, height=2, command=clearbtn)
+clear.grid(row=0, column=2)
+
+#send btn
+send = Button(gndframe4, text="Send Image!", font=("Calibri, 12"), width=13, height=2, command=lambda :sendbtn())
+send.grid(row=0, column=0)
+
+############################################### DRAW
+dframe = Frame(gndframe)
+dframe.grid(row=0, column=0)
+
+c = Canvas(dframe, width=800, height=800, bg='white')  
+c.grid(row=0, column=0)
+
+c.bind('<Button-1>', get_x_and_y)
+c.bind('<B1-Motion>',paint)
+c.bind('<Enter>', get_x_and_y)
+
+#this variable to store the colour choice 
+colour = 0
+canvasdraw = [[0 for i in range(800)] for j in range(800)]  # save eventxy into an array 
+
+
+###################################### TIC-TAC-TOE
+tttframe = Frame(contentframe)
+
+tttframe1 = Frame(tttframe)
+tttframe1.grid(rowspan=2, column=0)
+
+btn = [[i for i in range (32)] for j in range (32)]
+for i in range (32):
+    for j in range (32):
+        btn[i][j] = Button(tttframe1, font=("Calibri, 5"), width=1, height=1, bg="white")
+        btn[i][j].grid(row=i, column=j)
+
+tttframe2 = Frame(tttframe)
+tttframe2.grid(row=0, column=1, padx=15)
+
+value = [[0 for i in range(32)] for j in range(32)]
+
+gui = [[x for x in range(3)] for y in range(3)]
+
+for x in range (3):
+    for y in range (3):
+        gui[x][y] = Button(tttframe2, font=("Calibri, 5"), width=18, height=12, command=lambda r=x, c=y:tictaotoe (r, c))
+        gui[x][y].grid(row=x, column=y)
+
+tttframe3 = Frame(tttframe)
+tttframe3.grid(row=1, column=1)
+
+ximg = PhotoImage(file="x.png")
+oimg = PhotoImage(file="o.png")
+
+xoff = 0
+yoff = 0
+pattern = 0 
+p = 0
+
+obtn = Button(tttframe3, text="", image=oimg, command=lambda m=1:changeto(m))
+obtn.grid(row=0, column=0)
+xbtn = Button(tttframe3, text="", image=ximg, command=lambda m=0:changeto(m))
+xbtn.grid(row=0, column=1)
+
+p1 = Label(tttframe3, text="Player 1 is O", font=("Courier", 10))
+p1.grid(row=2, columnspan=2)
+p2 = Label(tttframe3, text="Player 2 is X", font=("Courier", 10))
+p2.grid(row=3, columnspan=2)
+
+clearbtn = Button(tttframe3, text="Clear", font=("Courier", 15), command=clear)
+clearbtn.grid(row=1, columnspan=2)
+
+# student_pub.pubpic(value)
+main.mainloop()
 ```
-<br>
-Output of selecting X and O 
-
-![](images/XandOselect.png) <br>
-*Screenshot of TicTacToe GUI with X and O selected on top corners*
-
-<br>
-Output of X winning
-
-![](images/Xwin.png)
-*Screenshot of TicTacToe GUI when X wins*
-
-<br>
-Output of O winning
-
-![](images/Owin.png)
-*Screenshot of TicTacToe GUI when O wins*
-
-
-<br>
-Output of the value of grid which determine the shades on the panel. 
-
-![](images/tictactoegridvalue.png)
-*Screenshot of values of TicTacToe grid*
-
-<br>
-Output of the value of X and O selection
-
-![](images/tictactoeSelectionValue.png)
-*Screenshot of values of X and O selection on top corners*
-
-<br>
-Output of the value of X win
-
-![](images/XwinValue.png)
-*Screenshot of values of X winning*
-
-<br>
-Output of the value of O win
-
-![](images/OwinValue.png)
-*Screenshot of values of O winning*
-
-
-<br>
-
-# How to run the program on terminal
-1. Open the terminal on raspberryPi.  
-2. In the terminal, type the following commands: <br>
-(This is assuming you saved the file under the 'Documents' folder)<br>
- ``` cd /home/pi/Documents ```
-3. Once inside the directory folder of where your file is, type the following: <br>
-``` python3 main.py``` 
-
-![](images/terminal.png) <br>
-*Screenshot of terminal*
-
-
-nal*
-
-
