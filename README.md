@@ -269,7 +269,7 @@ The box that is used to hold the laser is 17cm x 12cm
 ![](images/laser.JPG) <br>
 *Image of cardboard used for the maze*
 
-This shows the Raspberry Pi and breadboard used to wire the hardware. Withon the black cone is the photodiode sensor.
+This shows the Raspberry Pi and breadboard used to wire the hardware. Within the black cone is the photodiode sensor.
 ![](images/pi.JPG)<br>
 *Image of cardboard used for the maze*
 
