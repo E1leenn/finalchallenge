@@ -2,11 +2,13 @@
 In this documentation, we will be explaining about the different features of our project. Our theme is "Wonders Of Our Childhood", our features are based on our childhood that encapsulates the memories of the simpler times where we would play these games when we were younger. 
 
 ## Project Learning Point
-We want to showcase to our target audience about the physics of polarisation
-and brewster angle through our interactive games. And why these particular features? Because there is some form of nostalgia as these are games we have played at least once during our childhood which also adds relatability to our audience.
+We want to showcase to our target audience about the physics of polarisation and brewster angle through our interactive games. 
 
 ## Project Backstory
 Behind these arcade games, there is always something to learn behind the scenes and we wanna tell them how interesting and cool it is. How they are made better with inovation and how the may be relatively complex to build.
+
+## Research 
+Why these particular features? Because there is some form of nostalgia as these are games we have played at least once during our childhood which also adds relatability to our audience. 
 
 # Table of Contents 
 - [System Diagram](#system-diagram)
@@ -200,9 +202,7 @@ Output <br>
 *Screenshot of a frame window*
 
 # Features
-There are a total of three features......
-
-# Tic-Tac-Toe
+## Tic-Tac-Toe
 Feature 1 is the classic TicTacToe game. You can choose to be either Player 1 or Player 2 based on selecting the X or O symbol as shown in the interface below.
 
 <br>
@@ -217,7 +217,7 @@ This scenario is when X wins the game
 ![](images/Xwin.png)
 *Screenshot of TicTacToe page in GUI*
 
-# Draw
+## Draw
 Users can select one of the shades colour, press and hold the left click of a mouse or trackpad to draw on the canvas then have it converted to grid form.
 
 ![](images/DrawFeature.png)
@@ -225,38 +225,44 @@ Users can select one of the shades colour, press and hold the left click of a mo
 <br>
 
 This is how it looks like when a user draws on the canvas. 
+
 ![](images/drawfeatureSmile.png)
 *Screenshot of Draw page in GUI*
 <br>
 
 This is how the drawing looks when the user save it and changes it to grid form.
+
 ![](images/drawfeaturetogrid.png)
 *Screenshot of Draw page in GUI*
 
 ![](images/TicTacToe.png)
 *Screenshot of TicTacToe page in GUI*
 
-# Laser Maze
+## Laser Maze
 ## Hardware for the Laser Maze
 The laser maze consist of 3 SG90 servos, 6 mirrors, breadboard, RaspberryPi, laser, jumperwires, photodiode sensor, 2 polarizers.<br>
 
 2 mirrors and 1 polarizer is attacted to the each of the servo to make it movable to direct the laser to the sensor. 
 
 The cardboard used as a base for the maze is 65cm x 45cm
+
 ![](images/MazeBase.JPG) <br>
 *Image of the cardboard used for the maze*
 
 The box that is used to hold the laser is 17cm x 12cm
+
 ![](images/laser.JPG) <br> 
 
 ![](images/pi.JPG)<br>
 
 Final look for the laser maze. 
+
 ![](images/)<br>
 
 ## Software for Laser Maze GUI
 ### Pi GPIO Library
 Go to this link to view all commands to install the PiGPIOd library, reduces jitter on servo motor
+
 <br>*Credit: http://abyz.me.uk/rpi/pigpio/download.html*<br>
 
 Code used to install Library as shown in image, enter in Terminal of Raspberry Pi
@@ -287,7 +293,7 @@ sudo pigpiod
 *Screenshot of the GUI*
 
 ## Draw GUI
-![](images/DrawFeature.png)
+<!-- ![](images/DrawFeature.png) -->
 *Screenshot of the GUI*
 
 ## Tic-Tac-Toe GUI
