@@ -245,7 +245,7 @@ This is how it looks like when a user draws on the canvas.
 This is how the drawing looks when the user save it and changes it to grid form.
 
 ![](images/drawfeaturetogrid.png)
-*Screenshot of Draw page in GUI*
+*Screenshot of Grid page in GUI*
 
 ![](images/TicTacToe.png)
 *Screenshot of TicTacToe page in GUI*
