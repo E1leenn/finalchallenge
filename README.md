@@ -27,7 +27,7 @@ Why these particular features? Because there is some form of nostalgia as these 
       - [Hardware](#hardware-for-the-laser-maze)
       - [Software](#software-for-laser-maze-gui)
 - [Final Look of the GUI](#final-look-of-gui)
-- [How to Run on Terminal](#how-to-run-on-terminal)
+- [How to Run Main.py on Terminal](#how-to-run-main-gui-file-on-terminal)
 
 
 # System Diagram
@@ -138,9 +138,6 @@ Enter the following line in the Raspberry Pi terminal.
 pip install pygame
 ```
 
-
-
-
 # Setting up Raspberry Pi
 Note: Only do the following on first initial boot.
 
@@ -235,7 +232,7 @@ This scenario is when X wins the game
 *Screenshot of TicTacToe page in GUI*
 
 ## Draw
-Users can select one of the shades colour, press and hold the left click of a mouse or trackpad to draw on the canvas then have it converted to grid form.
+Users can select one of the colour shades,then press and hold the left click of a mouse or trackpad to draw on the canvas then have it converted to grid form. By clicking the "save" button after drawing, followed by the grid page button on the side to see it convert. Lastly, the send image button to display the image on the panel.
 
 ![](images/DrawFeature.png)
 *Screenshot of Draw page in GUI*
@@ -371,7 +368,7 @@ Each arrow button represents a change in servo angle by 15 degrees in the respec
 ![](images/lasermazegui.png)
 *Screenshot of the GUI*
 
-# How to Run main.py on Terminal 
+# How to Run main GUI file on Terminal 
 1. Open the terminal on raspberryPi.  
 2. In the terminal, type the following commands: <br>
 (This is assuming you saved the file under the 'Documents' folder)<br>
