@@ -2,6 +2,7 @@
 In this documentation, we will be explaining about the different features of our project. Our theme is "Wonders Of Our Childhood", our features are based on our childhood that encapsulates the memories of the simpler times where we would play these games when we were younger. 
 
 ## Project Learning Point
+Our key takeaway is the ability to actually understand how polarisation works as the logic behind its concept allowed us to come up with creatve features for our project. We also learnt about the hardware side of the project where we figured out how to solder the board on our own and install the motors. For the software, we learnt about how the client can talk to the master pi which will then communicate the data to the esp board. Aside from that, learning to code our own features was also a very important learning point for us as it encourages problem-thinking skills. 
 We want to showcase to our target audience about the physics of polarisation and brewster angle through our interactive games. 
 
 ## Project Backstory
