@@ -397,16 +397,6 @@ F-->G[sendimage.py]
 G-->A
 ```
 
-
-A[sendtopolarizer.py] --> B[main.py]
-C[student_pub.py] --> B
-B --> D[startshow function]
-B --> E[img_change function]
-E --> B
-C --> A
-
-
-
 # Code for Light Sensor and Audio cue
 
 ```
