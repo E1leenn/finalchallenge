@@ -312,8 +312,12 @@ sudo pigpiod
 
 
 ## How to start Maze Gui from Raspberry Pi terminal
-### Run this file together with lightsensor_2 file
+### (Run this file together with lightsensor_2 file)
 
+After installing all the libaries, open the terminal in raspberry pi and clone the repository.
+```
+git clone https://github.com/E1leenn/finalchallenge.git
+```
 
 Enter these lines of code into the terminal to start the Laser Maze GUI
 
