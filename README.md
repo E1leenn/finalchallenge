@@ -591,7 +591,7 @@ win.mainloop()
 ```
 from tkinter import *
 from tkinter import messagebox
-# from student_pub import *
+from student_pub import *
 
 def homefunc():
     tttframe.grid_forget()
@@ -719,7 +719,7 @@ def ramseq():
 def sendbtn():
     #print(value)
     print(canvasdraw)
-    # pubpic(value)
+    pubpic(value)
 
 def get_x_and_y(event):
    global lasx, lasy
@@ -983,7 +983,7 @@ def tictaotoe(x,y):
                         value[i][j] = 7
                         btn[i][j].config(bg="black")
 
-    # student_pub.pubpic(value)
+    pubpic(value)
     # logic(x,y)
 
 def check():
@@ -1239,6 +1239,6 @@ p2.grid(row=3, columnspan=2)
 clearbtn = Button(tttframe3, text="Clear", font=("Courier", 15), command=clear)
 clearbtn.grid(row=1, columnspan=2)
 
-# student_pub.pubpic(value)
+pubpic(value)
 main.mainloop()
 ```
