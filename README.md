@@ -5,11 +5,8 @@ In this documentation, we will be explaining about the different features of our
 Our key takeaway is the ability to actually understand how polarisation works as the logic behind its concept allowed us to come up with creative features for our project. We also learnt about the hardware side of the project where we figured out how to solder the board on our own and install the motors. For the software, we learnt about how the client can talk to the master pi which will then communicate the data to the esp board. Aside from that, learning to code our own features was also a very important learning point for us as it encourages problem-thinking skills. 
 We want to showcase to our target audience about the physics of polarisation and brewster angle through our interactive games. 
 
-## Project Backstory
-Behind these arcade games, there is always something to learn behind the scenes and we wanna tell them how interesting and cool it is. How they are made better with inovation and how the may be relatively complex to build.
-
-## Research 
-Why these particular features? Because there is some form of nostalgia as these are games we have played at least once during our childhood which also adds relatability to our audience. 
+## Project Backstory & Research
+Behind these arcade games, there is always something to learn behind the scene and it is always exciting to tell others about it. Hence, we researched about how we could teach the science behind our project and we were inspired to see kids in the science centre who would interact with one of their exhibits. Their strong curiousity motivated us to relate with them hence we came up with the idea of using nostalgia to our advantage and come up with features that resemble our childhood.
 
 # Table of Contents 
 - [System Diagram](#system-diagram)
