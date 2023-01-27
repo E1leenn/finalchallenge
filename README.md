@@ -249,6 +249,9 @@ The box that is used to hold the laser is 17cm x 12cm
 
 ![](images/pi.JPG)<br>
 
+Final look for the laser maze. 
+![](images/)<br>
+
 ## Software for Laser Maze GUI
 ### Pi GPIO Library
 Go to this link to view all commands to install the PiGPIOd library, reduces jitter on servo motor
