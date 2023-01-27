@@ -4,7 +4,7 @@ from PIL import Image, ImageOps
 from student_pub import *
 
 ## open image file
-myImage = Image.open('pokeball.png')
+myImage = Image.open('trophy.png')
 myImage.show()
 
 ## greyscale image file

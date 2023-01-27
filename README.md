@@ -330,7 +330,7 @@ python3 main_servo_gui.py
 
 ## How to start Light Sensor operation
 
-Enter these lines of code into the terminal to start the Light Sensor program
+Enter these lines of code into the terminal to start the Light Sensor program. Do note that this code will work best with a speaker connected to the pi using the built-in 3.5mm jack.
 
 <br>
 
