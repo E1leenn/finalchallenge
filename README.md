@@ -314,7 +314,7 @@ sudo pigpiod
 ## How to start Maze Gui from Raspberry Pi terminal
 ### (Run this file together with lightsensor_2 file)
 
-After installing all the libaries, open the terminal in raspberry pi and clone the repository.
+After installing all the modules, open the terminal in raspberry pi and clone the repository.
 ```
 git clone https://github.com/E1leenn/finalchallenge.git
 ```
@@ -377,13 +377,35 @@ Each arrow button represents a change in servo angle by 15 degrees in the respec
 # How to Run main GUI file on Terminal 
 1. Open the terminal on raspberryPi.  
 2. In the terminal, type the following commands: <br>
-(This is assuming you saved the file under the 'Documents' folder)<br>
- ``` cd /home/pi/Documents ```
+(This is assuming you saved the file under the 'gui32x32' folder in the Desktop)<br>
+ ``` cd /home/pi/Desktop/gui32x32 ```
 3. Once inside the directory folder of where your file is, type the following: <br>
 ``` python3 main.py``` 
 
 ![](images/mainterminal.png) <br>
 *Screenshot of terminal*
+
+# Flow of code of our features
+``` mermaid
+graph TD
+A[student_pub.py]-->B[main.py]
+B-->C[draw function]
+B-->D[tic tac toe function]
+A-->E[main_servo_gui.py]
+A-->F[lightsensor_2.py]
+F-->G[sendimage.py]
+G-->A
+```
+
+
+A[sendtopolarizer.py] --> B[main.py]
+C[student_pub.py] --> B
+B --> D[startshow function]
+B --> E[img_change function]
+E --> B
+C --> A
+
+
 
 # Code for Light Sensor and Audio cue
 
