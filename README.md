@@ -256,8 +256,8 @@ The box that is used to hold the laser is 17cm x 12cm
 ![](images/pi.JPG)<br>
 
 Final look for the laser maze. 
-
-![](images/)<br>
+![](images/Maze.JPG)<br>
+*Image*
 
 ## Software for Laser Maze GUI
 ### Pi GPIO Library
@@ -276,7 +276,11 @@ sudo make install
 ![](images/pigpioLibrary.png)
 *Screenshot of Google Chrome webpage*
 
-Before starting the program to control the servos, you must activate the daemon from the terminal.
+All commands seen on the webpage must be entered into the terminal of Raspberry Pi. 
+
+<br>
+Before starting the program to control the servos, you must activate the daemon from the terminal using this line stated below. Which also can be found on the webpage.
+
 ```
 sudo pigpiod
 ```
@@ -301,6 +305,9 @@ sudo pigpiod
 *Screenshot of the GUI*
 
 ## Laser Maze GUI
+<br>
+Each arrow button represents a change in servo angle by 15 degrees in the respective direction. Hence, pressing the left or right arrow button under each description (Motor1, Motor2, Polariser) will turn the servo motor in that specific direction.
+
 ![](images/lasermazegui.png)
 *Screenshot of the GUI*
 

@@ -37,7 +37,7 @@ once during our childhood which also adds relatability to our audience.
 <br>
 ## Project Backsory
 Behind these arcade games, there is always something to learn behind the scenes 
-and we wanna tell them how interesting and cool it is. How they are made better with inovation and how the may be relatively complex to build.
+and we wanna tell them how interesting and cool it is. How they are made better with innovation and how the may be relatively complex to build.
 
 <br>
 
@@ -111,6 +111,8 @@ The box that is used to hold the laser is 17cm x 12cm
 
 ![](images/pi.JPG)<br>
 
+![](images/Maze.JPG)<br>
+
 ## Software 
 1. PuTTy
 2. Advanced Port Scanner
@@ -174,7 +176,7 @@ sudo make install
 ![](images/pigpioLibrary.png)
 *Screenshot of Google Chrome webpage*
 
-Before starting the program to control the servos, you must activate the daemon from the terminal.
+Before starting the program to control the servos, you must activate the daemon from the terminal. 
 
 ```
 sudo pigpiod

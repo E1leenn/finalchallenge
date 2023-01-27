@@ -588,7 +588,7 @@ send.grid(row=0, column=0)
 dframe = Frame(gndframe)
 dframe.grid(row=0, column=0)
 
-c = Canvas(dframe, width=800, height=800, bg='white')  
+c = Canvas(dframe, width=576, height=576, bg='white')  
 c.grid(row=0, column=0)
 
 c.bind('<Button-1>', get_x_and_y)
