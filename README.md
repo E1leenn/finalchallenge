@@ -309,6 +309,44 @@ sudo pigpiod
 ![](images/daemon.png)
 *Screenshot of Terminal in Raspberry Pi*
 
+<br>
+
+
+## How to start Maze Gui from Raspberry Pi terminal
+### Run this file together with lightsensor_2 file
+
+
+Enter these lines of code into the terminal to start the Laser Maze GUI
+
+<br>
+
+Used to change directory (which you have saved your own file under)
+```
+cd /home/pi/Desktop/gui32x32
+```
+Used to run file
+```
+python3 main_servo_gui.py
+```
+<br>
+
+## How to start Light Sensor operation
+
+Enter these lines of code into the terminal to start the Light Sensor program
+
+<br>
+
+Used to change directory (which you have saved your own file under)
+```
+cd /home/pi/Desktop/gui32x32
+```
+Used to run file
+```
+python3 lightsensor_2.py
+```
+
+<br>
+
 # Final Look of GUI
 ## Start Up Page
 ![](images/homepg.png)
@@ -319,7 +357,7 @@ sudo pigpiod
 *Screenshot of the GUI*
 
 ## Draw GUI
-<!-- ![](images/DrawFeature.png) -->
+![](images/DrawFeature.png)
 *Screenshot of the GUI*
 
 ## Tic-Tac-Toe GUI
@@ -333,7 +371,7 @@ Each arrow button represents a change in servo angle by 15 degrees in the respec
 ![](images/lasermazegui.png)
 *Screenshot of the GUI*
 
-# How to Run on Terminal 
+# How to Run main.py on Terminal 
 1. Open the terminal on raspberryPi.  
 2. In the terminal, type the following commands: <br>
 (This is assuming you saved the file under the 'Documents' folder)<br>
@@ -341,7 +379,7 @@ Each arrow button represents a change in servo angle by 15 degrees in the respec
 3. Once inside the directory folder of where your file is, type the following: <br>
 ``` python3 main.py``` 
 
-![](images/terminal.png) <br>
+![](images/mainterminal.png) <br>
 *Screenshot of terminal*
 
 # Code for Light Sensor and Audio cue
