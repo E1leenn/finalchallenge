@@ -517,14 +517,17 @@ contenttxt.grid(row=1, column=0)
 #mode 
 modefont = ("Courier", 15)
 
-default = Button(modeframe, text="Grid", font=modefont, bg="#97d2e1", command=gridfunc)
-default.grid(row=0, column=0, padx=5, pady=5)
-draw = Button(modeframe, text="Draw", font=modefont, bg="#ebbbbd", command=drawfunc)
-draw.grid(row=1, column=0, padx=5, pady=5)
+box = Frame(modeframe, highlightbackground="#d1a69b", highlightthickness=2)
+box.grid(row=0, column=0)
+
+default = Button(box, text="Grid", font=modefont, bg="#97d2e1", command=gridfunc)
+default.grid(row=0, column=0, padx=10, pady=5)
+draw = Button(box, text="Draw", font=modefont, bg="#ebbbbd", command=drawfunc)
+draw.grid(row=1, column=0, padx=10, pady=5)
 ttt = Button(modeframe, text="Tic-Tac-Toe", font=modefont, bg="#f5d788", command=tttfunc)
-ttt.grid(row=2, column=0, padx=5, pady=5)
+ttt.grid(row=1, column=0, padx=5, pady=5)
 start = Button(modeframe, text="Home Page", font=modefont, bg="#9b9655", command=homefunc)
-start.grid(row=3, column=0, padx=5, pady=5)
+start.grid(row=2, column=0, padx=5, pady=5)
 
 ############################################ GRID 
 gndframe = Frame(contentframe)
