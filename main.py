@@ -494,12 +494,6 @@ main = Tk()
 main.configure(bg="#1e2c2f")
 # main.state('zoom')
 
-# bg = "matchagreen.png"
-# img = Image.open(bg)
-# bgimg = ImageTk.PhotoImage(img)
-
-# backg = Label(main, image=bgimg)
-# backg.place(x = 0,y = 0)
 
 titleframe = Frame(main)
 titleframe.grid(row=0, columnspan=1)
