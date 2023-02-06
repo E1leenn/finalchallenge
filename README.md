@@ -447,174 +447,19 @@ finally:
     GPIO.cleanup()
 ```
 
-
 <br>
 
-
-# Code for Maze GUI
-```
-# Import required libraries
-from gpiozero import AngularServo
-from guizero import App, Slider, Text, ButtonGroup
-from gpiozero.pins.pigpio import PiGPIOFactory
-
-from tkinter import *
-from PIL import ImageTk, Image
-from tkinter.ttk import *
-import tkinter.messagebox
-
-# Create an instance of tkinter window
-win = Tk()
-style = Style()
-
-factory = PiGPIOFactory()
-
-win.title("Laser Maze")
-
-# Define the geometry of the window
-win.geometry("2000x1100")
-# win.state('zoomed')
-
-s = AngularServo(25, initial_angle = 0, min_pulse_width = 1/1000, max_pulse_width =2/1000
-                , frame_width = 20/1000, pin_factory = factory, min_angle=-90, max_angle=90)
-
-s1 = AngularServo(12 , initial_angle = 0, min_pulse_width = 1/1000, max_pulse_width =2/1000
-                , frame_width = 20/1000, pin_factory = factory, min_angle=-90, max_angle=90)
-
-s2 = AngularServo(24 , initial_angle = 75, min_pulse_width = 1/1000, max_pulse_width =2/1000
-                , frame_width = 20/1000, pin_factory = factory, min_angle=-90, max_angle=90)
-
-leftframe = Frame(win, width=200, height=200)
-leftframe.grid(row=0, column=0)
-
-rightframe = Frame(win, width=200, height=200)
-rightframe.grid(row=0, column=1)
-
-bottomframe = Frame(win, width=200, height=200)
-bottomframe.grid(row=2, column=1)
-
-# Create an object of tkinter ImageTk
-img = ImageTk.PhotoImage(Image.open("diagram.png"))
-
-label = Label(leftframe, image = img)
-label.pack()
-
-counter_s = 0
-counter_s1 = 0
-counter_s2 = 0
-
-def subtract():
-    global counter_s 
-    counter_s -=15
-    s.angle = 0 + counter_s
-    s.angle = int(s.angle - 15) 
-    print("motor1: ", s.angle)
-    
-    if s.angle == -90:
-        counter_s = -90
-    
-def addition():
-    
-    global counter_s 
-    counter_s  +=15
-    s.angle = 0 + counter_s 
-    print("motor1:", s.angle)
-    
-    if s.angle == 90.0:
-        counter_s  = 90.0
-        tkinter.messagebox.showinfo("You have reached the maximum angle")
-
-def subtract2():
-    global counter_s1 
-    counter_s1 -=15
-    s1.angle = 0 + counter_s1 
-    #s.angle = int(s.angle - 15) 
-    print("motor2: ", s1.angle)
-    
-    if s1.angle == -90.0:
-        counter_s1 = -90.0
-        print("You have reached the minimum angle")
-    
-def addition2():
-    global counter_s1
-    counter_s1 +=15
-    s1.angle = 0 + counter_s1
-    print("motor2:", s1.angle)
-    
-    if s1.angle == 90.0:
-        counter_s1 = 90.0
-        print("You have reached the maximum angle")
-
-def subtract3():
-    global counter_s2 
-    counter_s2 -=15
-    s2.angle = 0 + counter_s2 
-    #s.angle = int(s.angle - 15) 
-    print("Polariser: ", s2.angle)
-    
-    if s2.angle == -90.0:
-        counter_s2 = -90.0
-        print("You have reached the minimum angle")
-    
-def addition3():
-    global counter_s2
-    counter_s2 +=15
-    s2.angle = 0 + counter_s2
-    print("Polariser:", s2.angle)
-    
-    if s2.angle == 90.0:
-        counter_s2 = 90.0
-        print("You have reached the maximum angle")
-        
-def reset_motor():
-    s.angle = 0.0
-    s1.angle = 0.0
-    s2.angle = 75.0
-    print(s.angle,s1.angle,s2.angle)
-
-welcome = Label(bottomframe, text ="Welcome to the laser maze game!", font=("Arial", 25)).grid(row=2, column=1)
-
-instructions = Label(bottomframe, text= "Here are a few instructions: \n 1) Your objective is to navigate the laser and hit the light sensor,\n 2) Play with the left and right buttons to turn the motor,\n 3) Hit the reset button to assign all the motors to its initial angle"
-, font= ("Courier", 15)).grid(row=3, column=1)
-
-motor1 = Label(rightframe, text ="Motor1").grid(row=3, column=1, padx=20, pady=20)
-btn1 = Button(rightframe, text = '<--', command = subtract)
-btn1.grid(row = 4, column = 1, pady = 10, padx = 20)
-
-btn2 = Button(rightframe, text = '-->', command = addition)
-btn2.grid(row = 4, column = 2, pady = 10, padx = 20)
-
-motor2 =Label(rightframe, text ="Motor2").grid(row=3,column=4, padx=20, pady=20)
-btn3 = Button(rightframe, text = '<--', command = subtract2)
-btn3.grid(row = 4, column = 4, pady = 10, padx = 20)
-
-btn4 = Button(rightframe, text = '-->', command = addition2)
-btn4.grid(row = 4, column = 5, pady = 10, padx = 20)
-
-motor3 =Label(rightframe, text ="Polariser").grid(row=6,column=3, padx=20, pady=20)
-btn5 = Button(rightframe, text = '<--', command = subtract3)
-btn5.grid(row = 8, column = 3, pady = 10, padx = 20)
-
-btn6 = Button(rightframe, text = '-->', command = addition3)
-btn6.grid(row = 9, column = 3, pady = 10, padx = 20)
-
-btn9 = Button(rightframe, text = 'Reset', command = reset_motor)
-btn9.grid(row = 15, column = 3, pady = 70, padx = 20)
-
-win.mainloop()
-```
 
 # Code for the Gui
 ```
 from tkinter import *
 from tkinter import messagebox
+from PIL import ImageTk, Image
+from gpiozero import AngularServo
+from guizero import App, Slider, Text, ButtonGroup
+from gpiozero.pins.pigpio import PiGPIOFactory
 from student_pub import *
 
-def homefunc():
-    tttframe.grid_forget()
-    gndframe.grid_forget()
-    contenttitle.grid(row=0, column=0)
-    contenttxt.grid(row=1, column=0)
 
 def gridfunc():
     global var 
@@ -623,11 +468,25 @@ def gridfunc():
 
     contenttitle.grid_forget()
     contenttxt.grid_forget()
-
+    
+    mazeframe.grid_forget()
     tttframe.grid_forget()
     gndframe.grid(row=0, column=0)
     dframe.grid_forget()
     gframe.grid(row=0, column=0)
+    
+def homefunc():
+    global var
+    var = "Home Page"
+    title.config(text=var)
+    
+    tttframe.grid_forget()
+    gndframe.grid_forget()
+    mazeframe.grid_forget()
+    
+    contenttitle.grid(row=0,column=0)
+    contenttxt.grid(row=1,column=0)
+    
 
 def drawfunc():
     global var 
@@ -637,6 +496,7 @@ def drawfunc():
     contenttitle.grid_forget()
     contenttxt.grid_forget()
 
+    mazeframe.grid_forget()
     tttframe.grid_forget()
     gndframe.grid(row=0, column=0)
     gframe.grid_forget()
@@ -650,8 +510,23 @@ def tttfunc():
     contenttitle.grid_forget()
     contenttxt.grid_forget()
     
+    mazeframe.grid_forget()
     gndframe.grid_forget()
     tttframe.grid(row=0, column=0)
+
+def mazefunc():
+    global var
+    var = "Maze"
+    title.config(text=var)
+
+    contenttitle.grid_forget()
+    contenttxt.grid_forget()
+
+    gndframe.grid_forget()
+    tttframe.grid_forget()
+    mazeframe.grid(row=0, column=0)
+
+########################################################################################## GRID FUNC
 
 def whitebtn(i, j):
     global colour
@@ -732,11 +607,11 @@ def ramseq():
           button[i][j].config(bg='grey44')
           value[i][j] = 50 
 
-###########################################################################################
+############################################################################################################################# DRAW FUNC
 def sendbtn():
     #print(value)
     print(canvasdraw)
-    pubpic(value)
+    # pubpic(value)
 
 def get_x_and_y(event):
    global lasx, lasy
@@ -846,7 +721,7 @@ def clearbtn():
         for j in range(800):
             canvasdraw[i][j] = 0
 
-#########################################################################################
+############################################################################################################# TIC TAC TOE FUNC
 
 def changeto(m):
     global pattern
@@ -1000,7 +875,7 @@ def tictaotoe(x,y):
                         value[i][j] = 7
                         btn[i][j].config(bg="black")
 
-    pubpic(value)
+    # student_pub.pubpic(value)
     # logic(x,y)
 
 def check():
@@ -1092,60 +967,150 @@ def border():
             else:
                 value[i][j] = 0
 
+######################################################################################## MAZE FUNCTION
+def subtract():
+    global counter_s 
+    counter_s -=15
+    s.angle = 0 + counter_s
+    s.angle = int(s.angle - 15) 
+    print("motor1: ", s.angle)
+    
+    
+    if s.angle == -90:
+        counter_s = -90
+        
+    
+#     s1.angle = int(slider1.value)
+#     print("motor2: ",s1.angle)
+    
+def addition():
+    
+    global counter_s 
+    counter_s  +=15
+    s.angle = 0 + counter_s 
+    print("motor1:", s.angle)
+    
+    if s.angle == 90.0:
+        counter_s  = 90.0
+        messagebox.showinfo("You have reached the maximum angle")
+
+def subtract2():
+    global counter_s1 
+    counter_s1 -=15
+    s1.angle = 0 + counter_s1 
+    #s.angle = int(s.angle - 15) 
+    print("motor2: ", s1.angle)
+    
+    
+    if s1.angle == -90.0:
+        counter_s1 = -90.0
+        print("You have reached the minimum angle")
+    
+    #s1.angle = int(slider1.value)
+    #print("motor2: ",s1.angle)
+    
+def addition2():
+    global counter_s1
+    counter_s1 +=15
+    s1.angle = 0 + counter_s1
+    print("motor2:", s1.angle)
+    
+    if s1.angle == 90.0:
+        counter_s1 = 90.0
+        print("You have reached the maximum angle")
+
+def subtract3():
+    global counter_s2 
+    counter_s2 -=15
+    s2.angle = 0 + counter_s2 
+    #s.angle = int(s.angle - 15) 
+    print("Polariser: ", s2.angle)
+    
+    
+    if s2.angle == -90.0:
+        counter_s2 = -90.0
+        print("You have reached the minimum angle")
+    
+    #s1.angle = int(slider1.value)
+    #print("motor2: ",s1.angle)
+    
+def addition3():
+    global counter_s2
+    counter_s2 +=15
+    s2.angle = 0 + counter_s2
+    print("Polariser:", s2.angle)
+    
+    if s2.angle == 90.0:
+        counter_s2 = 90.0
+        print("You have reached the maximum angle")
+        
+        
+def reset_motor():
+    s.angle = 0.0
+    s1.angle = 0.0
+    s2.angle = -75.0
+    print(s.angle,s1.angle,s2.angle)
+
 #################################################################################################
+
 main = Tk()
-# main.state('zoom')
+main.configure(bg="#1e2c2f")
+#main.attributes('-fullscreen',TRUE)
+# main.geometry("1500x800")
 
 titleframe = Frame(main)
-titleframe.grid(row=0, columnspan=1)
-contentframe = Frame(main)
+titleframe.grid(row=0, columnspan=2)
+contentframe = Frame(main, bg="#1e2c2f")
 contentframe.grid(row=1, column=0)
-modeframe = Frame(main)
-modeframe.grid(row=1, column=1, pady=15)
+modeframe = Frame(main, bg="#1e2c2f")
+modeframe.grid(row=1, column=1, padx=5, pady=35)
 
 
 #title for different mode
 var = "Welcome!!!"
-titlefont = ("Fixedsys", 25)
-title = Label(titleframe, text=var, font=titlefont, fg="#a5678e")
+titlefont = ("Fixedsys", 45)
+title = Label(titleframe, text=var, font=titlefont, fg="#fff4cf", bg="#1e2c2f")
 title.grid(row=0, column=0)
 
 # content 
-explaination = Frame(contentframe)
+explaination = Frame(contentframe, bg="#1e2c2f")
 explaination.grid(row=0, column=0)
-
-contenttitle = Label(explaination, text="Theme: Wonders of Our Childhood", font=("Fixedsys", 15))
+contenttitle = Label(explaination, text="Theme: Wonders of Our Childhood", font=("Fixedsys", 15),fg="#fff4cf",bg="#1e2c2f")
 contenttitle.grid(row=0, column=0)
 contenttxt = Label(explaination, text="""Our features consists of games that remind us of our childhood.
  We created these features as we wanted to bring some form of nostalgia
  to our target audience and teach them the physics of polarisation 
- through our interactive games while using our games as a form of relatability.""", font=("Courier", 15))
+ through our interactive games while using our games as a form of relatability.""", font=("Courier", 15), fg="#fff4cf", bg="#1e2c2f")
 contenttxt.grid(row=1, column=0)
 
 #mode 
 modefont = ("Courier", 15)
 
-default = Button(modeframe, text="Grid", font=modefont, bg="#97d2e1", command=gridfunc)
-default.grid(row=0, column=0, padx=5, pady=5)
-draw = Button(modeframe, text="Draw", font=modefont, bg="#ebbbbd", command=drawfunc)
-draw.grid(row=1, column=0, padx=5, pady=5)
-ttt = Button(modeframe, text="Tic-Tac-Toe", font=modefont, bg="#f5d788", command=tttfunc)
-ttt.grid(row=2, column=0, padx=5, pady=5)
-start = Button(modeframe, text="Home Page", font=modefont, bg="#9b9655", command=homefunc)
-start.grid(row=3, column=0, padx=5, pady=5)
+box = Frame(modeframe, highlightbackground="#fff4cf", highlightthickness=2, bg="#1e2c2f")
+box.grid(row=0, column=0)
+
+
+default = Button(box, text="Grid", font=modefont, bg="#fec260", command=gridfunc)
+default.grid(row=0, column=0, padx=10, pady=5)
+draw = Button(box, text="Draw", font=modefont, bg="#fec260", command=drawfunc)
+draw.grid(row=1, column=0, padx=10, pady=5)
+ttt = Button(modeframe, text="Tic-Tac-Toe", font=modefont, bg="#fec260", command=tttfunc)
+ttt.grid(row=2, column=0, padx=10, pady=5)
+maze = Button(modeframe, text="Maze", font=modefont, bg="#fec260", command=mazefunc)
+maze.grid(row=1, column=0, padx=10, pady=5)
+start = Button(modeframe, text="Home Page", font=modefont, bg="#fec260", command=homefunc)
+start.grid(row=3, column=0, padx=10, pady=5)
 
 ############################################ GRID 
-gndframe = Frame(contentframe)
+gndframe = Frame(contentframe, bg="#1e2c2f")
 
 gframe = Frame(gndframe)
 gframe.grid(row=0, column=0)
 
-gndframe2 = Frame(gndframe) #shades btn
-gndframe2.grid(row=0, column=1)
-gndframe3 = Frame(gndframe)
-gndframe3.grid(row=1, columnspan=2) #colour btns 
-gndframe4 = Frame(gndframe)
-gndframe4.grid(row=2, columnspan=2) #send btn
+gndframe2 = Frame(gndframe, bg="#1e2c2f") #shades btn
+gndframe2.grid(row=0, column=1, padx=10, pady=5)
+gndframe3 = Frame(gndframe, bg="#1e2c2f")
+gndframe3.grid(row=1, columnspan=2, padx=10, pady=10) #colour btns 
 
 # 32x32 grid
 button = [[j for j in range(32)] for i in range(32)]
@@ -1175,7 +1140,7 @@ black = Button(gndframe2, text="Black", font=("Calibri, 10"), bg='grey1', fg='wh
 black.grid(row=8, column=0)
 
 #save button
-savebtn = Button(gndframe2, text="Save", font=("Calibri, 10"), bg='light blue', fg='black', width=13, height=2, command=save_img)
+savebtn = Button(gndframe2, text="Save", font=("Calibri, 10"), bg="#549fa4", fg='black', width=13, height=2, command=save_img)
 savebtn.grid(row=9, column=0)
 
 #colour button
@@ -1185,12 +1150,12 @@ allwhite.grid(row=0, column=0)
 allblack = Button(gndframe3, text="All Black",font=("Calibri, 12"), bg='black', fg='white', width=13, height=2, command=allblk)
 allblack.grid(row=0, column=1)
 
-clear = Button(gndframe3, text="Clear",font=("Calibri, 12"), bg='gold', width=13, height=2, command=clearbtn)
+clear = Button(gndframe3, text="Clear",font=("Calibri, 12"), bg="#ff8c5d", width=13, height=2, command=clearbtn)
 clear.grid(row=0, column=2)
 
 #send btn
-send = Button(gndframe4, text="Send Image!", font=("Calibri, 12"), width=13, height=2, command=lambda :sendbtn())
-send.grid(row=0, column=0)
+send = Button(gndframe3, text="Send Image!", font=("Calibri, 12"), bg="#efcaad", width=13, height=2, command=lambda :sendbtn())
+send.grid(row=0, column=3)
 
 ############################################### DRAW
 dframe = Frame(gndframe)
@@ -1209,9 +1174,9 @@ canvasdraw = [[0 for i in range(800)] for j in range(800)]  # save eventxy into 
 
 
 ###################################### TIC-TAC-TOE
-tttframe = Frame(contentframe)
+tttframe = Frame(contentframe, bg="#1e2c2f")
 
-tttframe1 = Frame(tttframe)
+tttframe1 = Frame(tttframe, bg="#1e2c2f")
 tttframe1.grid(rowspan=2, column=0)
 
 btn = [[i for i in range (32)] for j in range (32)]
@@ -1220,7 +1185,7 @@ for i in range (32):
         btn[i][j] = Button(tttframe1, font=("Calibri, 5"), width=1, height=1, bg="white")
         btn[i][j].grid(row=i, column=j)
 
-tttframe2 = Frame(tttframe)
+tttframe2 = Frame(tttframe, bg="#1e2c2f")
 tttframe2.grid(row=0, column=1, padx=15)
 
 value = [[0 for i in range(32)] for j in range(32)]
@@ -1232,30 +1197,107 @@ for x in range (3):
         gui[x][y] = Button(tttframe2, font=("Calibri, 5"), width=18, height=12, command=lambda r=x, c=y:tictaotoe (r, c))
         gui[x][y].grid(row=x, column=y)
 
-tttframe3 = Frame(tttframe)
+tttframe3 = Frame(tttframe, bg="#1e2c2f")
 tttframe3.grid(row=1, column=1)
-
-ximg = PhotoImage(file="x.png")
-oimg = PhotoImage(file="o.png")
 
 xoff = 0
 yoff = 0
 pattern = 0 
 p = 0
 
-obtn = Button(tttframe3, text="", image=oimg, command=lambda m=1:changeto(m))
-obtn.grid(row=0, column=0)
-xbtn = Button(tttframe3, text="", image=ximg, command=lambda m=0:changeto(m))
-xbtn.grid(row=0, column=1)
+obtn = Button(tttframe3, text="O", font=("Fixedsys", 30), width=3, bg="#fff4cf", fg="#1e2c2f", command=lambda m=1:changeto(m))
+obtn.grid(row=0, column=0, padx =10)
+xbtn = Button(tttframe3, text="X", font=("Fixedsys", 30), width=3, bg="#fff4cf", fg="#1e2c2f", command=lambda m=0:changeto(m))
+xbtn.grid(row=0, column=1, padx =10)
 
-p1 = Label(tttframe3, text="Player 1 is O", font=("Courier", 10))
+p1 = Label(tttframe3, text="Player 1 is O", font=("Courier", 10), fg="#fff4cf", bg="#1e2c2f")
 p1.grid(row=2, columnspan=2)
-p2 = Label(tttframe3, text="Player 2 is X", font=("Courier", 10))
+p2 = Label(tttframe3, text="Player 2 is X", font=("Courier", 10), fg="#fff4cf", bg="#1e2c2f")
 p2.grid(row=3, columnspan=2)
 
-clearbtn = Button(tttframe3, text="Clear", font=("Courier", 15), command=clear)
-clearbtn.grid(row=1, columnspan=2)
+clearbtn = Button(tttframe3, text="Clear", font=("Courier", 15), bg="#fff4cf", command=clear)
+clearbtn.grid(row=1, columnspan=2, pady = 10)
 
-pubpic(value)
+####################################################################### MAZE
+mazeframe = Frame(contentframe, bg="#1e2c2f")
+
+factory = PiGPIOFactory()
+
+s = AngularServo(25, initial_angle = 0, min_pulse_width = 1/1000, max_pulse_width =2/1000
+                , frame_width = 20/1000, pin_factory = factory, min_angle=-90, max_angle=90)
+
+s1 = AngularServo(12 , initial_angle = 0, min_pulse_width = 1/1000, max_pulse_width =2/1000
+                , frame_width = 20/1000, pin_factory = factory, min_angle=-90, max_angle=90)
+
+s2 = AngularServo(24 , initial_angle = -75, min_pulse_width = 1/1000, max_pulse_width =2/1000
+                , frame_width = 20/1000, pin_factory = factory, min_angle=-90, max_angle=90)
+
+
+leftframe = Frame(mazeframe, bg="#1e2c2f")
+leftframe.grid(row=0, column=0)
+
+rightframe = Frame(mazeframe, bg="#1e2c2f", highlightbackground="#fff4cf", highlightthickness=2)
+rightframe.grid(row=0, column=1)
+
+# Create an object of tkinter ImageTk
+img = PhotoImage(file="maze_resized.png")
+# resized_image = img.resize((300,400), Image.ANTIALIAS)
+# new_image = ImageTk.PhotoImage(resized_image)
+# new_image.show()
+# img1 = img.resize(300,400)
+
+# Create a Label Widget to display the text or Image
+label = Label(leftframe, image = img)
+label.grid(row=0, column=0)
+
+
+counter_s = 0
+counter_s1 = 0
+counter_s2 = 0
+
+welcome = Label(leftframe, text ="Welcome to the laser maze game!", bg="#1e2c2f", fg="#fff4cf", font=("Courier", 25))
+welcome.grid(row=1, column=0, pady=10)
+
+instructions1 = Label(leftframe, text= "Here are a few instructions:", bg="#1e2c2f", fg="#fff4cf", font= ("Courier", 15))
+instructions1.grid(row=2, column=0)
+
+instructions2 = Label(leftframe, text= "1) Your objective is to navigate the laser and hit the light sensor", bg="#1e2c2f", fg="#fff4cf", font= ("Courier", 15))
+instructions2.grid(row=3, column=0, sticky=W)
+
+instructions3 = Label(leftframe, text= "2) Play with the left and right buttons to turn the motor", bg="#1e2c2f", fg="#fff4cf", font= ("Courier", 15))
+instructions3.grid(row=4, column=0, sticky=W)
+
+instructions4 = Label(leftframe, text= "3) Hit the reset button to assign all the motors to its initial angle", bg="#1e2c2f", fg="#fff4cf", font= ("Courier", 15))
+instructions4.grid(row=5, column=0, sticky=W)
+
+
+motor1 = Label(rightframe, text ="Motor1", fg="#fff4cf", bg="#1e2c2f").grid(row=3, column=1, padx=20, pady=20)
+btn1 = Button(rightframe, text = '<--', command = subtract, fg="#1e2c2f", bg="#fff4cf")
+btn1.grid(row = 4, column = 1, pady = 10, padx = 20)
+
+btn2 = Button(rightframe, text = '-->', command = addition, fg="#1e2c2f", bg="#fff4cf")
+btn2.grid(row = 4, column = 2, pady = 10, padx = 20)
+
+
+motor2 =Label(rightframe, text ="Motor2", fg="#fff4cf", bg="#1e2c2f").grid(row=3,column=4, padx=20, pady=20)
+btn3 = Button(rightframe, text = '<--', command = subtract2, fg="#1e2c2f", bg="#fff4cf")
+btn3.grid(row = 4, column = 4, pady = 10, padx = 20)
+
+btn4 = Button(rightframe, text = '-->', command = addition2, fg="#1e2c2f", bg="#fff4cf")
+btn4.grid(row = 4, column = 5, pady = 10, padx = 20)
+
+
+motor3 =Label(rightframe, text ="Polariser", fg="#fff4cf", bg="#1e2c2f").grid(row=6,column=3, padx=20, pady=20)
+btn5 = Button(rightframe, text = '<--', command = subtract3, fg="#1e2c2f", bg="#fff4cf")
+btn5.grid(row = 8, column = 3, pady = 10, padx = 20)
+
+btn6 = Button(rightframe, text = '-->', command = addition3, fg="#1e2c2f", bg="#fff4cf")
+btn6.grid(row = 9, column = 3, pady = 10, padx = 20)
+
+
+btn9 = Button(rightframe, text = 'Reset', command = reset_motor, fg="#1e2c2f", bg="#fff4cf")
+btn9.grid(row = 15, column = 3, pady = 70, padx = 20)
+
+# student_pub.pubpic(value)
 main.mainloop()
 ```
