@@ -51,7 +51,7 @@ graph TD
 A[main.py] --> C[change_colour]
 C --> A
 C --> I[<font size = 3>Shades<br><font size=2>White<br>6 Shades of grey<br>Black]
-A --> B[32 x 32 Grid]
+A --> B[Master Raspberry Pi]
 I --> B
 A --> D[Preset]
 D --> A
@@ -396,6 +396,7 @@ A-->F[lightsensor_2.py]
 F-->G[sendimage.py]
 G-->A
 ```
+<br>
 
 # Code for Light Sensor and Audio cue
 
