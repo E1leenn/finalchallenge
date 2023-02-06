@@ -348,7 +348,7 @@ def tictaotoe(x,y):
     else:
         var = "O"
         gui[x][y].config(text=var)
-        condition(logic(var))
+        
         print(logic(var))
         for i in range (32):
             for j in range (32):
@@ -404,7 +404,8 @@ def tictaotoe(x,y):
                     elif j == 5 + yoff: 
                         value[i][j] = 7
                         btn[i][j].config(bg="black")
-
+        
+        condition(logic(var))
     # student_pub.pubpic(value)
     # logic(x,y)
 
@@ -741,8 +742,8 @@ p1.grid(row=2, columnspan=2)
 p2 = Label(tttframe3, text="Player 2 is X", font=("Courier", 10))
 p2.grid(row=3, columnspan=2)
 
-clearbtn = Button(tttframe3, text="Clear", font=("Courier", 15), command=clear)
-clearbtn.grid(row=1, columnspan=2)
+cbtn = Button(tttframe3, text="Clear", font=("Courier", 15), command=clear)
+cbtn.grid(row=1, columnspan=2)
 
 ####################################################################### MAZE
 mazeframe = Frame(contentframe)
