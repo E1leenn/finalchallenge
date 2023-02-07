@@ -283,7 +283,7 @@ def tictaotoe(x,y):
     if pattern == 0: 
         var = "X"
         gui[x][y].config(text=var)
-        condition(logic(var))
+        
         print(logic(var))
         for i in range (32):
             for j in range (32):
@@ -335,12 +335,12 @@ def tictaotoe(x,y):
                 elif i == xoff + 7 and j == yoff: 
                         value[i][j] = 7
                         btn[i][j].config(bg="black")
-                
+        condition(logic(var))
 
     else:
         var = "O"
         gui[x][y].config(text=var)
-        condition(logic(var))
+        
         print(logic(var))
         for i in range (32):
             for j in range (32):
@@ -396,6 +396,7 @@ def tictaotoe(x,y):
                     elif j == 5 + yoff: 
                         value[i][j] = 7
                         btn[i][j].config(bg="black")
+        condition(logic(var))
 
     # student_pub.pubpic(value)
     # logic(x,y)
@@ -588,8 +589,8 @@ allwhite.grid(row=0, column=0)
 allblack = Button(gndframe3, text="All Black",font=("Calibri, 12"), bg='black', fg='white', width=13, height=2, command=allblk)
 allblack.grid(row=0, column=1)
 
-clear = Button(gndframe3, text="Clear",font=("Calibri, 12"), bg='#ff8c5d', width=13, height=2, command=clearbtn)
-clear.grid(row=0, column=2)
+cbtn = Button(gndframe3, text="Clear",font=("Calibri, 12"), bg='#ff8c5d', width=13, height=2, command=clearbtn)
+cbtn.grid(row=0, column=2)
 
 #send btn
 send = Button(gndframe3, text="Send Image!", font=("Calibri, 12"), bg="#efcaad", width=13, height=2, command=lambda :sendbtn()) 
