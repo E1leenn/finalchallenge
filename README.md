@@ -1,12 +1,18 @@
 # Wonders Of Our Childhood 
 In this documentation, we will be explaining about the different features of our project. Our theme is "Wonders Of Our Childhood", our features are based on our childhood that encapsulates the memories of the simpler times where we would play these games when we were younger. 
 
+<br>
+
 ## Project Learning Point
 Our key takeaway is the ability to actually understand how polarisation works as the logic behind its concept allowed us to come up with creative features for our project. We also learnt about the hardware side of the project where we figured out how to solder the board on our own and install the motors. For the software, we learnt about how the client can talk to the master pi which will then communicate the data to the esp board. Aside from that, learning to code our own features was also a very important learning point for us as it encourages problem-thinking skills. 
 We want to showcase to our target audience about the physics of polarisation and brewster angle through our interactive games. 
 
+<br>
+
 ## Project Backstory & Research
 Behind these arcade games, there is always something to learn behind the scene and it is always exciting to tell others about it. Hence, we researched about how we could teach the science behind our project and we were inspired to see kids in the science centre who would interact with one of their exhibits. Their strong curiousity motivated us to relate with them hence we came up with the idea of using nostalgia to our advantage and come up with features that resemble our childhood.
+
+<br>
 
 # Table of Contents 
 - [System Diagram](#system-diagram)
@@ -27,6 +33,7 @@ Behind these arcade games, there is always something to learn behind the scene a
 - [Final Look of the GUI](#final-look-of-gui)
 - [How to Run Main.py on Terminal](#how-to-run-main-gui-file-on-terminal)
 
+<br>
 
 # System Diagram
 ## Hardware
@@ -45,7 +52,10 @@ F-->G[Servo Motors]
 *Fu Yongwei, huats-club/EGL314starterkit* <br>
 *Credit: https://github.com/huats-club/EGL314starterkit*
 
+<br>
+
 ## Software 
+
 ```mermaid
 graph TD
 A[main.py] --> C[change_colour]
@@ -70,7 +80,10 @@ G --> B
 F --> B
 B --> A
 ```
+
 *Code Flow Chart*
+
+<br>
 
 # Installation 
 ## Installation of Hardware
@@ -79,6 +92,8 @@ B --> A
 ![](images/raspberryPi.png) <br>
 *Fu Yongwei, EGL314 - Lecture 1 Module Introduction*
 
+<br>
+
 ## Installation of Software
 1. PuTTy
 2. Advanced Port Scanner
@@ -86,17 +101,23 @@ B --> A
 4. Pi GPIO Library
 5. Pygame
 
+<br>
+
 ## PuTTy 
 PuTTy allows free implementation of SSH for PCs running Microsoft Windows. After installing PuTTy, enter the hostname "raspberrypi".<br>
 
 ![](images/putty.webp) <br>
 *Credit: https://tutorials-raspberrypi.com/raspberry-pi-remote-access-by-using-ssh-and-putty/*
 
+<br>
+
 ## Advanced Port Scanner
 Use Advanced Port Scanner to scan your network ip address in order to connect to VNC Viewer. Click "Start" to scart scanning. 
 
 ![](images/advance%20PortScanner.png) <br>
-*Screenshot of Advanced Port Scanner* <br>
+*Screenshot of Advanced Port Scanner* 
+
+<br>
 
 ## VNC Viewer
 Next, open VNC Viewer. Enter your Raspberry Pi ip address to remotely access the desktop of your Raspberry Pi over the internet.
@@ -136,6 +157,8 @@ Enter the following line in the Raspberry Pi terminal.
 pip install pygame
 ```
 
+<br>
+
 # Setting up Raspberry Pi
 Note: Only do the following on first initial boot.
 
@@ -146,6 +169,7 @@ After you entered the hostname, click "open" and a command prompt window should 
 
 You may change your password with the following command: ```sudo passwd```
 
+<br>
 
 ### 1. Update Raspberry pi
 Once logged in, update the Raspberry Pi. 
@@ -153,6 +177,9 @@ Once logged in, update the Raspberry Pi.
 sudo apt update
 sudo apt upgrade
 ```
+
+<br>
+
 ### 2. Configuring Raspberry pi
 ### Enable SSH <br>
 SSH is a is a network protocol that gives users, particularly system administrators, a secure way to access a computer over an unsecured network. To enable SSH type the following,
@@ -163,6 +190,7 @@ Select ```3 Interface Options```<br>
 Select ```P2 SSH```<br>
 Select **Enable SSH**
 
+
 ### Enable Virtual Network Computing (VNC) <br>
 VNC is a cross-platform screen sharing system that was created to remotely control another computer. To enable VNC, open terminal on your Raspberry Pi and try the following. 
 ```
@@ -171,6 +199,8 @@ sudo raspi-config
 Select ```3 Interface Options```<br>
 Select ```P3 VNC```<br>
 Select **Enable VNC**
+
+<br>
 
 # Setting up GUI
 To create a tkinter GUI, we need to import the tkinter library. 
@@ -190,6 +220,8 @@ Output <br>
 
 ![](images/window.png) <br>
 *Screenshot of a sample window*
+
+<br>
 
  ## Frame Function 
 We are using the frame function to group and organize the widget to make it neater so that it is user friendly. Below are the three main frames that form the GUI. 
@@ -213,6 +245,8 @@ Output <br>
 ![](images/overallframe.png) <br>
 *Screenshot of a frame window*
 
+<br>
+
 # Features
 ## Tic-Tac-Toe
 Feature 1 is the classic TicTacToe game. You can choose to be either Player 1 or Player 2 based on selecting the X or O symbol as shown in the interface below.
@@ -228,6 +262,8 @@ This scenario is when X wins the game
 
 ![](images/Xwin.png)
 *Screenshot of TicTacToe page in GUI*
+
+<br>
 
 ## Draw
 Users can select one of the colour shades,then press and hold the left click of a mouse or trackpad to draw on the canvas then have it converted to grid form. By clicking the "save" button after drawing, followed by the grid page button on the side to see it convert. Lastly, the send image button to display the image on the panel.
@@ -250,6 +286,8 @@ This is how the drawing looks when the user save it and changes it to grid form.
 ![](images/TicTacToe.png)
 *Screenshot of TicTacToe page in GUI*
 
+<br>
+
 ## Laser Maze
 ## Hardware for the Laser Maze
 The laser maze consist of 3 SG90 servos, 6 mirrors, breadboard, RaspberryPi, laser, jumperwires, photodiode sensor, 2 polarizers.<br>
@@ -261,10 +299,14 @@ The cardboard used as a base for the maze is 65cm x 45cm
 ![](images/MazeBase.JPG) <br>
 *Image of the cardboard used for the maze*
 
+<br>
+
 The box that is used to hold the laser is 17cm x 12cm
 
 ![](images/laser.JPG) <br>
 *Image of box used for the maze*
+
+<br>
 
 This shows the Raspberry Pi and breadboard used to wire the hardware. Within the black cone is the photodiode sensor.
 ![](images/pi.JPG)<br>
@@ -297,6 +339,8 @@ sudo make install
 ![](images/pigpioLibrary.png)
 *Screenshot of Google Chrome webpage*
 
+<br>
+
 All commands seen on the webpage must be entered into the terminal of Raspberry Pi. 
 
 <br>
@@ -305,11 +349,13 @@ Before starting the program to control the servos, you must activate the daemon 
 ```
 sudo pigpiod
 ```
+
+<br>
+
 ![](images/daemon.png)
 *Screenshot of Terminal in Raspberry Pi*
 
 <br>
-
 
 ## How to start Maze Gui from Raspberry Pi terminal
 ### (Run this file together with lightsensor_2 file)
@@ -355,17 +401,25 @@ python3 lightsensor_2.py
 ![](images/homepg.png)
 *Screenshot of the GUI*
 
+<br>
+
 ## Grid GUI
 ![](images/gridpage.png)
 *Screenshot of the GUI*
+
+<br>
 
 ## Draw GUI
 ![](images/DrawFeature.png)
 *Screenshot of the GUI*
 
+<br>
+
 ## Tic-Tac-Toe GUI
 ![](images/tttpg.png)
 *Screenshot of the GUI*
+
+<br>
 
 ## Laser Maze GUI
 <br>
@@ -373,6 +427,8 @@ Each arrow button represents a change in servo angle by 15 degrees in the respec
 
 ![](images/lasermazegui.png)
 *Screenshot of the GUI*
+
+<br>
 
 # How to Run main GUI file on Terminal 
 1. Open the terminal on raspberryPi.  
@@ -385,8 +441,11 @@ Each arrow button represents a change in servo angle by 15 degrees in the respec
 ![](images/mainterminal.png) <br>
 *Screenshot of terminal*
 
+<br>
+
 # Flow of code of our features
-``` mermaid
+``` 
+mermaid
 graph TD
 A[student_pub.py]-->B[main.py]
 B-->C[draw function]
@@ -396,6 +455,7 @@ A-->F[lightsensor_2.py]
 F-->G[sendimage.py]
 G-->A
 ```
+
 <br>
 
 # Code for Light Sensor and Audio cue
@@ -449,7 +509,6 @@ finally:
 ```
 
 <br>
-
 
 # Code for the Gui
 ```
