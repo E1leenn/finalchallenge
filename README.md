@@ -399,6 +399,7 @@ G-->A
 <br>
 
 # Code for Light Sensor and Audio cue
+You will need to run this code first to activate the light sensor and audio cue for the maze features. 
 
 ```
 import RPi.GPIO as GPIO
